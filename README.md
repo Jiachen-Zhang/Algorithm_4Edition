@@ -20,10 +20,6 @@
 |  Strings   |  KMP, regular expressions, TST, Huffman, LZW  |
 |  Advanced  |         B-tree, suffix array, maxflow         |
 
-
-
-
-
 ## Others
 
 > "Great algorithms are the poetry of computation." ---- Francis Sullivan
