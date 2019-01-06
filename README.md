@@ -1,5 +1,9 @@
 # Introduction
 
+## About
+
+[Course link](https://www.coursera.org/learn/algorithms-part1/)
+
 ## Course Intro
 
 1. **Algorithm**: method for solving a problem.
@@ -16,3 +20,10 @@
 |  Strings   |  KMP, regular expressions, TST, Huffman, LZW  |
 |  Advanced  |         B-tree, suffix array, maxflow         |
 
+
+
+
+
+## Others
+
+> "Great algorithms are the poetry of computation." ---- Francis Sullivan
