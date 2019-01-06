@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="checkstyle-lift">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Assignment 1_ Percolation/.idea/libraries/checkstyle-lift.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Assignment 1_ Percolation/.idea/libraries/algs4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/Assignment 1_ Percolation/.idea/libraries/checkstyle-lift.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Assignment 1_ Percolation/.idea/libraries/algs4.jar!/" />
+    </SOURCES>
+  </library>
+</component>
