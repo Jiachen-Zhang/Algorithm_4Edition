@@ -2,95 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11049cd0-d8d3-4eeb-a1c5-d658aadcfb60" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/DWZJC.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/checkstyle_lift.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PercolationStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/Programming Assignment 1_ Percolation.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/checkstyle-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/codeInsightSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/externalDependencies.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/file.template.settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/fileTemplates/includes/File Header.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/fileTemplates/internal/AnnotationType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/fileTemplates/internal/Class.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/fileTemplates/internal/Enum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/fileTemplates/internal/Interface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/fileTemplates/internal/module-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/fileTemplates/internal/package-info.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/findbugs-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/inspectionProfiles/Algorithms__Part_I.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/libraries/algs4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/saveactions_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.lift/algs4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.lift/checkstyle-coursera.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.lift/checkstyle-lift.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.lift/checkstyle-suppressions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/.lift/spotbugs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/Algorithms, Part I.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/CREDITS" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/InteractivePercolationVisualizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/PercolationVisualizer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/greeting57.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/greeting57.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/heart25.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/heart25.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input1-no.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input1-no.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input10-no.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input10-no.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input10.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input2-no.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input2-no.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input20.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input20.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input50.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input50.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input6.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input7.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input8-dups.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input8-dups.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input8-no.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input8-no.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/input8.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/java60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/java60.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/jerry47.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/jerry47.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/sedgewick60.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/sedgewick60.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/snake101.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/snake101.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/snake13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/snake13.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/wayne98.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programming Assignment 1_ Percolation/percolation/wayne98.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Programing Assignment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Programing Assignment.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Percolation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Percolation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,39 +25,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Percolation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="43" />
+            <state relative-caret-position="399">
+              <caret line="93" column="34" lean-forward="true" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
               <folding>
                 <element signature="method#open#0;class#Percolation#0" />
-                <element signature="method#isFull#0;class#Percolation#0" />
                 <element signature="docComment;method#numberOfOpenSites#0;class#Percolation#0" />
-                <element signature="e#2693#2694#0" expanded="true" />
-                <element signature="e#2727#2728#0" expanded="true" />
-                <element signature="method#percolates#0;class#Percolation#0" />
+                <element signature="e#2774#2775#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#PercolationStats#0;class#PercolationStats#0" />
+                <element signature="method#PercolationStats#0;class#PercolationStats#0" />
                 <element signature="docComment;method#mean#0;class#PercolationStats#0" />
+                <element signature="method#mean#0;class#PercolationStats#0" />
                 <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
                 <element signature="docComment;method#confidenceLo#0;class#PercolationStats#0" />
-                <element signature="e#1666#1667#0" expanded="true" />
-                <element signature="e#1723#1724#0" expanded="true" />
                 <element signature="docComment;method#confidenceHi#0;class#PercolationStats#0" />
-                <element signature="e#1842#1843#0" expanded="true" />
-                <element signature="e#1899#1900#0" expanded="true" />
                 <element signature="docComment;method#main#0;class#PercolationStats#0" />
               </folding>
             </state>
@@ -166,8 +75,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Percolation.java" />
         <option value="$PROJECT_DIR$/src/PercolationStats.java" />
+        <option value="$PROJECT_DIR$/src/Percolation.java" />
       </list>
     </option>
   </component>
@@ -185,6 +94,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,11 +110,6 @@
             <path>
               <item name="Programing Assignment" type="b2602c69:ProjectViewProjectNode" />
               <item name="Programing Assignment" type="462c0819:PsiDirectoryNode" />
-              <item name="Assignment 1_ Percolation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Programing Assignment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Programing Assignment" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -216,15 +121,14 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546788524576" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.idea/checkstyle-idea.xml" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.lift/algs4.jar!/" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -301,16 +205,18 @@
       <workItem from="1546785751985" duration="6000" />
       <workItem from="1546785762291" duration="1139000" />
       <workItem from="1546786926749" duration="1597000" />
+      <workItem from="1546788960060" duration="160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5450000" />
+    <option name="totallyTimeSpent" value="5610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49845678" visible="true" weight="0.18869936" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49845678" visible="true" weight="0.19083156" />
       <window_info id="Structure" order="1" sideWeight="0.5015432" side_tool="true" weight="0.25373134" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -385,37 +291,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Percolation.java">
+    <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="14" lean-forward="true" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="43" />
+        <state relative-caret-position="168">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding>
-            <element signature="method#open#0;class#Percolation#0" />
-            <element signature="method#isFull#0;class#Percolation#0" />
-            <element signature="docComment;method#numberOfOpenSites#0;class#Percolation#0" />
-            <element signature="e#2693#2694#0" expanded="true" />
-            <element signature="e#2727#2728#0" expanded="true" />
-            <element signature="method#percolates#0;class#Percolation#0" />
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#PercolationStats#0;class#PercolationStats#0" />
+            <element signature="method#PercolationStats#0;class#PercolationStats#0" />
+            <element signature="docComment;method#mean#0;class#PercolationStats#0" />
+            <element signature="method#mean#0;class#PercolationStats#0" />
+            <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
+            <element signature="docComment;method#confidenceLo#0;class#PercolationStats#0" />
+            <element signature="docComment;method#confidenceHi#0;class#PercolationStats#0" />
+            <element signature="docComment;method#main#0;class#PercolationStats#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
+    <entry file="file://$PROJECT_DIR$/src/Percolation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        <state relative-caret-position="399">
+          <caret line="93" column="34" lean-forward="true" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#PercolationStats#0;class#PercolationStats#0" />
-            <element signature="docComment;method#mean#0;class#PercolationStats#0" />
-            <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
-            <element signature="docComment;method#confidenceLo#0;class#PercolationStats#0" />
-            <element signature="e#1666#1667#0" expanded="true" />
-            <element signature="e#1723#1724#0" expanded="true" />
-            <element signature="docComment;method#confidenceHi#0;class#PercolationStats#0" />
-            <element signature="e#1842#1843#0" expanded="true" />
-            <element signature="e#1899#1900#0" expanded="true" />
-            <element signature="docComment;method#main#0;class#PercolationStats#0" />
+            <element signature="method#open#0;class#Percolation#0" />
+            <element signature="docComment;method#numberOfOpenSites#0;class#Percolation#0" />
+            <element signature="e#2774#2775#0" expanded="true" />
           </folding>
         </state>
       </provider>
