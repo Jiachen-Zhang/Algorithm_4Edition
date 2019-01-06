@@ -82,6 +82,9 @@ public class Percolation {
     if (!((1 <= row && row <= size) && (1 <= col && col <= size))) {
       throw new java.lang.IllegalArgumentException();
     }
+    if (this.size == 1) {
+      return isOpen(1, 1);
+    }
     return unionFind.connected(top, (row - 1) * size + col);
   }
 
