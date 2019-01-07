@@ -92,7 +92,6 @@ public class PercolationStats {
   }
 
   /** test client (described below).
-   *
    * @param args default
    */
   public static void main(String[] args) {
