@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11049cd0-d8d3-4eeb-a1c5-d658aadcfb60" name="Default Changelist" comment="  //TODO Note that there are no specific restraints on memory usage,&#10;  // therefore try to solve this problem with additional memory.&#10;  // Do keep in mind that constant time does not mean a single API call.&#10;  // This means that regardless of input size,&#10;  // API will be invoked fixed number of times, one, two or whatever &lt;&lt; N.&#10;  95/100">
+    <list default="true" id="11049cd0-d8d3-4eeb-a1c5-d658aadcfb60" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Percolation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Percolation.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Percolation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="559">
-              <caret line="117" column="3" lean-forward="true" selection-start-line="117" selection-start-column="3" selection-end-line="117" selection-end-column="3" />
+            <state relative-caret-position="475">
+              <caret line="113" column="25" lean-forward="true" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
               <folding>
                 <element signature="docComment;method#Percolation#0;class#Percolation#0" />
                 <element signature="docComment;method#open#0;class#Percolation#0" />
@@ -64,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="92" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="345">
+              <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
@@ -95,6 +94,12 @@
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -102,8 +107,8 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/test" />
         <option value="$PROJECT_DIR$/src/test2" />
-        <option value="$PROJECT_DIR$/src/PercolationStats.java" />
         <option value="$PROJECT_DIR$/src/Percolation.java" />
+        <option value="$PROJECT_DIR$/src/PercolationStats.java" />
       </list>
     </option>
   </component>
@@ -146,7 +151,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546837193685" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546837279759" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.lift/checkstyle-lift.jar!/checkstyle_packages.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -227,16 +232,37 @@
       <workItem from="1546788960060" duration="203000" />
       <workItem from="1546789340607" duration="14281000" />
       <workItem from="1546830925151" duration="274000" />
-      <workItem from="1546831587324" duration="4338000" />
+      <workItem from="1546831587324" duration="4653000" />
     </task>
+    <task id="LOCAL-00001" summary="  //TODO Note that there are no specific restraints on memory usage,&#10;  // therefore try to solve this problem with additional memory.&#10;  // Do keep in mind that constant time does not mean a single API call.&#10;  // This means that regardless of input size,&#10;  // API will be invoked fixed number of times, one, two or whatever &lt;&lt; N.&#10;  95/100">
+      <created>1546837125885</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1546837125885</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update">
+      <created>1546837205677</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1546837205677</updated>
+    </task>
+    <task id="LOCAL-00003" summary="checkstyle">
+      <created>1546837298185</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1546837298185</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24546000" />
+    <option name="totallyTimeSpent" value="24861000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4948025" visible="true" weight="0.141258" />
       <window_info id="Structure" order="1" sideWeight="0.50542635" side_tool="true" weight="0.141258" />
@@ -285,7 +311,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="  //TODO Note that there are no specific restraints on memory usage,&#10;  // therefore try to solve this problem with additional memory.&#10;  // Do keep in mind that constant time does not mean a single API call.&#10;  // This means that regardless of input size,&#10;  // API will be invoked fixed number of times, one, two or whatever &lt;&lt; N.&#10;  95/100" />
-    <option name="LAST_COMMIT_MESSAGE" value="  //TODO Note that there are no specific restraints on memory usage,&#10;  // therefore try to solve this problem with additional memory.&#10;  // Do keep in mind that constant time does not mean a single API call.&#10;  // This means that regardless of input size,&#10;  // API will be invoked fixed number of times, one, two or whatever &lt;&lt; N.&#10;  95/100" />
+    <MESSAGE value="update" />
+    <MESSAGE value="checkstyle" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkstyle" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -341,17 +369,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test2">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -361,8 +378,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Percolation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="117" column="3" lean-forward="true" selection-start-line="117" selection-start-column="3" selection-end-line="117" selection-end-column="3" />
+        <state relative-caret-position="475">
+          <caret line="113" column="25" lean-forward="true" selection-start-line="113" selection-start-column="25" selection-end-line="113" selection-end-column="25" />
           <folding>
             <element signature="docComment;method#Percolation#0;class#Percolation#0" />
             <element signature="docComment;method#open#0;class#Percolation#0" />
@@ -370,6 +387,17 @@
             <element signature="docComment;method#isFull#0;class#Percolation#0" />
             <element signature="docComment;method#numberOfOpenSites#0;class#Percolation#0" />
             <element signature="docComment;method#percolates#0;class#Percolation#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="86" column="5" lean-forward="true" selection-start-line="86" selection-start-column="5" selection-end-line="86" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
           </folding>
         </state>
       </provider>
