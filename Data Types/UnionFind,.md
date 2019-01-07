@@ -106,7 +106,7 @@ public class QuickUnionUF{
         int i = root(p);
     	int j = root(q);
     	if(i == j) return;
-    	if(sz[i] < sz[j]){id[i] = i; sz[j] += sz[i];}
+    	if(sz[i] < sz[j]){id[i] = j; sz[j] += sz[i];}
     	else			 {id[j] = i; sz[i] += sz[j];}
     }
 
