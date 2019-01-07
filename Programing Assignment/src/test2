@@ -1,0 +1,191 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  PASSED
+API:          PASSED
+
+Spotbugs:     PASSED
+PMD:          FAILED (6 warnings)
+Checkstyle:   FAILED (0 errors, 7 warnings)
+
+Correctness:  30/33 tests passed
+Memory:       8/8 tests passed
+Timing:       20/20 tests passed
+
+Aggregate score: 94.55%
+[Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+3.4K Jan  7 03:39 Percolation.java
+2.9K Jan  7 03:39 PercolationStats.java
+
+
+********************************************************************************
+*  COMPILING
+********************************************************************************
+
+
+% javac Percolation.java
+*-----------------------------------------------------------
+
+% javac PercolationStats.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Percolation:
+
+PercolationStats:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS
+********************************************************************************
+
+
+% spotbugs *.class
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+% pmd .
+*-----------------------------------------------------------
+Percolation.java:6: The private instance (or static) variable 'unionFind' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Percolation.java:7: The private instance (or static) variable 'size' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Percolation.java:8: The private instance (or static) variable 'top' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Percolation.java:9: The private instance (or static) variable 'bottom' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+PercolationStats.java:6: The private instance (or static) variable 'trials' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+PercolationStats.java:7: The private instance (or static) variable 'probabilities' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+PMD ends with 6 warnings.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Percolation.java:10:29: '//' or '/*' is not followed by whitespace. [WhitespaceAfter]
+[WARN] PercolationStats.java:12:5: '//' or '/*' is not followed by whitespace. [WhitespaceAfter]
+[WARN] PercolationStats.java:17:5: '//' or '/*' is not followed by whitespace. [WhitespaceAfter]
+[WARN] PercolationStats.java:45:5: '//' or '/*' is not followed by whitespace. [WhitespaceAfter]
+Checkstyle ends with 0 errors and 4 warnings.
+
+% custom checkstyle checks for Percolation.java
+*-----------------------------------------------------------
+[WARN] Percolation.java:1: We recommend defining at least one private helper method, e.g., to validate the row and column indices or to map from 2D to 1D indices. [Design]
+Checkstyle ends with 0 errors and 1 warning.
+
+% custom checkstyle checks for PercolationStats.java
+*-----------------------------------------------------------
+[WARN] PercolationStats.java:1: The number (0) of calls to 'Integer.parseInt()' must equal the number (2) of integer command-line arguments. [CommandLineArgument]
+[WARN] PercolationStats.java:1:1: The constant '1.96' appears more than once. Define a constant variable (such as 'CONFIDENCE_95') to hold the constant '1.96'. [NumericLiteralCount]
+Checkstyle ends with 0 errors and 2 warnings.
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+
+Test 16: check for backwash with predetermined sites
+  * filename = input20.txt
+    - isFull() returns wrong value after 231 sites opened
+    - student   isFull(18, 1) = true
+    - reference isFull(18, 1) = false
+  * filename = input10.txt
+    - isFull() returns wrong value after 56 sites opened
+    - student   isFull(9, 1) = true
+    - reference isFull(9, 1) = false
+  * filename = input50.txt
+    - isFull() returns wrong value after 1412 sites opened
+    - student   isFull(22, 28) = true
+    - reference isFull(22, 28) = false
+  * filename = jerry47.txt
+    - isFull() returns wrong value after 1076 sites opened
+    - student   isFull(11, 47) = true
+    - reference isFull(11, 47) = false
+  * filename = sedgewick60.txt
+    - isFull() returns wrong value after 1577 sites opened
+    - student   isFull(21, 59) = true
+    - reference isFull(21, 59) = false
+  * filename = wayne98.txt
+    - isFull() returns wrong value after 3851 sites opened
+    - student   isFull(69, 9) = true
+    - reference isFull(69, 9) = false
+==> FAILED
+
+Test 17: check for backwash with predetermined sites that have
+         multiple percolating paths
+  * filename = input3.txt
+    - isFull() returns wrong value after 4 sites opened
+    - student   isFull(3, 1) = true
+    - reference isFull(3, 1) = false
+  * filename = input4.txt
+    - isFull() returns wrong value after 7 sites opened
+    - student   isFull(4, 4) = true
+    - reference isFull(4, 4) = false
+  * filename = input7.txt
+    - isFull() returns wrong value after 12 sites opened
+    - student   isFull(6, 1) = true
+    - reference isFull(6, 1) = false
+==> FAILED
+
+Test 18: call all methods in random order until all sites are open,
+         allowing isOpen() to be called on a site more than once
+         (these inputs are prone to backwash)
+  * n = 3
+    - isFull() returns wrong value after 6 sites opened
+    - student   isFull(2, 1) = true
+    - reference isFull(2, 1) = false
+    - failed on trial 1 of 40
+
+  * n = 5
+    - isFull() returns wrong value after 17 sites opened
+    - student   isFull(5, 4) = true
+    - reference isFull(5, 4) = false
+    - failed on trial 2 of 20
+
+  * n = 7
+    - isFull() returns wrong value after 26 sites opened
+    - student   isFull(7, 1) = true
+    - reference isFull(7, 1) = false
+    - failed on trial 1 of 10
+
+  * n = 10
+    - isFull() returns wrong value after 70 sites opened
+    - student   isFull(10, 3) = true
+    - reference isFull(10, 3) = false
+    - failed on trial 1 of 5
+
+  * n = 20
+    - isFull() returns wrong value after 236 sites opened
+    - student   isFull(2, 19) = true
+    - reference isFull(2, 19) = false
+    - failed on trial 1 of 2
+
+  * n = 50
+    - isFull() returns wrong value after 1497 sites opened
+    - student   isFull(24, 14) = true
+    - reference isFull(24, 14) = false
+    - failed on trial 1 of 1
+
+==> FAILED
+
+
+Total: 15/18 tests passed!
+

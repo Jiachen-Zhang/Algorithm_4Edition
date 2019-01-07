@@ -3,13 +3,13 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation {
 
   private int numberOfOpenSites;
-  private WeightedQuickUnionUF unionFind;
-  private int size;
-  private int top;
-  private int bottom;
-  private boolean[] open; //1: open 0:blocked
+  private final WeightedQuickUnionUF unionFind;
+  private final int size;
+  private final int top;
+  private final int bottom;
+  private boolean[] open; // 1: open 0:blocked
 
-  /**create n-by-n grid, with all sites blocked.
+  /** create n-by-n grid, with all sites blocked.
    * @param n the size of a quadratic sites
    */
   public Percolation(int n) {
@@ -31,7 +31,7 @@ public class Percolation {
   }
 
 
-  /**open site (row, col) if it is not open already.
+  /** open site (row, col) if it is not open already.
    * @param row the row of a site
    * @param col the column of a site
    */
@@ -46,21 +46,20 @@ public class Percolation {
     int curIndex = (row - 1) * size + col;
     open[curIndex] = true;
     if (1 <= row - 1 && isOpen(row - 1, col)) { // up
-      unionFind.union(curIndex, (row - 2) * size + col);
+      unionFind.union(curIndex, curIndex - size);
     }
     if (row + 1 <= size && isOpen(row + 1, col)) { // down
-      unionFind.union(curIndex, (row) * size + col);
+      unionFind.union(curIndex, curIndex + size);
     }
     if (1 <= col - 1 && isOpen(row, col - 1)) { // left
-      unionFind.union(curIndex, (row - 1) * size + col - 1);
+      unionFind.union(curIndex, curIndex - 1);
     }
     if (col + 1 <= size && isOpen(row, col + 1)) { // right
-      unionFind.union(curIndex, (row - 1) * size + col + 1);
+      unionFind.union(curIndex, curIndex + 1);
     }
   }
 
-
-  /**is site (row, col) open?.
+  /** is site (row, col) open?.
    * @param row the row of a site
    * @param col the column of a site
    * @return true if the site has been opened
@@ -73,7 +72,7 @@ public class Percolation {
   }
 
 
-  /**is site (row, col) full?.
+  /** is site (row, col) full?.
    * @param row the row of a site
    * @param col the column of a site
    * @return true if the site is connected to the top
@@ -85,10 +84,10 @@ public class Percolation {
     if (this.size == 1) {
       return isOpen(1, 1);
     }
-    return unionFind.connected(top, (row - 1) * size + col);
+    return isOpen(row, col) && unionFind.connected(top, (row - 1) * size + col);
   }
 
-  /**number of open sites<br>.
+  /** number of open sites<br>.
    * @return number of open sites
    */
   public int numberOfOpenSites() {
@@ -97,7 +96,7 @@ public class Percolation {
 
   //
 
-  /**does the system percolate?.
+  /** does the system percolate?.
    * @return true if the the system percolates
    */
   public boolean percolates() {
@@ -107,7 +106,7 @@ public class Percolation {
     return unionFind.connected(top, bottom);
   }
 
-  /**test client (optional).
+  /** test client (optional).
    * @param args default
    */
   public static void main(String[] args) {

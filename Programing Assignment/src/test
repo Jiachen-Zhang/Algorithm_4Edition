@@ -1,0 +1,1681 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  PASSED
+API:          PASSED
+
+Spotbugs:     FAILED (1 warning)
+PMD:          FAILED (1 warning)
+Checkstyle:   FAILED (0 errors, 6 warnings)
+
+Correctness:  15/33 tests passed
+Memory:       8/8 tests passed
+Timing:       18/20 tests passed
+
+Aggregate score: 65.27%
+[Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+3.8K Jan  6 17:02 Percolation.java
+2.3K Jan  6 17:02 PercolationStats.java
+
+
+********************************************************************************
+*  COMPILING
+********************************************************************************
+
+
+% javac Percolation.java
+*-----------------------------------------------------------
+
+% javac PercolationStats.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Percolation:
+
+PercolationStats:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS
+********************************************************************************
+
+
+% spotbugs *.class
+*-----------------------------------------------------------
+H I DM_DEFAULT_ENCODING Dm: The method or constructor call 'new java.util.Scanner(InputStream)' relies on the default encoding when performing a byte-to-String (or String-to-byte) conversion.  At Percolation.java:[line 119]
+Warnings generated: 1
+
+
+================================================================
+
+
+% pmd .
+*-----------------------------------------------------------
+Percolation.java:123: Avoid using assignment statements in expressions; this can make code harder to read. [AssignmentInOperand]
+PMD ends with 1 warning.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Percolation.java:123:10: 'while' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Percolation.java:123:19: '{' is not preceded with whitespace. [WhitespaceAround]
+[WARN] PercolationStats.java:8:3: Declare static variables before instance variables, constructors, and methods. [DeclarationOrder]
+[WARN] PercolationStats.java:8:10: The modifier 'private' is out of order. The preferred order is ['public', 'protected', 'private', 'abstract', 'static', 'final', 'transient', 'volatile', 'synchronized', 'native', and 'strictfp']. [ModifierOrder]
+[WARN] PercolationStats.java:41:29: '{' is not preceded with whitespace. [WhitespaceAround]
+Checkstyle ends with 0 errors and 5 warnings.
+
+% custom checkstyle checks for Percolation.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for PercolationStats.java
+*-----------------------------------------------------------
+[WARN] PercolationStats.java:1: The number (0) of calls to 'Integer.parseInt()' must equal the number (2) of integer command-line arguments. [CommandLineArgument]
+Checkstyle ends with 0 errors and 1 warning.
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+Testing correctness of Percolation
+*-----------------------------------------------------------
+Running 18 total tests.
+
+Tests 1 through 8 create a Percolation object using your code, then repeatedly
+open sites by calling open(). After each call to open(), it checks the return
+values of isOpen(), percolates(), numberOfOpenSites(), and isFull() in that order.
+Tests 11 through 14 create a Percolation object using your code, then repeatedly
+call the methods open(), isOpen(), isFull(), percolates(), and, numberOfOpenSites()
+in random order with probabilities p = (p1, p2, p3, p4, p5). The tests stop
+immediately after the system percolates.
+
+Tests 16 through 18 test backwash.
+
+Except as noted, a site is opened at most once.
+
+Test 1: open predetermined list of sites using file inputs
+  * filename = input6.txt
+  * filename = input8.txt
+  * filename = input8-no.txt
+  * filename = input10-no.txt
+  * filename = greeting57.txt
+  * filename = heart25.txt
+==> passed
+
+Test 2: open random sites until just before system percolates
+  * n = 3
+  * n = 5
+  * n = 10
+  * n = 10
+  * n = 20
+  * n = 20
+  * n = 50
+  * n = 50
+==> passed
+
+Test 3: open predetermined sites for n = 1 and n = 2 (corner case test)
+  * filename = input1.txt
+  * filename = input1-no.txt
+  * filename = input2.txt
+  * filename = input2-no.txt
+==> passed
+
+Test 4: check predetermined sites with long percolating path
+  * filename = snake13.txt
+  * filename = snake101.txt
+==> passed
+
+Test 5: open every site
+  * filename = input5.txt
+==> passed
+
+Test 6: open random sites until just before system percolates,
+        allowing open() to be called on a site more than once
+  * n = 3
+  * n = 5
+  * n = 10
+  * n = 10
+  * n = 20
+  * n = 20
+  * n = 50
+  * n = 50
+==> passed
+
+Test 7: call methods with invalid arguments
+  * n = 10, (row, col) = (-1, 5)
+  * n = 10, (row, col) = (11, 5)
+  * n = 10, (row, col) = (0, 5)
+  * n = 10, (row, col) = (5, -1)
+  * n = 10, (row, col) = (5, 11)
+  * n = 10, (row, col) = (5, 0)
+  * n = 10, (row, col) = (-2147483648, -2147483648)
+  * n = 10, (row, col) = (2147483647, 2147483647)
+==> passed
+
+Test 8: call constructor with invalid argument
+  * n = -10
+  * n = -1
+  * n = 0
+==> passed
+
+Test 9: create multiple Percolation objects at the same time
+        (to make sure you didn't store data in static variables)
+==> passed
+
+Test 10: open predetermined list of sites using file inputs,
+         but permute the order in which methods are called
+  * filename = input8.txt;  order =     isFull(),     isOpen(), percolates()
+  * filename = input8.txt;  order =     isFull(), percolates(),     isOpen()
+  * filename = input8.txt;  order =     isOpen(),     isFull(), percolates()
+  * filename = input8.txt;  order =     isOpen(), percolates(),     isFull()
+  * filename = input8.txt;  order = percolates(),     isOpen(),     isFull()
+  * filename = input8.txt;  order = percolates(),     isFull(),     isOpen()
+==> passed
+
+Test 11: call open(), isOpen(), and numberOfOpenSites()
+         in random order until system percolates
+  * n = 3, trials = 40, p = (0.4, 0.4, 0.0, 0.0, 0.3)
+  * n = 5, trials = 20, p = (0.4, 0.4, 0.0, 0.0, 0.3)
+  * n = 7, trials = 10, p = (0.4, 0.4, 0.0, 0.0, 0.3)
+  * n = 10, trials = 5, p = (0.4, 0.4, 0.0, 0.0, 0.3)
+  * n = 20, trials = 2, p = (0.4, 0.4, 0.0, 0.0, 0.3)
+  * n = 50, trials = 1, p = (0.4, 0.4, 0.0, 0.0, 0.3)
+==> passed
+
+Test 12: call open() and percolates() in random order until system percolates
+  * n = 3, trials = 40, p = (0.5, 0.0, 0.0, 0.5, 0.0)
+  * n = 5, trials = 20, p = (0.5, 0.0, 0.0, 0.5, 0.0)
+  * n = 7, trials = 10, p = (0.5, 0.0, 0.0, 0.5, 0.0)
+  * n = 10, trials = 5, p = (0.5, 0.0, 0.0, 0.5, 0.0)
+  * n = 20, trials = 2, p = (0.5, 0.0, 0.0, 0.5, 0.0)
+  * n = 50, trials = 1, p = (0.5, 0.0, 0.0, 0.5, 0.0)
+==> passed
+
+Test 13: call open() and isFull() in random order until system percolates
+  * n = 3, trials = 40, p = (0.5, 0.0, 0.5, 0.0, 0.0)
+  * n = 5, trials = 20, p = (0.5, 0.0, 0.5, 0.0, 0.0)
+  * n = 7, trials = 10, p = (0.5, 0.0, 0.5, 0.0, 0.0)
+  * n = 10, trials = 5, p = (0.5, 0.0, 0.5, 0.0, 0.0)
+  * n = 20, trials = 2, p = (0.5, 0.0, 0.5, 0.0, 0.0)
+  * n = 50, trials = 1, p = (0.5, 0.0, 0.5, 0.0, 0.0)
+==> passed
+
+Test 14: call all methods in random order until system percolates
+  * n = 3, trials = 40, p = (0.2, 0.2, 0.2, 0.2, 0.2)
+  * n = 5, trials = 20, p = (0.2, 0.2, 0.2, 0.2, 0.2)
+  * n = 7, trials = 10, p = (0.2, 0.2, 0.2, 0.2, 0.2)
+  * n = 10, trials = 5, p = (0.2, 0.2, 0.2, 0.2, 0.2)
+  * n = 20, trials = 2, p = (0.2, 0.2, 0.2, 0.2, 0.2)
+  * n = 50, trials = 1, p = (0.2, 0.2, 0.2, 0.2, 0.2)
+==> passed
+
+Test 15: call all methods in random order until almost all sites are open,
+         but with inputs not prone to backwash
+  * n = 3
+  * n = 5
+  * n = 7
+  * n = 10
+  * n = 20
+  * n = 50
+==> passed
+
+Test 16: check for backwash with predetermined sites
+  * filename = input20.txt
+    - isFull() returns wrong value after 231 sites opened
+    - student   isFull(18, 1) = true
+    - reference isFull(18, 1) = false
+  * filename = input10.txt
+    - isFull() returns wrong value after 56 sites opened
+    - student   isFull(9, 1) = true
+    - reference isFull(9, 1) = false
+  * filename = input50.txt
+    - isFull() returns wrong value after 1412 sites opened
+    - student   isFull(22, 28) = true
+    - reference isFull(22, 28) = false
+  * filename = jerry47.txt
+    - isFull() returns wrong value after 1076 sites opened
+    - student   isFull(11, 47) = true
+    - reference isFull(11, 47) = false
+  * filename = sedgewick60.txt
+    - isFull() returns wrong value after 1577 sites opened
+    - student   isFull(21, 59) = true
+    - reference isFull(21, 59) = false
+  * filename = wayne98.txt
+    - isFull() returns wrong value after 3851 sites opened
+    - student   isFull(69, 9) = true
+    - reference isFull(69, 9) = false
+==> FAILED
+
+Test 17: check for backwash with predetermined sites that have
+         multiple percolating paths
+  * filename = input3.txt
+    - isFull() returns wrong value after 4 sites opened
+    - student   isFull(3, 1) = true
+    - reference isFull(3, 1) = false
+  * filename = input4.txt
+    - isFull() returns wrong value after 7 sites opened
+    - student   isFull(4, 4) = true
+    - reference isFull(4, 4) = false
+  * filename = input7.txt
+    - isFull() returns wrong value after 12 sites opened
+    - student   isFull(6, 1) = true
+    - reference isFull(6, 1) = false
+==> FAILED
+
+Test 18: call all methods in random order until all sites are open,
+         allowing isOpen() to be called on a site more than once
+         (these inputs are prone to backwash)
+  * n = 3
+    - isFull() returns wrong value after 4 sites opened
+    - student   isFull(3, 3) = true
+    - reference isFull(3, 3) = false
+    - failed on trial 2 of 40
+
+  * n = 5
+    - isFull() returns wrong value after 14 sites opened
+    - student   isFull(3, 1) = true
+    - reference isFull(3, 1) = false
+    - failed on trial 1 of 20
+
+  * n = 7
+    - isFull() returns wrong value after 33 sites opened
+    - student   isFull(6, 7) = true
+    - reference isFull(6, 7) = false
+    - failed on trial 1 of 10
+
+  * n = 10
+    - isFull() returns wrong value after 62 sites opened
+    - student   isFull(2, 10) = true
+    - reference isFull(2, 10) = false
+    - failed on trial 1 of 5
+
+  * n = 20
+    - isFull() returns wrong value after 238 sites opened
+    - student   isFull(17, 20) = true
+    - reference isFull(17, 20) = false
+    - failed on trial 2 of 2
+
+  * n = 50
+    - isFull() returns wrong value after 1528 sites opened
+    - student   isFull(39, 33) = true
+    - reference isFull(39, 33) = false
+    - failed on trial 1 of 1
+
+==> FAILED
+
+
+Total: 15/18 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference Percolation)
+********************************************************************************
+
+Testing correctness of PercolationStats
+*-----------------------------------------------------------
+Running 15 total tests.
+
+Test 1: check that methods in PercolationStats do not print to standard output
+  * n =  20, trials =  10
+    - constructor prints to standard output
+    - only main() should print to standard output
+    - number of lines of output = 3
+
+  * n =  50, trials =  20
+    - constructor prints to standard output
+    - only main() should print to standard output
+    - number of lines of output = 3
+
+  * n = 100, trials =  50
+    - constructor prints to standard output
+    - only main() should print to standard output
+    - number of lines of output = 3
+
+  * n =  64, trials = 150
+    - constructor prints to standard output
+    - only main() should print to standard output
+    - number of lines of output = 3
+
+==> FAILED
+
+Test 2: check that mean() returns value in expected range
+  * n =   2, trials = 10000
+mean                    = 0.667375
+stddev                  = 0.1176041770059556
+95% confidence interval = [0.6650699581306834, 0.6696800418693167]
+  * n =   5, trials = 10000
+mean                    = 0.5933400000000447
+stddev                  = 0.10254704281254721
+95% confidence interval = [0.5913300779609187, 0.5953499220391707]
+  * n =  10, trials = 10000
+mean                    = 0.590732000000007
+stddev                  = 0.0735111186451162
+95% confidence interval = [0.5892911820745628, 0.5921728179254513]
+  * n =  25, trials = 10000
+mean                    = 0.591752479999997
+stddev                  = 0.04192775614701027
+95% confidence interval = [0.5909306959795156, 0.5925742640204784]
+==> passed
+
+Test 3: check that stddev() returns value in expected range
+  * n =   2, trials = 10000
+mean                    = 0.6677
+stddev                  = 0.11748655373714205
+95% confidence interval = [0.665397263546752, 0.6700027364532479]
+  * n =   5, trials = 10000
+mean                    = 0.5938240000000463
+stddev                  = 0.10281961977862798
+95% confidence interval = [0.5918087354523852, 0.5958392645477074]
+  * n =  10, trials = 10000
+mean                    = 0.5902240000000041
+stddev                  = 0.07373610733794139
+95% confidence interval = [0.5887787722961805, 0.5916692277038277]
+  * n =  25, trials = 10000
+mean                    = 0.5913280000000006
+stddev                  = 0.0419641351973836
+95% confidence interval = [0.5905055029501319, 0.5921504970498693]
+==> passed
+
+Test 4: check that PercolationStats creates trials Percolation objects, each of size n-by-n
+  * n =  20, trials =  10
+mean                    = 0.5782499999999999
+stddev                  = 0.04503162469001336
+95% confidence interval = [0.55033910985137, 0.6061608901486298]
+  * n =  50, trials =  20
+mean                    = 0.5874400000000001
+stddev                  = 0.024831016258322014
+95% confidence interval = [0.576557327300414, 0.5983226726995862]
+  * n = 100, trials =  50
+mean                    = 0.59019
+stddev                  = 0.015140394004524606
+95% confidence interval = [0.5859932968939893, 0.5943867031060107]
+  * n =  64, trials = 150
+mean                    = 0.5905338541666667
+stddev                  = 0.023825247777610213
+95% confidence interval = [0.5867210204300325, 0.5943466879033009]
+==> passed
+
+Test 5: check that PercolationStats calls open() until system percolates
+  * n =  20, trials =  10
+mean                    = 0.5765
+stddev                  = 0.024866309202077667
+95% confidence interval = [0.5610877018802084, 0.5919122981197916]
+  * n =  50, trials =  20
+mean                    = 0.57748
+stddev                  = 0.024402622809853863
+95% confidence interval = [0.5667850790073045, 0.5881749209926955]
+  * n = 100, trials =  50
+mean                    = 0.5925440000000002
+stddev                  = 0.016656642482070327
+95% confidence interval = [0.5879270142584584, 0.597160985741542]
+  * n =  64, trials = 150
+mean                    = 0.5906901041666667
+stddev                  = 0.021135319803401463
+95% confidence interval = [0.5873077485608336, 0.5940724597724998]
+==> passed
+
+Test 6: check that PercolationStats does not call open() after system percolates
+  * n =  20, trials =  10
+mean                    = 0.60375
+stddev                  = 0.04110031765219232
+95% confidence interval = [0.578275759197879, 0.629224240802121]
+  * n =  50, trials =  20
+mean                    = 0.5969200000000001
+stddev                  = 0.027938006559636925
+95% confidence interval = [0.5846756287626562, 0.609164371237344]
+  * n = 100, trials =  50
+mean                    = 0.5951939999999998
+stddev                  = 0.017086758329305226
+95% confidence interval = [0.5904577922282059, 0.5999302077717936]
+  * n =  64, trials = 150
+mean                    = 0.5936311848958333
+stddev                  = 0.021919918604562928
+95% confidence interval = [0.5901232673312448, 0.5971391024604219]
+==> passed
+
+Test 7: check that mean() is consistent with the number of intercepted calls to open()
+        on blocked sites
+  * n =  20, trials =  10
+mean                    = 0.5955
+stddev                  = 0.046930800121029244
+95% confidence interval = [0.5664119887238747, 0.6245880112761254]
+  * n =  50, trials =  20
+mean                    = 0.5931200000000001
+stddev                  = 0.027484150456504736
+95% confidence interval = [0.5810745399699832, 0.605165460030017]
+  * n = 100, trials =  50
+mean                    = 0.5955619999999999
+stddev                  = 0.014978418351966626
+95% confidence interval = [0.5914101942542551, 0.5997138057457447]
+  * n =  64, trials = 150
+mean                    = 0.5941910807291667
+stddev                  = 0.023046846823323794
+95% confidence interval = [0.5905028170892146, 0.5978793443691188]
+==> passed
+
+Test 8: check that stddev() is consistent with the number of intercepted calls to open()
+        on blocked sites
+  * n =  20, trials =  10
+mean                    = 0.58675
+stddev                  = 0.05337303210007425
+95% confidence interval = [0.5536690519751591, 0.6198309480248408]
+  * n =  50, trials =  20
+mean                    = 0.58402
+stddev                  = 0.017803358642328373
+95% confidence interval = [0.5762173340501973, 0.5918226659498027]
+  * n = 100, trials =  50
+mean                    = 0.592934
+stddev                  = 0.01564355001727093
+95% confidence interval = [0.588597829162775, 0.5972701708372249]
+  * n =  64, trials = 150
+mean                    = 0.589091796875
+stddev                  = 0.02366222405137285
+95% confidence interval = [0.585305052368122, 0.592878541381878]
+==> passed
+
+Test 9: check that confidenceLo() and confidenceHigh() are consistent with mean() and stddev()
+  * n =  20, trials =  10
+mean                    = 0.5862499999999999
+stddev                  = 0.036576593912257885
+95% confidence interval = [0.5635795922204982, 0.6089204077795016]
+  * n =  50, trials =  20
+mean                    = 0.5957600000000001
+stddev                  = 0.023394610265479614
+95% confidence interval = [0.5855068599832977, 0.6060131400167025]
+  * n = 100, trials =  50
+mean                    = 0.58732
+stddev                  = 0.015427248620541513
+95% confidence interval = [0.5830437848510628, 0.5915962151489371]
+  * n =  64, trials = 150
+mean                    = 0.5895719401041667
+stddev                  = 0.021856716496898652
+95% confidence interval = [0.5860741369833219, 0.5930697432250115]
+==> passed
+
+Test 10: check that exception is thrown if either n or trials is out of bounds
+  * n = -23, trials =  42
+  * n =  23, trials =   0
+  * n = -42, trials =   0
+  * n =  42, trials =  -1
+  * n = -2147483648, trials = -2147483648
+==> passed
+
+Test 11: create two PercolationStats objects at the same time and check mean()
+         (to make sure you didn't store data in static variables)
+  * n1 =  50, trials1 =  10, n2 =  50, trials2 =   5
+mean                    = 0.59372
+stddev                  = 0.024832988811927838
+95% confidence interval = [0.5783283540719866, 0.6091116459280135]
+mean                    = 0.62584
+stddev                  = 0.018570083467771496
+95% confidence interval = [0.6095626041591413, 0.6421173958408586]
+  * n1 =  50, trials1 =   5, n2 =  50, trials2 =  10
+mean                    = 0.59344
+stddev                  = 0.019921044149341184
+95% confidence interval = [0.575978434910925, 0.6109015650890749]
+mean                    = 0.5862
+stddev                  = 0.024584186425875933
+95% confidence interval = [0.5709625633885195, 0.6014374366114806]
+  * n1 =  50, trials1 =  10, n2 =  25, trials2 =  10
+mean                    = 0.58764
+stddev                  = 0.031393389254569026
+95% confidence interval = [0.568182175750728, 0.6070978242492721]
+mean                    = 0.5977600000000001
+stddev                  = 0.03338513308511908
+95% confidence interval = [0.5770676801347833, 0.6184523198652169]
+  * n1 =  25, trials1 =  10, n2 =  50, trials2 =  10
+mean                    = 0.5940799999999999
+stddev                  = 0.04162768309670862
+95% confidence interval = [0.568278894708947, 0.6198811052910529]
+mean                    = 0.58908
+stddev                  = 0.02590516036108121
+95% confidence interval = [0.5730238152609864, 0.6051361847390136]
+  * n1 =  50, trials1 =  10, n2 =  15, trials2 = 100
+mean                    = 0.59664
+stddev                  = 0.012744602343301603
+95% confidence interval = [0.5887408136295214, 0.6045391863704785]
+mean                    = 0.5890666666666664
+stddev                  = 0.05918318349101113
+95% confidence interval = [0.5774667627024282, 0.6006665706309046]
+  * n1 =  15, trials1 = 100, n2 =  50, trials2 =  10
+mean                    = 0.5923111111111112
+stddev                  = 0.05822619737802627
+95% confidence interval = [0.5808987764250181, 0.6037234457972044]
+mean                    = 0.58748
+stddev                  = 0.03321849551747405
+95% confidence interval = [0.5668909631692549, 0.6080690368307451]
+==> passed
+
+Test 12: check that the methods return the same value, regardless of
+         the order in which they are called
+  * n =  20, trials =  10
+mean                    = 0.5972500000000001
+stddev                  = 0.04852619567477619
+95% confidence interval = [0.5671731523150004, 0.6273268476849997]
+  * n =  50, trials =  20
+mean                    = 0.6024400000000001
+stddev                  = 0.020301267785146092
+95% confidence interval = [0.5935425770997855, 0.6113374229002146]
+  * n = 100, trials =  50
+mean                    = 0.5918279999999999
+stddev                  = 0.016730810390609606
+95% confidence interval = [0.587190455963077, 0.5964655440369229]
+  * n =  64, trials = 150
+mean                    = 0.5911881510416667
+stddev                  = 0.021980624361144556
+95% confidence interval = [0.5876705185327106, 0.5947057835506228]
+==> passed
+
+Test 13: check that no calls to StdRandom.setSeed()
+  * n = 20, trials = 10
+mean                    = 0.5904999999999999
+stddev                  = 0.032442256395016654
+95% confidence interval = [0.5703920811618904, 0.6106079188381094]
+  * n = 20, trials = 10
+mean                    = 0.6282500000000001
+stddev                  = 0.04286688050750186
+95% confidence interval = [0.6016808321963639, 0.6548191678036362]
+  * n = 40, trials = 10
+mean                    = 0.580625
+stddev                  = 0.028304212976555675
+95% confidence interval = [0.5630818670446556, 0.5981681329553443]
+  * n = 80, trials = 10
+mean                    = 0.593140625
+stddev                  = 0.016578289447032327
+95% confidence interval = [0.5828652947450175, 0.6034159552549825]
+==> passed
+
+Test 14: check distribution of number of sites opened until percolation
+  * n = 2, trials = 100000
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.75
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95% confidence interval = [NaN, NaN]
+mean                    = 0.5
+stddev                  = NaN
+95%
+
+...
+
+WARNING: the grading output was truncated due to excessive length.
+Typically, this is because you have a method that has an unanticipated side effect
+(such as printing to standard output or throwing an exception). A large amount of output
+can also arise from failing many tests.
