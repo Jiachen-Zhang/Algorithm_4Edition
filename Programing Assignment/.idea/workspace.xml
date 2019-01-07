@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="11049cd0-d8d3-4eeb-a1c5-d658aadcfb60" name="Default Changelist" comment="  //TODO Note that there are no specific restraints on memory usage,&#10;  // therefore try to solve this problem with additional memory.&#10;  // Do keep in mind that constant time does not mean a single API call.&#10;  // This means that regardless of input size,&#10;  // API will be invoked fixed number of times, one, two or whatever &lt;&lt; N.&#10;  95/100">
-      <change afterPath="$PROJECT_DIR$/src/test" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Programing Assignment.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Programing Assignment.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Programing Assignment/Percolation.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Programing Assignment/Percolation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Programing Assignment/PercolationStats.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Programing Assignment/PercolationStats.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/percolation.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Percolation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Percolation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PercolationStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PercolationStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/percolation.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/percolation.zip" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,11 +41,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Percolation.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+            <state relative-caret-position="559">
+              <caret line="117" column="3" lean-forward="true" selection-start-line="117" selection-start-column="3" selection-end-line="117" selection-end-column="3" />
               <folding>
                 <element signature="docComment;method#Percolation#0;class#Percolation#0" />
                 <element signature="docComment;method#open#0;class#Percolation#0" />
+                <element signature="docComment;method#isOpen#0;class#Percolation#0" />
+                <element signature="docComment;method#isFull#0;class#Percolation#0" />
+                <element signature="docComment;method#numberOfOpenSites#0;class#Percolation#0" />
+                <element signature="docComment;method#percolates#0;class#Percolation#0" />
               </folding>
             </state>
           </provider>
@@ -62,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test2">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
+            <state>
               <caret line="86" column="161" selection-start-line="86" selection-start-column="94" selection-end-line="86" selection-end-column="161" />
             </state>
           </provider>
@@ -71,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+            <state relative-caret-position="-8">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
@@ -97,6 +93,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
@@ -105,8 +102,8 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/test" />
         <option value="$PROJECT_DIR$/src/test2" />
-        <option value="$PROJECT_DIR$/src/Percolation.java" />
         <option value="$PROJECT_DIR$/src/PercolationStats.java" />
+        <option value="$PROJECT_DIR$/src/Percolation.java" />
       </list>
     </option>
   </component>
@@ -116,8 +113,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="136" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="149" />
+    <option name="y" value="-20" />
     <option name="width" value="1400" />
     <option name="height" value="1100" />
   </component>
@@ -136,20 +134,6 @@
           <expand>
             <path>
               <item name="Programing Assignment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Programing Assignment" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Programing Assignment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Programing Assignment" type="462c0819:PsiDirectoryNode" />
-              <item name=".lift" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Programing Assignment" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Programing Assignment" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Programing Assignment" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -162,13 +146,13 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546836238095" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546837091082" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.lift/checkstyle-lift.jar!/checkstyle_packages.xml" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="org.infernus.idea.checkstyle.CheckStyleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -243,24 +227,24 @@
       <workItem from="1546788960060" duration="203000" />
       <workItem from="1546789340607" duration="14281000" />
       <workItem from="1546830925151" duration="274000" />
-      <workItem from="1546831587324" duration="3565000" />
+      <workItem from="1546831587324" duration="4338000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23773000" />
+    <option name="totallyTimeSpent" value="24546000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49457365" visible="true" weight="0.141258" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4948025" visible="true" weight="0.141258" />
       <window_info id="Structure" order="1" sideWeight="0.50542635" side_tool="true" weight="0.141258" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
-      <window_info active="true" id="Favorites" order="6" sideWeight="0.50542635" side_tool="true" visible="true" weight="0.141258" />
+      <window_info id="Favorites" order="6" sideWeight="0.5051975" side_tool="true" visible="true" weight="0.141258" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.24220374" />
@@ -274,7 +258,7 @@
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32952183" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.36300638" side_tool="true" weight="0.82952183" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32952183" />
-      <window_info anchor="bottom" id="CheckStyle" order="13" visible="true" weight="0.32952183" />
+      <window_info anchor="bottom" id="CheckStyle" order="13" weight="0.32952183" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -357,17 +341,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test2">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="86" column="161" selection-start-line="86" selection-start-column="94" selection-end-line="86" selection-end-column="161" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PercolationStats.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
+        <state relative-caret-position="-8">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#stddev#0;class#PercolationStats#0" />
@@ -375,13 +352,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="86" column="161" selection-start-line="86" selection-start-column="94" selection-end-line="86" selection-end-column="161" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Percolation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        <state relative-caret-position="559">
+          <caret line="117" column="3" lean-forward="true" selection-start-line="117" selection-start-column="3" selection-end-line="117" selection-end-column="3" />
           <folding>
             <element signature="docComment;method#Percolation#0;class#Percolation#0" />
             <element signature="docComment;method#open#0;class#Percolation#0" />
+            <element signature="docComment;method#isOpen#0;class#Percolation#0" />
+            <element signature="docComment;method#isFull#0;class#Percolation#0" />
+            <element signature="docComment;method#numberOfOpenSites#0;class#Percolation#0" />
+            <element signature="docComment;method#percolates#0;class#Percolation#0" />
           </folding>
         </state>
       </provider>

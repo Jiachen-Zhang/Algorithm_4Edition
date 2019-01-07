@@ -9,14 +9,17 @@ public class Percolation {
   private final int bottom;
   private boolean[] open; // 1: open 0:blocked
 
-  /** create n-by-n grid, with all sites blocked.
+  /**
+   * create n-by-n grid, with all sites blocked.
+   *
    * @param n the size of a quadratic sites
    */
   public Percolation(int n) {
     if (n <= 0) {
       throw new java.lang.IllegalArgumentException();
     }
-    unionFind = new WeightedQuickUnionUF(n * n + 2); // 0 as the upper bound, and N+1 as the bottom
+    unionFind = new WeightedQuickUnionUF(
+        n * n + 2); // 0 as the upper bound, and N+1 as the bottom
     open = new boolean[n * n + 2];
     size = n;
     top = 0;
@@ -31,7 +34,9 @@ public class Percolation {
   }
 
 
-  /** open site (row, col) if it is not open already.
+  /**
+   * open site (row, col) if it is not open already.
+   *
    * @param row the row of a site
    * @param col the column of a site
    */
@@ -59,7 +64,9 @@ public class Percolation {
     }
   }
 
-  /** is site (row, col) open?.
+  /**
+   * is site (row, col) open?.
+   *
    * @param row the row of a site
    * @param col the column of a site
    * @return true if the site has been opened
@@ -72,7 +79,9 @@ public class Percolation {
   }
 
 
-  /** is site (row, col) full?.
+  /**
+   * is site (row, col) full?.
+   *
    * @param row the row of a site
    * @param col the column of a site
    * @return true if the site is connected to the top
@@ -87,16 +96,18 @@ public class Percolation {
     return isOpen(row, col) && unionFind.connected(top, (row - 1) * size + col);
   }
 
-  /** number of open sites<br>.
+  /**
+   * number of open sites<br>.
+   *
    * @return number of open sites
    */
   public int numberOfOpenSites() {
     return numberOfOpenSites;
   }
 
-  //
-
-  /** does the system percolate?.
+  /**
+   * does the system percolate?.
+   *
    * @return true if the the system percolates
    */
   public boolean percolates() {
@@ -106,7 +117,8 @@ public class Percolation {
     return unionFind.connected(top, bottom);
   }
 
-  /** test client (optional).
+  /** .
+   * test client (optional).
    * @param args default
    */
   public static void main(String[] args) {
