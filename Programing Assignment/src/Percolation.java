@@ -4,10 +4,12 @@ public class Percolation {
 
   private int numberOfOpenSites;
   private final WeightedQuickUnionUF unionFind;
+  private final WeightedQuickUnionUF unionFindFill;
   private final int size;
   private final int top;
   private final int bottom;
   private boolean[] open; // 1: open 0:blocked
+  private final int top_fill;
 
   /**
    * create n-by-n grid, with all sites blocked.
@@ -31,6 +33,13 @@ public class Percolation {
     for (int i = size * (size - 1) + 1; i <= size * size; i++) {
       unionFind.union(bottom, i);
     }
+
+    top_fill = 0;
+    unionFindFill = new WeightedQuickUnionUF(
+        n * n + 1);
+    for (int i = 1; i <= size; i++) {
+      unionFindFill.union(top_fill, i);
+    }
   }
 
 
@@ -52,15 +61,21 @@ public class Percolation {
     open[curIndex] = true;
     if (1 <= row - 1 && isOpen(row - 1, col)) { // up
       unionFind.union(curIndex, curIndex - size);
+      unionFindFill.union(curIndex, curIndex - size);
     }
     if (row + 1 <= size && isOpen(row + 1, col)) { // down
       unionFind.union(curIndex, curIndex + size);
+      unionFindFill.union(curIndex, curIndex + size);
+
     }
     if (1 <= col - 1 && isOpen(row, col - 1)) { // left
       unionFind.union(curIndex, curIndex - 1);
+      unionFindFill.union(curIndex, curIndex - 1);
+
     }
     if (col + 1 <= size && isOpen(row, col + 1)) { // right
       unionFind.union(curIndex, curIndex + 1);
+      unionFindFill.union(curIndex, curIndex + 1);
     }
   }
 
@@ -93,7 +108,7 @@ public class Percolation {
     if (this.size == 1) {
       return isOpen(1, 1);
     }
-    return isOpen(row, col) && unionFind.connected(top, (row - 1) * size + col);
+    return isOpen(row, col) && unionFindFill.connected(top_fill, (row - 1) * size + col);
   }
 
   /**
