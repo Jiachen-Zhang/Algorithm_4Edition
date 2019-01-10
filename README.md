@@ -4,11 +4,6 @@
 
 [Course link](https://www.coursera.org/learn/algorithms-part1/)
 
-## Course Intro
-
-1. **Algorithm**: method for solving a problem.
-2. **Data Structure**: method to store information.
-
 ## Topics
 
 |   Topics   |        Data Structures and Algorithms         |
@@ -20,6 +15,12 @@
 |  Strings   |  KMP, regular expressions, TST, Huffman, LZW  |
 |  Advanced  |         B-tree, suffix array, maxflow         |
 
-## Others
+## Folder Structure
 
-> "Great algorithms are the poetry of computation." ---- Francis Sullivan
+`doc`: Assignments specification, pdfs of Slides, My lecture notes
+
+`lib`: libs for assignments
+
+`pic`: pictures for notes
+
+`src`: the source code for assignments
