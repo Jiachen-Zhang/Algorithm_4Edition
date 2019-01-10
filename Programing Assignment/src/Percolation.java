@@ -9,7 +9,7 @@ public class Percolation {
   private final int top;
   private final int bottom;
   private boolean[] open; // 1: open 0:blocked
-  private final int top_fill;
+  private final int topFill;
 
   /**
    * create n-by-n grid, with all sites blocked.
@@ -34,11 +34,11 @@ public class Percolation {
       unionFind.union(bottom, i);
     }
 
-    top_fill = 0;
+    topFill = 0;
     unionFindFill = new WeightedQuickUnionUF(
         n * n + 1);
     for (int i = 1; i <= size; i++) {
-      unionFindFill.union(top_fill, i);
+      unionFindFill.union(topFill, i);
     }
   }
 
@@ -108,7 +108,7 @@ public class Percolation {
     if (this.size == 1) {
       return isOpen(1, 1);
     }
-    return isOpen(row, col) && unionFindFill.connected(top_fill, (row - 1) * size + col);
+    return isOpen(row, col) && unionFindFill.connected(topFill, (row - 1) * size + col);
   }
 
   /**
