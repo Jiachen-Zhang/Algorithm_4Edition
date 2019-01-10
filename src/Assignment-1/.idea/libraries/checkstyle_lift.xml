@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="checkstyle-lift">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../lib/checkstyle-lift.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../lib/checkstyle-lift.jar!/" />
+    </SOURCES>
+  </library>
+</component>

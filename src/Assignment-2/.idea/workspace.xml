@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="37e8a02e-149e-4ce1-b7b2-5974dacf8fff" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/libraries/algs4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Types/UnionFind,.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Data Types/UnionFind.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/2-AnalysisOfAlgorithms.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Others/Analysis_of_Algorithm.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/checkstyle-coursa.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/checkstyleidea-libs/.lift/algs4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/checkstyleidea-libs/.lift/checkstyle-lift.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/checkstyleidea-libs/hashed/vwaro4yadrryg4rnkej7wyxjkwiyflei/algs4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/checkstyleidea-libs/hashed/vwaro4yadrryg4rnkej7wyxjkwiyflei/checkstyle-lift.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/checkstyleidea-libs/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/codeStyles/checkstyle-coursera.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/dictionaries/DWZJC.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/libraries/checkstyle_lift.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.lift/algs4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.lift/checkstyle-coursera.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.lift/checkstyle-lift.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.lift/checkstyle-suppressions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/.lift/spotbugs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/Programing Assignment.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/Programming Assignment 1_ Percolation.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/out/production/Programing Assignment/META-INF/Programing Assignment.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/out/production/Programing Assignment/Percolation.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/out/production/Programing Assignment/PercolationStats.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/out/production/Programing Assignment/percolation.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/out/production/Programing Assignment/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/out/production/Programing Assignment/test2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/src/Percolation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Programing Assignment/src/PercolationStats.java" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CheckStyle-IDEA-workspace">
+    <option name="configuration">
+      <map>
+        <entry key="last-active-plugin-version" value="5.23.0" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="222" />
+    <option name="y" value="102" />
+    <option name="width" value="1400" />
+    <option name="height" value="957" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Assignment-2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Assignment-2" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="37e8a02e-149e-4ce1-b7b2-5974dacf8fff" name="Default Changelist" comment="" />
+      <created>1547134921201</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1547134921201</updated>
+      <workItem from="1547134928995" duration="50000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="50000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="CheckStyle" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
