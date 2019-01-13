@@ -8,7 +8,9 @@
 
 <img src="../pic/2-1.png" width="600px" align=center />
 
-## Stack
+# Stack
+
+## Implementation
 
 ### Linked-list implementation (space)
 
@@ -129,5 +131,219 @@ Invariant. Array is between 25% and 100% full.
 
 
 
+# Queue
 
+## Implementation
+
+### Linked-list
+
+```java
+class LinkeQueueOfStrings{
+    private Node first, last;
+    
+    private class Node{
+        String item;
+        Node next;
+    }
+    
+    public boolean isEmpty(){
+        return first == null;
+    }
+    
+    public void enqueue(String item){
+        Node oldlast = last;
+        last = new Node();
+        last.item = item;
+        last.next = null;
+        if(isEmpty()) first = last;
+        else          oldlast.next = last;
+    }
+    
+    public String dequeue(){
+        String item = first.item;
+        first = first.next;
+        if(isEmpty()) last = null;
+        return item;
+    }
+}
+```
+
+### Array
+
+```java
+
+```
+
+## Iterators
+
+- What is an `Iterable`?
+
+  - Has a method that returns an `Iterator`.
+
+    Iterable Interface
+    ```java
+    public interface Iterable<Item>{
+        Iterator<Item> iterator();
+    }
+    ```
+
+
+  - Has methods `hasNext()` and `next()`.
+
+    ```java
+    public interface Iterator<Item>{
+        boolean hasNext();
+        Item next();
+        void remove(); // optional: use at your own risk
+    }
+    ```
+
+- Why make data structures `Iterable`?
+
+  - Java support elegant client code.
+
+    - `foreach` statement (shorthand)
+
+      ```java
+      for (String s : stack) {
+          StdOut.println(s);
+      }
+      ```
+
+    - equivalent code (longhand)
+
+      ```java
+      Iterator<String> i = stack.iterator();
+      while (i.hasNext()) {
+          String s = i.next();
+          StdOut.println(s);
+      }
+      ```
+
+### Linked-list Implementation
+
+```java
+public class Stack<Item> implements Iterable<Item>{
+    // ...
+    public Iterator<Item> iterator() {
+        return new ListIterator();
+    }
+    
+    private class ListIterator implements Iterator<Item>{
+        
+        private Node current = first;
+        
+        public boolean hasNext(){
+            return current != null;
+        }
+        
+        public void remove() {
+            /* not supported */
+        }
+        
+        public Item next(){
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+    }
+}
+```
+
+### Array Implementation
+
+```java
+public class Stack<Item> implements Iterable<Item>{
+    public Iterator<Item> iterator(){
+        return new ReverseArrayIterator();
+    }
+    
+    private class ReverseArrayIterator implements Iterator<Item>{
+        private int i = N;
+        
+        public boolean hasNext(){
+            return i > 0;
+        }
+        
+        public void remove(){
+            /* not supported */
+        }
+        
+        public Item next(){
+            return s[--i];
+        }
+    }
+}
+```
+
+## Bag
+
+> Do not care about the order
+
+implementation: Stack (without `pop`) or Queue (without `dequeue`).
+
+```java
+public class Bag<Item> implements Iterable<Item>
+	Bag() // creat an empty bag
+	void add(Item x) // insert a new item onto bag
+	int size() // number of items in bag
+	Iterable<Item> iterator() // iterator for all items in bag
+```
+
+
+
+# Application
+
+Implementations:
+
+- `java.util.ArrayList` uses resizing array
+- `java.util.LinkedList` uses linked list
+- `java.util.Queue`: An interface, not an implementation of queue
+- **Best Practice**: use our implementation of Stack, Queue and Bag.
+
+Stack applications:
+
+- Parsing in a compiler
+- Java virtual machine
+- Undo in a word processor
+- Back button in a web browser
+- PostScript language for printers
+
+- Implementing function calls in a complier
+  - Function call: `push` local environment and return address
+  - Return: `pop` return address and local environment
+- ...
+
+Queue applications:
+
+- 
+
+
+
+## Arithmetic expression evaluation
+
+- Goal: Evaluate infix expressions
+- Two-stack algorithm: [E. W. Dijkstra]
+  - Value: push onto the value stack
+  - Operator: push on to the operator stack
+  - left parenthesis: ignore
+  - Right parenthesis:
+    - pop operator and two value
+    - push the result of applying that operator to those values onto the value stack.
+
+![1547381032737](..\pic\2-2.png)
+
+## Postfix
+
+![1547381169724](..\pic\2.3.png)
+
+Bottom line. **Postfix** or "reverse Polish" notation.
+
+Applications:
+
+- Postscript
+- Forth
+- calculators
+- Java virtual machine
+- …
 
