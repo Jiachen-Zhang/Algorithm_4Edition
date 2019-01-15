@@ -6,23 +6,23 @@ Compilation:  PASSED (0 errors, 1 warning)
 API:          PASSED
 
 Spotbugs:     PASSED
-PMD:          FAILED (1 warning)
+PMD:          FAILED (2 warnings)
 Checkstyle:   PASSED
 
-Correctness:  39/43 tests passed
-Memory:       106/105 tests passed
+Correctness:  43/43 tests passed
+Memory:       105/105 tests passed
 Timing:       193/193 tests passed
 
-Aggregate score: 94.51%
+Aggregate score: 100.00%
 [Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-3.9K Jan 15 09:50 Deque.java
- 649 Jan 15 09:50 Permutation.java
-3.8K Jan 15 09:50 RandomizedQueue.java
+3.9K Jan 15 10:12 Deque.java
+1.7K Jan 15 10:12 Permutation.java
+3.8K Jan 15 10:12 RandomizedQueue.java
 
 
 ********************************************************************************
@@ -76,8 +76,9 @@ Permutation:
 
 % pmd .
 *-----------------------------------------------------------
+Permutation.java:14: Avoid unused local variables, such as 'maxSize'. [UnusedLocalVariable]
 RandomizedQueue.java:102: The private instance (or static) variable 'queueIterator' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-PMD ends with 1 warning.
+PMD ends with 2 warnings.
 
 
 ================================================================
@@ -359,17 +360,16 @@ Running 9 total tests.
 
 Test 1a: check formatting for sample inputs from assignment specification
   % java Permutation 3 < distinct.txt
+  D
+  H
   I
-  C
-  A
 
   % java Permutation 3 < distinct.txt
-  H
+  B
   I
   E
 
   % java Permutation 8 < duplicates.txt
-  CC
   AA
   CC
   BB
@@ -377,34 +377,25 @@ Test 1a: check formatting for sample inputs from assignment specification
   BB
   BB
   BB
+  CC
 
 ==> passed
 
 Test 1b: check formatting for other inputs
   % java Permutation 8 < mediumTale.txt
-  of
-  the
-  worst
   was
-  it
-  foolishness
-  age
+  the
   times
+  was
+  of
+  foolishness
+  worst
+  age
 
   % java Permutation 0 < distinct.txt
-    java.util.NoSuchElementException: randomized queue underflow
+  [no output]
 
-    RandomizedQueue.dequeue(RandomizedQueue.java:142)
-    Permutation.main(Permutation.java:18)
-    UtilCOS.execute(UtilCOS.java:159)
-    TestPermutation.checkFormatting(TestPermutation.java:40)
-    TestPermutation.test1b(TestPermutation.java:215)
-    TestPermutation.main(TestPermutation.java:319)
-
-    - student solution threw an exception
-    - reference solution did not throw an exception
-
-==> FAILED
+==> passed
 
 Test 2: check that main() reads all data from standard input
   * filename = distinct.txt, k = 3
@@ -441,207 +432,28 @@ Test 3c: check that main() prints each item from the sequence at most once
 
 Test 4: check main() when k = 0
   * filename = distinct.txt, k = 0
-    java.util.NoSuchElementException: randomized queue underflow
-
-    RandomizedQueue.dequeue(RandomizedQueue.java:142)
-    Permutation.main(Permutation.java:18)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test4(TestPermutation.java:267)
-    TestPermutation.main(TestPermutation.java:334)
-
   * filename = distinct.txt, k = 0
-    java.util.NoSuchElementException: randomized queue underflow
-
-    RandomizedQueue.dequeue(RandomizedQueue.java:142)
-    Permutation.main(Permutation.java:18)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test4(TestPermutation.java:268)
-    TestPermutation.main(TestPermutation.java:334)
-
-==> FAILED
+==> passed
 
 Test 5a: check that permutations are uniformly random
          (for inputs with no duplicate strings)
   * filename = permutation4.txt, k = 1
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-                A         0     250.0          0.00
-                B         0     250.0          0.00
-                C         0     250.0          0.00
-                D      1000     250.0       2772.59
-        -------------------------------------------
-                       1000    1000.0       2772.59
-
-    G-statistic = 2772.59 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * filename = permutation4.txt, k = 2
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-              A B         0      83.3          0.00
-              A C         0      83.3          0.00
-              A D       126      83.3        104.19
-              B A         0      83.3          0.00
-              B C         0      83.3          0.00
-              B D       138      83.3        139.22
-              C A         0      83.3          0.00
-              C B         0      83.3          0.00
-              C D       230      83.3        467.01
-              D A       119      83.3         84.79
-              D B       139      83.3        142.23
-              D C       248      83.3        540.93
-        -------------------------------------------
-                       1000    1000.0       1478.36
-
-    G-statistic = 1478.36 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * filename = permutation4.txt, k = 3
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-            A B C         0      41.7          0.00
-            A B D        61      41.7         46.50
-            A C B         0      41.7          0.00
-            A C D        63      41.7         52.09
-            A D B        64      41.7         54.94
-            A D C        62      41.7         49.28
-            B A C         0      41.7          0.00
-            B A D        54      41.7         28.00
-            B C A         0      41.7          0.00
-            B C D        50      41.7         18.23
-            B D A        43      41.7          2.71
-            B D C        53      41.7         25.50
-            C A B         0      41.7          0.00
-            C A D        50      41.7         18.23
-            C B A         0      41.7          0.00
-            C B D        50      41.7         18.23
-            C D A        43      41.7          2.71
-            C D B        61      41.7         46.50
-            D A B        62      41.7         49.28
-            D A C        53      41.7         25.50
-            D B A        55      41.7         30.54
-            D B C        58      41.7         38.37
-            D C A        63      41.7         52.09
-            D C B        55      41.7         30.54
-        -------------------------------------------
-                       1000    1000.0        589.26
-
-    G-statistic = 589.26 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * filename = permutation4.txt, k = 4
   * filename = permutation6.txt, k = 2
-
-==> FAILED
+==> passed
 
 Test 5b: check that permutations are uniformly random
          (for inputs with duplicate strings)
   * filename = permutation5.txt, k = 1
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-                A         0     600.0          0.00
-                B      1000     400.0       1832.58
-        -------------------------------------------
-                       1000    1000.0       1832.58
-
-    G-statistic = 1832.58 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * filename = permutation5.txt, k = 2
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-              A A         0     300.0          0.00
-              A B       428     300.0        304.17
-              B A       438     300.0        331.51
-              B B       134     100.0         78.44
-        -------------------------------------------
-                       1000    1000.0        714.12
-
-    G-statistic = 714.12 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * filename = permutation5.txt, k = 3
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-            A A A         0     100.0          0.00
-            A A B       168     200.0        -58.58
-            A B A       187     200.0        -25.14
-            A B B       148     100.0        116.04
-            B A A       206     200.0         12.18
-            B A B       152     100.0        127.29
-            B B A       139     100.0         91.55
-        -------------------------------------------
-                       1000    1000.0        263.34
-
-    G-statistic = 263.34 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * filename = duplicates.txt, k = 3
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-         AA BB BB         0      59.5          0.00
-         AA BB CC        13      29.8        -21.54
-         AA CC BB         9      29.8        -21.53
-         AA CC CC        20       6.0         48.48
-         BB AA BB         0      59.5          0.00
-         BB AA CC        11      29.8        -21.90
-         BB BB AA         0      59.5          0.00
-         BB BB BB         0     178.6          0.00
-         BB BB CC        93     119.0        -45.93
-         BB CC AA        10      29.8        -21.81
-         BB CC BB        80     119.0        -63.60
-         BB CC CC       193      29.8        721.61
-         CC AA BB        15      29.8        -20.56
-         CC AA CC        29       6.0         91.84
-         CC BB AA        10      29.8        -21.81
-         CC BB BB        98     119.0        -38.13
-         CC BB CC       190      29.8        704.44
-         CC CC AA        18       6.0         39.84
-         CC CC BB       211      29.8        826.54
-        -------------------------------------------
-                       1000    1000.0       2155.95
-
-    G-statistic = 2155.95 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * filename = permutation8.txt, k = 2
+==> passed
 
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-              A B         0      17.9          0.00
-              A C       114      71.4        106.59
-              A D         0      35.7          0.00
-              B A         0      17.9          0.00
-              B C        13      71.4        -44.30
-              B D         0      35.7          0.00
-              C A       113      71.4        103.66
-              C B        19      71.4        -50.32
-              C C       708     214.3       1692.31
-              C D        19     142.9        -76.66
-              D A         0      35.7          0.00
-              D B         0      35.7          0.00
-              D C        14     142.9        -65.04
-              D D         0      35.7          0.00
-        -------------------------------------------
-                       1000    1000.0       1666.24
-
-    G-statistic = 1666.24 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
-==> FAILED
-
-Total: 5/9 tests passed!
+Total: 9/9 tests passed!
 
 
 ================================================================
@@ -692,8 +504,8 @@ Test 4: Time main() with k = 5, for inputs containing n random strings
 => passed       32000     0.01
 => passed       64000     0.02
 => passed      128000     0.05
-=> passed      256000     0.09
-=> passed      512000     0.19
+=> passed      256000     0.23
+=> passed      512000     0.24
 ==> 10/10 tests passed
 
 
@@ -708,9 +520,9 @@ Test 5: Time main() with k = 1000, for inputs containing n random strings
 => passed       16000     0.01
 => passed       32000     0.01
 => passed       64000     0.02
-=> passed      128000     0.10
-=> passed      256000     0.25
-=> passed      512000     0.19
+=> passed      128000     0.05
+=> passed      256000     0.09
+=> passed      512000     0.18
 ==> 10/10 tests passed
 
 
@@ -753,13 +565,23 @@ Test 2: check that the maximum size of any Deque or RandomizedQueue object
 Test 3 (bonus): check that maximum size of any or Deque or RandomizedQueue object
                 created is equal to k
   * filename = tale.txt, n = 138653, k = 5
-  * filename = tale.txt, n = 138653, k = 50
-  * filename = tale.txt, n = 138653, k = 500
-  * filename = tale.txt, n = 138653, k = 5000
-  * filename = tale.txt, n = 138653, k = 50000
-==> passed
+    - max size of RandomizedQueue object = 138653
 
-Total: 3/2 tests passed!
+  * filename = tale.txt, n = 138653, k = 50
+    - max size of RandomizedQueue object = 138653
+
+  * filename = tale.txt, n = 138653, k = 500
+    - max size of RandomizedQueue object = 138653
+
+  * filename = tale.txt, n = 138653, k = 5000
+    - max size of RandomizedQueue object = 138653
+
+  * filename = tale.txt, n = 138653, k = 50000
+    - max size of RandomizedQueue object = 138653
+
+==> FAILED
+
+Total: 2/2 tests passed!
 
 ================================================================
 
@@ -1102,8 +924,8 @@ Test 1a-1k: make n calls to addFirst() followed by n calls to removeFirst()
 => passed       65536     0.01
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.05
-=> passed     1024000     0.11
+=> passed      512000     0.04
+=> passed     1024000     0.08
 ==> 11/11 tests passed
 
 
@@ -1118,7 +940,7 @@ Test 2a-2k: make n calls to addLast() followed by n calls to removeLast()
 => passed       32768     0.00
 => passed       65536     0.01
 => passed      128000     0.01
-=> passed      256000     0.01
+=> passed      256000     0.02
 => passed      512000     0.01
 => passed     1024000     0.02
 ==> 11/11 tests passed
@@ -1154,7 +976,7 @@ Test 4a-4k: make n calls to addLast() followed by n calls to removeFirst()
 => passed      128000     0.00
 => passed      256000     0.00
 => passed      512000     0.01
-=> passed     1024000     0.09
+=> passed     1024000     0.08
 ==> 11/11 tests passed
 
 
@@ -1194,7 +1016,7 @@ Test 6a-6g: make n random calls to addLast(), removeLast(), isEmpty(), and size(
 => passed      256000     0.01
 => passed      512000     0.02
 => passed     1024000     0.04
-=> passed     2048000     0.08
+=> passed     2048000     0.07
 ==> 12/12 tests passed
 
 
@@ -1298,8 +1120,8 @@ Test 4a-k: make n calls to enqueue() followed by n calls to dequeue()
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
-=> passed      128000     0.01
+=> passed       65536     0.02
+=> passed      128000     0.02
 => passed      256000     0.02
 => passed      512000     0.03
 => passed     1024000     0.07
@@ -1317,12 +1139,12 @@ Test 5a-k: make n calls to enqueue() followed by n random calls to
 => passed        4096     0.00
 => passed        8192     0.00
 => passed       16384     0.00
-=> passed       32768     0.01
+=> passed       32768     0.00
 => passed       65536     0.01
 => passed      128000     0.01
-=> passed      256000     0.03
-=> passed      512000     0.06
-=> passed     1024000     0.12
+=> passed      256000     0.02
+=> passed      512000     0.05
+=> passed     1024000     0.11
 ==> 11/11 tests passed
 
 
@@ -1338,7 +1160,7 @@ Test 6a-k: make n calls to enqueue() followed by n random calls to
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
+=> passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.01
 => passed      512000     0.03
@@ -1361,8 +1183,8 @@ Test 7a-k: make n calls to enqueue() followed by n random calls to
 => passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.02
-=> passed      512000     0.04
-=> passed     1024000     0.11
+=> passed      512000     0.05
+=> passed     1024000     0.09
 ==> 11/11 tests passed
 
 
@@ -1377,7 +1199,7 @@ Test 8a-k: make n calls to enqueue() followed by n calls each to
 => passed        8192     0.00
 => passed       16384     0.00
 => passed       32768     0.00
-=> passed       65536     0.01
+=> passed       65536     0.00
 => passed      128000     0.01
 => passed      256000     0.01
 => passed      512000     0.02
@@ -1394,9 +1216,9 @@ Test 9a-i: make n calls to enqueue(); then call dequeue() twice,
 => passed        2049     0.00
 => passed        4097     0.00
 => passed        8193     0.00
-=> passed       16385     0.00
+=> passed       16385     0.01
 => passed       32769     0.01
-=> passed       65537     0.02
+=> passed       65537     0.01
 => passed      128001     0.02
 => passed      256001     0.04
 ==> 9/9 tests passed
