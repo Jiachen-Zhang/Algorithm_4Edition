@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="37e8a02e-149e-4ce1-b7b2-5974dacf8fff" name="Default Changelist" comment="RandomizedQueue">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/algs4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/src.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Permutation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/permutation5.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assignment-2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment-2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Assignment-2/Deque$ListIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment-2/Deque$ListIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Assignment-2/Deque$Node.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment-2/Deque$Node.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Assignment-2/Deque.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Assignment-2/Deque.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Deque.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Deque.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RandomizedQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RandomizedQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Permutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Permutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/permutation5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/permutation5.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,24 +23,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/RandomizedQueue.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Deque.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="553">
-              <caret line="152" column="40" selection-start-line="152" selection-start-column="40" selection-end-line="152" selection-end-column="40" />
+            <state relative-caret-position="1396">
+              <caret line="180" column="8" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="8" />
+              <folding>
+                <element signature="docComment;method#isEmpty#0;class#Deque#0" />
+                <element signature="docComment;method#size#0;class#Deque#0" />
+                <element signature="docComment;method#addFirst#0;class#Deque#0" />
+                <element signature="method#addFirst#0;class#Deque#0" />
+                <element signature="docComment;method#addLast#0;class#Deque#0" />
+                <element signature="method#addLast#0;class#Deque#0" />
+                <element signature="docComment;method#removeFirst#0;class#Deque#0" />
+                <element signature="docComment;method#removeLast#0;class#Deque#0" />
+                <element signature="docComment;method#iterator#0;class#Deque#0" />
+                <element signature="method#remove#0;class#ListIterator#0;class#Deque#0" />
+                <element signature="docComment;method#main#0;class#Deque#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Permutation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="docComment;method#RandomizedQueue#0;class#RandomizedQueue#0" />
-                <element signature="docComment;method#isEmpty#0;class#RandomizedQueue#0" />
-                <element signature="docComment;method#size#0;class#RandomizedQueue#0" />
-                <element signature="docComment;method#resize#0;class#RandomizedQueue#0" />
-                <element signature="docComment;method#enqueue#0;class#RandomizedQueue#0" />
-                <element signature="docComment;method#dequeue#0;class#RandomizedQueue#0" />
-                <element signature="docComment;method#sample#0;class#RandomizedQueue#0" />
-                <element signature="docComment;method#iterator#0;class#RandomizedQueue#0" />
-                <element signature="e#2260#2261#0" expanded="true" />
-                <element signature="e#2302#2303#0" expanded="true" />
-                <element signature="docComment;method#main#0;class#RandomizedQueue#0" />
+                <element signature="docComment;method#main#0;class#Permutation#0" />
               </folding>
             </state>
           </provider>
@@ -78,15 +78,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Deque.java" />
-        <option value="$PROJECT_DIR$/src/permutation5.txt" />
         <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/Permutation.java" />
         <option value="$PROJECT_DIR$/src/RandomizedQueue.java" />
+        <option value="$PROJECT_DIR$/src/permutation5.txt" />
+        <option value="$PROJECT_DIR$/src/Deque.java" />
+        <option value="$PROJECT_DIR$/src/Permutation.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="222" />
     <option name="y" value="102" />
     <option name="width" value="1400" />
@@ -123,7 +123,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547545016733" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547545545660" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lib/algs4.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -190,7 +190,7 @@
       <updated>1547134921201</updated>
       <workItem from="1547134928995" duration="50000" />
       <workItem from="1547382813888" duration="3766000" />
-      <workItem from="1547525229413" duration="10519000" />
+      <workItem from="1547525229413" duration="11052000" />
     </task>
     <task id="LOCAL-00001" summary="RandomizedQueue">
       <created>1547530220106</created>
@@ -203,13 +203,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14335000" />
+    <option name="totallyTimeSpent" value="14868000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.497921" visible="true" weight="0.2553305" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.497921" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" sideWeight="0.502079" side_tool="true" weight="0.2553305" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -218,7 +218,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32952183" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32952183" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -277,48 +277,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Deque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="179" column="17" selection-start-line="179" selection-start-column="17" selection-end-line="179" selection-end-column="17" />
-          <folding>
-            <element signature="docComment;method#isEmpty#0;class#Deque#0" />
-            <element signature="docComment;method#size#0;class#Deque#0" />
-            <element signature="docComment;method#addFirst#0;class#Deque#0" />
-            <element signature="method#addFirst#0;class#Deque#0" />
-            <element signature="docComment;method#addLast#0;class#Deque#0" />
-            <element signature="method#addLast#0;class#Deque#0" />
-            <element signature="docComment;method#removeFirst#0;class#Deque#0" />
-            <element signature="docComment;method#removeLast#0;class#Deque#0" />
-            <element signature="docComment;method#iterator#0;class#Deque#0" />
-            <element signature="e#2409#2410#0" expanded="true" />
-            <element signature="e#2444#2445#0" expanded="true" />
-            <element signature="e#2569#2570#0" expanded="true" />
-            <element signature="e#2605#2606#0" expanded="true" />
-            <element signature="method#remove#0;class#ListIterator#0;class#Deque#0" />
-            <element signature="docComment;method#main#0;class#Deque#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Permutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#main#0;class#Permutation#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/permutation5.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15582">
-          <caret line="917" column="31" lean-forward="true" selection-start-line="917" selection-start-column="31" selection-end-line="917" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -343,6 +301,44 @@
             <element signature="e#2260#2261#0" expanded="true" />
             <element signature="e#2302#2303#0" expanded="true" />
             <element signature="docComment;method#main#0;class#RandomizedQueue#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/permutation5.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="577">
+          <caret line="1584" column="39" selection-start-line="1584" selection-start-column="39" selection-end-line="1584" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Deque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1396">
+          <caret line="180" column="8" selection-start-line="180" selection-start-column="8" selection-end-line="180" selection-end-column="8" />
+          <folding>
+            <element signature="docComment;method#isEmpty#0;class#Deque#0" />
+            <element signature="docComment;method#size#0;class#Deque#0" />
+            <element signature="docComment;method#addFirst#0;class#Deque#0" />
+            <element signature="method#addFirst#0;class#Deque#0" />
+            <element signature="docComment;method#addLast#0;class#Deque#0" />
+            <element signature="method#addLast#0;class#Deque#0" />
+            <element signature="docComment;method#removeFirst#0;class#Deque#0" />
+            <element signature="docComment;method#removeLast#0;class#Deque#0" />
+            <element signature="docComment;method#iterator#0;class#Deque#0" />
+            <element signature="method#remove#0;class#ListIterator#0;class#Deque#0" />
+            <element signature="docComment;method#main#0;class#Deque#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Permutation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="38" lean-forward="true" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#main#0;class#Permutation#0" />
           </folding>
         </state>
       </provider>

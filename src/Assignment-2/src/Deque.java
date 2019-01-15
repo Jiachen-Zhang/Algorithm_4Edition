@@ -178,7 +178,7 @@ public class Deque<Item> implements Iterable<Item> {
   }
 
   private static void print(Deque<Integer> deque) {
-    for(int i : deque) {
+    for (int i : deque) {
       System.out.print(i + ", ");
     }
     System.out.println(", size = " + deque.size());
