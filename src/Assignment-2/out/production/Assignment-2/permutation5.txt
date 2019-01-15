@@ -5,28 +5,28 @@ ASSESSMENT SUMMARY
 Compilation:  PASSED (0 errors, 1 warning)
 API:          PASSED
 
-Spotbugs:     FAILED (1 warning)
-PMD:          FAILED (5 warnings)
-Checkstyle:   FAILED (0 errors, 6 warnings)
+Spotbugs:     PASSED
+PMD:          FAILED (1 warning)
+Checkstyle:   PASSED
 
-Correctness:  32/43 tests passed
-Memory:       103/105 tests passed
-Timing:       170/193 tests passed
+Correctness:  39/43 tests passed
+Memory:       106/105 tests passed
+Timing:       193/193 tests passed
 
-Aggregate score: 82.08%
+Aggregate score: 94.51%
 [Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-3.9K Jan 15 08:39 Deque.java
- 635 Jan 15 08:39 Permutation.java
-3.4K Jan 15 08:39 RandomizedQueue.java
+3.9K Jan 15 09:50 Deque.java
+ 649 Jan 15 09:50 Permutation.java
+3.8K Jan 15 09:50 RandomizedQueue.java
 
 
 ********************************************************************************
-*  COMPILING                                                                    
+*  COMPILING
 ********************************************************************************
 
 
@@ -63,14 +63,12 @@ Permutation:
 
 
 ********************************************************************************
-*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+*  CHECKING STYLE AND COMMON BUG PATTERNS
 ********************************************************************************
 
 
 % spotbugs *.class
 *-----------------------------------------------------------
-M P UUF_UNUSED_FIELD UuF: The instance (or static) variable 'randomIndex' is never used. Consider removing it from the class.  In RandomizedQueue.java
-Warnings generated: 1
 
 
 ================================================================
@@ -78,12 +76,8 @@ Warnings generated: 1
 
 % pmd .
 *-----------------------------------------------------------
-Deque.java:12: Instance (and static) variables should be declared at the top of the class, before any method declarations, constructors, or nested classes. [FieldDeclarationsShouldBeAtStartOfClass]
-Deque.java:13: Instance (and static) variables should be declared at the top of the class, before any method declarations, constructors, or nested classes. [FieldDeclarationsShouldBeAtStartOfClass]
-Deque.java:14: Instance (and static) variables should be declared at the top of the class, before any method declarations, constructors, or nested classes. [FieldDeclarationsShouldBeAtStartOfClass]
-RandomizedQueue.java:10: Avoid unused private instance (or static) variables, such as 'randomIndex'. [UnusedPrivateField]
 RandomizedQueue.java:102: The private instance (or static) variable 'queueIterator' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
-PMD ends with 5 warnings.
+PMD ends with 1 warning.
 
 
 ================================================================
@@ -91,12 +85,6 @@ PMD ends with 5 warnings.
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] Deque.java:181:10: The modifier 'private' is out of order. The preferred order is ['public', 'protected', 'private', 'abstract', 'static', 'final', 'transient', 'volatile', 'synchronized', 'native', and 'strictfp']. [ModifierOrder]
-[WARN] Deque.java:182:8: 'for' is not followed by whitespace. [WhitespaceAfter]
-[WARN] RandomizedQueue.java:73:9: The local (or parameter) variable 'randomIndex' has the same name as an instance variable. Use a different name. [HiddenField]
-[WARN] RandomizedQueue.java:88:9: The local (or parameter) variable 'randomIndex' has the same name as an instance variable. Use a different name. [HiddenField]
-[WARN] RandomizedQueue.java:114:13: The local (or parameter) variable 'randomIndex' has the same name as an instance variable. Use a different name. [HiddenField]
-Checkstyle ends with 0 errors and 5 warnings.
 
 % custom checkstyle checks for Deque.java
 *-----------------------------------------------------------
@@ -106,8 +94,6 @@ Checkstyle ends with 0 errors and 5 warnings.
 
 % custom checkstyle checks for Permutation.java
 *-----------------------------------------------------------
-[WARN] Permutation.java:1: The number (0) of calls to 'Integer.parseInt()' must equal the number (1) of integer command-line arguments. [CommandLineArgument]
-Checkstyle ends with 0 errors and 1 warning.
 
 
 ================================================================
@@ -117,6 +103,122 @@ Checkstyle ends with 0 errors and 1 warning.
 *  TESTING CORRECTNESS
 ********************************************************************************
 
+Testing correctness of Deque
+*-----------------------------------------------------------
+Running 16 total tests.
+
+Tests 1-6 make random calls to addFirst(), addLast(), removeFirst(),
+removeLast(), isEmpty(), and size(). The probabilities of each
+operation are (p1, p2, p3, p4, p5, p6), respectively.
+
+Test 1: check random calls to addFirst(), addLast(), and size()
+  *    5 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  *   50 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  *  500 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+  * 1000 random calls (0.4, 0.4, 0.0, 0.0, 0.0, 0.2)
+==> passed
+
+Test 2: check random calls to addFirst(), removeFirst(), and isEmpty()
+  *    5 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *   50 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *  500 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.8, 0.0, 0.1, 0.0, 0.1, 0.0)
+  *    5 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  *   50 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  *  500 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.1, 0.0, 0.8, 0.0, 0.1, 0.0)
+==> passed
+
+Test 3: check random calls to addFirst(), removeLast(), and isEmpty()
+  *    5 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *   50 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *  500 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  * 1000 random calls (0.8, 0.0, 0.0, 0.1, 0.1, 0.0)
+  *    5 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  *   50 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  *  500 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+  * 1000 random calls (0.1, 0.0, 0.0, 0.8, 0.1, 0.0)
+==> passed
+
+Test 4: check random calls to addLast(), removeLast(), and isEmpty()
+  *    5 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  *   50 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  *  500 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.8, 0.0, 0.1, 0.1, 0.0)
+  *    5 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+  *   50 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+  *  500 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.1, 0.0, 0.8, 0.1, 0.0)
+==> passed
+
+Test 5: check random calls to addLast(), removeFirst(), and isEmpty()
+  *    5 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  *   50 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  *  500 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.8, 0.1, 0.0, 0.1, 0.0)
+  *    5 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+  *   50 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+  *  500 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+  * 1000 random calls (0.0, 0.1, 0.8, 0.0, 0.1, 0.0)
+==> passed
+
+Test 6: check random calls to addFirst(), addLast(), removeFirst(),
+        removeLast(), isEmpty(), and size()
+  *    5 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *   50 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *  500 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  * 1000 random calls (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+  *    5 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+  *   50 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+  *  500 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+  * 1000 random calls (0.1, 0.1, 0.3, 0.3, 0.1, 0.1)
+==> passed
+
+Test 7: check removeFirst() and removeLast() from an empty deque
+  * removeFirst()
+  * removeLast()
+==> passed
+
+Test 8: check whether two Deque objects can be created at the same time
+  * n = 10
+  * n = 1000
+==> passed
+
+Test 9: check iterator() after n calls to addFirst()
+  * n = 10
+  * n = 50
+==> passed
+
+Test 10: check iterator() after each of m intermixed calls to
+         addFirst(), addLast(), removeFirst(), and removeLast()
+  * m = 20
+  * m = 50
+  * m = 100
+  * m = 1000
+==> passed
+
+Test 11: create two nested iterators to same deque
+  * n = 10
+  * n = 50
+==> passed
+
+Test 12: create two parallel iterators to same deque
+==> passed
+
+Test 13: create Deque objects of different parameterized types
+==> passed
+
+Test 14: call addFirst() and addLast() with null argument
+==> passed
+
+Test 15: check that remove() and next() throw the specified exceptions in iterator()
+==> passed
+
+Test 16: call iterator() when the deque is empty
+==> passed
+
+
+Total: 16/16 tests passed!
 
 
 ================================================================
@@ -128,78 +230,119 @@ Tests 1-4 make random calls to enqueue(), dequeue(), sample(),
 isEmpty(), and size(). The probabilities of each operation are
 (p1, p2, p3, p4, p5), respectively.
 
+Test 1: check random calls to enqueue() and size()
+  *    5 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  *   50 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  *  500 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+  * 1000 random calls (0.8, 0.0, 0.0, 0.0, 0.2)
+==> passed
 
+Test 2: check random calls to enqueue() and dequeue()
+  *    5 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  *   50 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  *  500 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  * 1000 random calls (0.7, 0.1, 0.0, 0.1, 0.1)
+  *    5 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+  *   50 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+  *  500 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+  * 1000 random calls (0.1, 0.7, 0.0, 0.1, 0.1)
+==> passed
+
+Test 3: check random calls to enqueue(), sample(), and size()
+  *    5 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *   50 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *  500 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  * 1000 random calls (0.8, 0.0, 0.1, 0.0, 0.1)
+  *    5 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  *   50 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  *  500 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+  * 1000 random calls (0.1, 0.0, 0.8, 0.0, 0.1)
+==> passed
+
+Test 4: check random calls to enqueue(), dequeue(), sample(), isEmpty(), and size()
+  *    5 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  *   50 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  *  500 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  * 1000 random calls (0.6, 0.1, 0.1, 0.1, 0.1)
+  *    5 random calls (0.1, 0.6, 0.1, 0.1, 0.1)
+  *   50 random calls (0.1, 0.6, 0.1, 0.1, 0.1)
+  *  500 random calls (0.1, 0.6, 0.1, 0.1, 0.1)
+  * 1000 random calls (0.1, 0.6, 0.1, 0.1, 0.1)
+==> passed
+
+Test 5: call dequeue() and sample() from an empty randomized queue
+  * dequeue()
+  * sample()
+==> passed
+
+Test 6: create multiple randomized queue objects at the same time
+  * n = 10
+  * n = 100
+==> passed
+
+Test 7: check that iterator() returns correct items after a sequence
+        of n enqueue() operations
+  * n = 10
+  * n = 50
+==> passed
+
+Test 8: check that iterator() returns correct items after sequence
+        of m enqueue() and dequeue() operations
+  * m = 10
+  * m = 1000
+==> passed
+
+Test 9: create two nested iterators over the same randomized queue
+  * n = 10
+  * n = 50
+==> passed
+
+Test 10: create two parallel iterators over the same randomized queue
+  * n = 10
+  * n = 50
+==> passed
+
+Test 11: create two iterators over different randomized queues
+==> passed
+
+Test 12: create RandomizedQueue objects of different parameterized types
+==> passed
+
+Test 13: check randomness of sample() by enqueueing n items, repeatedly calling
+         sample(), and counting the frequency of each item
+  * n = 3, trials = 12000
+  * n = 5, trials = 12000
+  * n = 8, trials = 12000
+  * n = 10, trials = 12000
+==> passed
+
+Test 14: check randomness of dequeue() by enqueueing n items, dequeueing n items,
+         and seeing whether each of the n! permutations is equally likely
+  * n = 2, trials = 12000
+  * n = 3, trials = 12000
+  * n = 4, trials = 12000
+  * n = 5, trials = 12000
+==> passed
 
 Test 15: check randomness of iterator() by enqueueing n items, iterating over those
          n items, and seeing whether each of the n! permutations is equally likely
   * n = 2, trials = 12000
   * n = 3, trials = 12000
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-              ABC      1762    2000.0       -446.48
-              ACB      2214    2000.0        450.12
-              BAC      2223    2000.0        469.99
-              BCA      2238    2000.0        503.26
-              CAB      1824    2000.0       -336.04
-              CBA      1739    2000.0       -486.35
-        -------------------------------------------
-                      12000   12000.0        154.50
-    
-    G-statistic = 154.50 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * n = 4, trials = 12000
-
-            value  observed  expected   2*O*ln(O/E)
-        -------------------------------------------
-             ABCD       488     500.0        -23.71
-             ABDC       443     500.0       -107.24
-             ACBD       468     500.0        -61.91
-             ACDB       639     500.0        313.49
-             ADBC       487     500.0        -25.66
-             ADCB       396     500.0       -184.69
-             BACD       455     500.0        -85.82
-             BADC       706     500.0        487.15
-             BCAD       670     500.0        392.18
-             BCDA       662     500.0        371.59
-             BDAC       491     500.0        -17.84
-             BDCA       543     500.0         89.60
-             CABD       547     500.0         98.29
-             CADB       487     500.0        -25.66
-             CBAD       457     500.0        -82.19
-             CBDA       494     500.0        -11.93
-             CDAB       518     500.0         36.64
-             CDBA       476     500.0        -46.83
-             DABC       403     500.0       -173.83
-             DACB       420     500.0       -146.46
-             DBAC       434     500.0       -122.88
-             DBCA       403     500.0       -173.83
-             DCAB       466     500.0        -65.63
-             DCBA       447     500.0       -100.17
-        -------------------------------------------
-                      12000   12000.0        332.65
-    
-    G-statistic = 332.65 (p-value = 0.000000, reject if p-value <= 0.0001)
-    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
-
   * n = 5, trials = 12000
+==> passed
 
-==> FAILED
-
-
+Test 16: call enqueue() with a null argument
+==> passed
 
 Test 17: check that remove() and next() throw the specified exceptions in iterator()
-    - throws wrong exception when calling next() when iterator is exhausted
-    - throws a java.lang.ArrayIndexOutOfBoundsException
-    - should throw a java.util.NoSuchElementException
+==> passed
 
-==> FAILED
-
+Test 18: call iterator() when randomized queue is empty
+==> passed
 
 
-
-Total: 16/18 tests passed!
+Total: 18/18 tests passed!
 
 
 ================================================================
@@ -216,65 +359,43 @@ Running 9 total tests.
 
 Test 1a: check formatting for sample inputs from assignment specification
   % java Permutation 3 < distinct.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    TestPermutation.checkFormatting(TestPermutation.java:40)
-    TestPermutation.test1a(TestPermutation.java:206)
-    TestPermutation.main(TestPermutation.java:316)
-
-    - student solution threw an exception
-    - reference solution did not throw an exception
+  I
+  C
+  A
 
   % java Permutation 3 < distinct.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    TestPermutation.checkFormatting(TestPermutation.java:40)
-    TestPermutation.test1a(TestPermutation.java:207)
-    TestPermutation.main(TestPermutation.java:316)
-
-    - student solution threw an exception
-    - reference solution did not throw an exception
+  H
+  I
+  E
 
   % java Permutation 8 < duplicates.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
+  CC
+  AA
+  CC
+  BB
+  BB
+  BB
+  BB
+  BB
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    TestPermutation.checkFormatting(TestPermutation.java:40)
-    TestPermutation.test1a(TestPermutation.java:208)
-    TestPermutation.main(TestPermutation.java:316)
-
-    - student solution threw an exception
-    - reference solution did not throw an exception
-
-==> FAILED
+==> passed
 
 Test 1b: check formatting for other inputs
   % java Permutation 8 < mediumTale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    TestPermutation.checkFormatting(TestPermutation.java:40)
-    TestPermutation.test1b(TestPermutation.java:214)
-    TestPermutation.main(TestPermutation.java:319)
-
-    - student solution threw an exception
-    - reference solution did not throw an exception
+  of
+  the
+  worst
+  was
+  it
+  foolishness
+  age
+  times
 
   % java Permutation 0 < distinct.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+    java.util.NoSuchElementException: randomized queue underflow
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
+    RandomizedQueue.dequeue(RandomizedQueue.java:142)
+    Permutation.main(Permutation.java:18)
     UtilCOS.execute(UtilCOS.java:159)
     TestPermutation.checkFormatting(TestPermutation.java:40)
     TestPermutation.test1b(TestPermutation.java:215)
@@ -287,227 +408,43 @@ Test 1b: check formatting for other inputs
 
 Test 2: check that main() reads all data from standard input
   * filename = distinct.txt, k = 3
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    UtilCOS.consumesStdIn(UtilCOS.java:184)
-    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
-    TestPermutation.test2(TestPermutation.java:221)
-    TestPermutation.main(TestPermutation.java:322)
-
   * filename = distinct.txt, k = 3
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    UtilCOS.consumesStdIn(UtilCOS.java:184)
-    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
-    TestPermutation.test2(TestPermutation.java:222)
-    TestPermutation.main(TestPermutation.java:322)
-
   * filename = duplicates.txt, k = 8
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    UtilCOS.consumesStdIn(UtilCOS.java:184)
-    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
-    TestPermutation.test2(TestPermutation.java:223)
-    TestPermutation.main(TestPermutation.java:322)
-
   * filename = mediumTale.txt, k = 8
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    UtilCOS.consumesStdIn(UtilCOS.java:184)
-    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
-    TestPermutation.test2(TestPermutation.java:224)
-    TestPermutation.main(TestPermutation.java:322)
-
-==> FAILED
+==> passed
 
 Test 3a: check that main() prints each item from the sequence at most once
          (for inputs with no duplicate strings)
   * filename = distinct.txt, k = 3
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3a(TestPermutation.java:232)
-    TestPermutation.main(TestPermutation.java:325)
-
   * filename = distinct.txt, k = 1
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3a(TestPermutation.java:233)
-    TestPermutation.main(TestPermutation.java:325)
-
   * filename = distinct.txt, k = 9
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3a(TestPermutation.java:234)
-    TestPermutation.main(TestPermutation.java:325)
-
   * filename = permutation6.txt, k = 6
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3a(TestPermutation.java:235)
-    TestPermutation.main(TestPermutation.java:325)
-
   * filename = permutation10.txt, k = 10
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3a(TestPermutation.java:236)
-    TestPermutation.main(TestPermutation.java:325)
-
-==> FAILED
+==> passed
 
 Test 3b: check that main() prints each item from the sequence at most once
          (for inputs with duplicate strings)
   * filename = duplicates.txt, k = 8
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3b(TestPermutation.java:244)
-    TestPermutation.main(TestPermutation.java:328)
-
   * filename = duplicates.txt, k = 3
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3b(TestPermutation.java:245)
-    TestPermutation.main(TestPermutation.java:328)
-
   * filename = permutation8.txt, k = 6
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "D"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3b(TestPermutation.java:246)
-    TestPermutation.main(TestPermutation.java:328)
-
   * filename = permutation8.txt, k = 2
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "D"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3b(TestPermutation.java:247)
-    TestPermutation.main(TestPermutation.java:328)
-
   * filename = tinyTale.txt, k = 10
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3b(TestPermutation.java:248)
-    TestPermutation.main(TestPermutation.java:328)
-
-==> FAILED
+==> passed
 
 Test 3c: check that main() prints each item from the sequence at most once
          (for inputs with newlines)
   * filename = mediumTale.txt, k = 10
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3c(TestPermutation.java:256)
-    TestPermutation.main(TestPermutation.java:331)
-
   * filename = mediumTale.txt, k = 20
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3c(TestPermutation.java:257)
-    TestPermutation.main(TestPermutation.java:331)
-
   * filename = tale.txt, k = 10
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3c(TestPermutation.java:259)
-    TestPermutation.main(TestPermutation.java:331)
-
   * filename = tale.txt, k = 50
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
-    TestPermutation.test3c(TestPermutation.java:260)
-    TestPermutation.main(TestPermutation.java:331)
-
-==> FAILED
+==> passed
 
 Test 4: check main() when k = 0
   * filename = distinct.txt, k = 0
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+    java.util.NoSuchElementException: randomized queue underflow
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
+    RandomizedQueue.dequeue(RandomizedQueue.java:142)
+    Permutation.main(Permutation.java:18)
     UtilCOS.execute(UtilCOS.java:159)
     UtilCOS.execute(UtilCOS.java:146)
     TestPermutation.checkStringFrequencies(TestPermutation.java:74)
@@ -515,10 +452,10 @@ Test 4: check main() when k = 0
     TestPermutation.main(TestPermutation.java:334)
 
   * filename = distinct.txt, k = 0
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+    java.util.NoSuchElementException: randomized queue underflow
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
+    RandomizedQueue.dequeue(RandomizedQueue.java:142)
+    Permutation.main(Permutation.java:18)
     UtilCOS.execute(UtilCOS.java:159)
     UtilCOS.execute(UtilCOS.java:146)
     TestPermutation.checkStringFrequencies(TestPermutation.java:74)
@@ -530,122 +467,181 @@ Test 4: check main() when k = 0
 Test 5a: check that permutations are uniformly random
          (for inputs with no duplicate strings)
   * filename = permutation4.txt, k = 1
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5a(TestPermutation.java:278)
-    TestPermutation.main(TestPermutation.java:337)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+                A         0     250.0          0.00
+                B         0     250.0          0.00
+                C         0     250.0          0.00
+                D      1000     250.0       2772.59
+        -------------------------------------------
+                       1000    1000.0       2772.59
+
+    G-statistic = 2772.59 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
   * filename = permutation4.txt, k = 2
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5a(TestPermutation.java:279)
-    TestPermutation.main(TestPermutation.java:337)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+              A B         0      83.3          0.00
+              A C         0      83.3          0.00
+              A D       126      83.3        104.19
+              B A         0      83.3          0.00
+              B C         0      83.3          0.00
+              B D       138      83.3        139.22
+              C A         0      83.3          0.00
+              C B         0      83.3          0.00
+              C D       230      83.3        467.01
+              D A       119      83.3         84.79
+              D B       139      83.3        142.23
+              D C       248      83.3        540.93
+        -------------------------------------------
+                       1000    1000.0       1478.36
+
+    G-statistic = 1478.36 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
   * filename = permutation4.txt, k = 3
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5a(TestPermutation.java:280)
-    TestPermutation.main(TestPermutation.java:337)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+            A B C         0      41.7          0.00
+            A B D        61      41.7         46.50
+            A C B         0      41.7          0.00
+            A C D        63      41.7         52.09
+            A D B        64      41.7         54.94
+            A D C        62      41.7         49.28
+            B A C         0      41.7          0.00
+            B A D        54      41.7         28.00
+            B C A         0      41.7          0.00
+            B C D        50      41.7         18.23
+            B D A        43      41.7          2.71
+            B D C        53      41.7         25.50
+            C A B         0      41.7          0.00
+            C A D        50      41.7         18.23
+            C B A         0      41.7          0.00
+            C B D        50      41.7         18.23
+            C D A        43      41.7          2.71
+            C D B        61      41.7         46.50
+            D A B        62      41.7         49.28
+            D A C        53      41.7         25.50
+            D B A        55      41.7         30.54
+            D B C        58      41.7         38.37
+            D C A        63      41.7         52.09
+            D C B        55      41.7         30.54
+        -------------------------------------------
+                       1000    1000.0        589.26
+
+    G-statistic = 589.26 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
   * filename = permutation4.txt, k = 4
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5a(TestPermutation.java:281)
-    TestPermutation.main(TestPermutation.java:337)
-
   * filename = permutation6.txt, k = 2
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5a(TestPermutation.java:282)
-    TestPermutation.main(TestPermutation.java:337)
 
 ==> FAILED
 
 Test 5b: check that permutations are uniformly random
          (for inputs with duplicate strings)
   * filename = permutation5.txt, k = 1
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5b(TestPermutation.java:290)
-    TestPermutation.main(TestPermutation.java:340)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+                A         0     600.0          0.00
+                B      1000     400.0       1832.58
+        -------------------------------------------
+                       1000    1000.0       1832.58
+
+    G-statistic = 1832.58 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
   * filename = permutation5.txt, k = 2
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5b(TestPermutation.java:291)
-    TestPermutation.main(TestPermutation.java:340)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+              A A         0     300.0          0.00
+              A B       428     300.0        304.17
+              B A       438     300.0        331.51
+              B B       134     100.0         78.44
+        -------------------------------------------
+                       1000    1000.0        714.12
+
+    G-statistic = 714.12 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
   * filename = permutation5.txt, k = 3
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5b(TestPermutation.java:292)
-    TestPermutation.main(TestPermutation.java:340)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+            A A A         0     100.0          0.00
+            A A B       168     200.0        -58.58
+            A B A       187     200.0        -25.14
+            A B B       148     100.0        116.04
+            B A A       206     200.0         12.18
+            B A B       152     100.0        127.29
+            B B A       139     100.0         91.55
+        -------------------------------------------
+                       1000    1000.0        263.34
+
+    G-statistic = 263.34 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
   * filename = duplicates.txt, k = 3
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5b(TestPermutation.java:293)
-    TestPermutation.main(TestPermutation.java:340)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+         AA BB BB         0      59.5          0.00
+         AA BB CC        13      29.8        -21.54
+         AA CC BB         9      29.8        -21.53
+         AA CC CC        20       6.0         48.48
+         BB AA BB         0      59.5          0.00
+         BB AA CC        11      29.8        -21.90
+         BB BB AA         0      59.5          0.00
+         BB BB BB         0     178.6          0.00
+         BB BB CC        93     119.0        -45.93
+         BB CC AA        10      29.8        -21.81
+         BB CC BB        80     119.0        -63.60
+         BB CC CC       193      29.8        721.61
+         CC AA BB        15      29.8        -20.56
+         CC AA CC        29       6.0         91.84
+         CC BB AA        10      29.8        -21.81
+         CC BB BB        98     119.0        -38.13
+         CC BB CC       190      29.8        704.44
+         CC CC AA        18       6.0         39.84
+         CC CC BB       211      29.8        826.54
+        -------------------------------------------
+                       1000    1000.0       2155.95
+
+    G-statistic = 2155.95 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
   * filename = permutation8.txt, k = 2
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "D"
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
-    TestPermutation.test5b(TestPermutation.java:294)
-    TestPermutation.main(TestPermutation.java:340)
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+              A B         0      17.9          0.00
+              A C       114      71.4        106.59
+              A D         0      35.7          0.00
+              B A         0      17.9          0.00
+              B C        13      71.4        -44.30
+              B D         0      35.7          0.00
+              C A       113      71.4        103.66
+              C B        19      71.4        -50.32
+              C C       708     214.3       1692.31
+              C D        19     142.9        -76.66
+              D A         0      35.7          0.00
+              D B         0      35.7          0.00
+              D C        14     142.9        -65.04
+              D D         0      35.7          0.00
+        -------------------------------------------
+                       1000    1000.0       1666.24
+
+    G-statistic = 1666.24 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
 
 ==> FAILED
 
-Total: 0/9 tests passed!
+Total: 5/9 tests passed!
 
 
 ================================================================
@@ -659,252 +655,66 @@ Running 23 total tests.
 
 Test 1: count calls to methods in StdIn
   * java Permutation 5 < distinct.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
-    TimePermutation.test1(TimePermutation.java:303)
-    TimePermutation.main(TimePermutation.java:358)
-
   * java Permutation 10 < permutation10.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
-    TimePermutation.test1(TimePermutation.java:304)
-    TimePermutation.main(TimePermutation.java:358)
-
   * java Permutation 1 < mediumTale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
-    TimePermutation.test1(TimePermutation.java:305)
-    TimePermutation.main(TimePermutation.java:358)
-
   * java Permutation 20 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
-    TimePermutation.test1(TimePermutation.java:306)
-    TimePermutation.main(TimePermutation.java:358)
-
   * java Permutation 100 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
-    TimePermutation.test1(TimePermutation.java:307)
-    TimePermutation.main(TimePermutation.java:358)
-
   * java Permutation 16412 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
-    TimePermutation.test1(TimePermutation.java:308)
-    TimePermutation.main(TimePermutation.java:358)
-
-==> FAILED
+==> passed
 
 Test 2: count calls to methods in Deque and RandomizedQueue
   * java Permutation 5 < distinct.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
-    TimePermutation.test2(TimePermutation.java:314)
-    TimePermutation.main(TimePermutation.java:361)
-
   * java Permutation 10 < permutation10.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
-    TimePermutation.test2(TimePermutation.java:315)
-    TimePermutation.main(TimePermutation.java:361)
-
   * java Permutation 1 < mediumTale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
-    TimePermutation.test2(TimePermutation.java:316)
-    TimePermutation.main(TimePermutation.java:361)
-
   * java Permutation 20 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
-    TimePermutation.test2(TimePermutation.java:317)
-    TimePermutation.main(TimePermutation.java:361)
-
   * java Permutation 100 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
-    TimePermutation.test2(TimePermutation.java:318)
-    TimePermutation.main(TimePermutation.java:361)
-
   * java Permutation 16412 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
-    TimePermutation.test2(TimePermutation.java:319)
-    TimePermutation.main(TimePermutation.java:361)
-
-==> FAILED
+==> passed
 
 Test 3: count calls to methods in StdRandom
   * java Permutation 5 < distinct.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
-    TimePermutation.test3(TimePermutation.java:325)
-    TimePermutation.main(TimePermutation.java:364)
-
   * java Permutation 10 < permutation10.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
-    TimePermutation.test3(TimePermutation.java:326)
-    TimePermutation.main(TimePermutation.java:364)
-
   * java Permutation 1 < mediumTale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
-    TimePermutation.test3(TimePermutation.java:327)
-    TimePermutation.main(TimePermutation.java:364)
-
   * java Permutation 20 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
-    TimePermutation.test3(TimePermutation.java:328)
-    TimePermutation.main(TimePermutation.java:364)
-
   * java Permutation 100 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
-    TimePermutation.test3(TimePermutation.java:329)
-    TimePermutation.main(TimePermutation.java:364)
-
   * java Permutation 16412 < tale.txt
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
-    TimePermutation.test3(TimePermutation.java:330)
-    TimePermutation.main(TimePermutation.java:364)
-
-==> FAILED
+==> passed
 
 Test 4: Time main() with k = 5, for inputs containing n random strings
 
                     n  seconds
 ------------------------------
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "EZ"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.timeMain(TimePermutation.java:265)
-    TimePermutation.checkRunningTimeOfMain(TimePermutation.java:284)
-    TimePermutation.test4(TimePermutation.java:336)
-    TimePermutation.main(TimePermutation.java:367)
-
-=> FAILED        1000 Infinity
-   [ Most likely main() takes more than linear time. ]
-==> 0/10 tests passed
+=> passed        1000     0.00
+=> passed        2000     0.00
+=> passed        4000     0.00
+=> passed        8000     0.01
+=> passed       16000     0.01
+=> passed       32000     0.01
+=> passed       64000     0.02
+=> passed      128000     0.05
+=> passed      256000     0.09
+=> passed      512000     0.19
+==> 10/10 tests passed
 
 
 Test 5: Time main() with k = 1000, for inputs containing n random strings
 
                     n  seconds
 ------------------------------
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "OW"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    UtilCOS.execute(UtilCOS.java:159)
-    UtilCOS.execute(UtilCOS.java:146)
-    TimePermutation.timeMain(TimePermutation.java:265)
-    TimePermutation.checkRunningTimeOfMain(TimePermutation.java:284)
-    TimePermutation.test5(TimePermutation.java:341)
-    TimePermutation.main(TimePermutation.java:370)
-
-=> FAILED        1000 Infinity
-   [ Most likely main() takes more than linear time. ]
-==> 0/10 tests passed
+=> passed        1000     0.00
+=> passed        2000     0.00
+=> passed        4000     0.00
+=> passed        8000     0.00
+=> passed       16000     0.01
+=> passed       32000     0.01
+=> passed       64000     0.02
+=> passed      128000     0.10
+=> passed      256000     0.25
+=> passed      512000     0.19
+==> 10/10 tests passed
 
 
-Total: 0/23 tests passed!
+Total: 23/23 tests passed!
 
 
 ================================================================
@@ -921,187 +731,35 @@ Running 2 total tests.
 
 Test 1: check that only one Deque or RandomizedQueue object is created
   * filename = distinct.txt, n = 9, k = 1
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
-    MemoryOfPermutation.test1(MemoryOfPermutation.java:157)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
-
   * filename = distinct.txt, n = 9, k = 2
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
-    MemoryOfPermutation.test1(MemoryOfPermutation.java:158)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
-
   * filename = distinct.txt, n = 9, k = 4
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
-    MemoryOfPermutation.test1(MemoryOfPermutation.java:159)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
-
   * filename = tinyTale.txt, n = 12, k = 10
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
-    MemoryOfPermutation.test1(MemoryOfPermutation.java:160)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
-
   * filename = tale.txt, n = 138653, k = 50
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
-    MemoryOfPermutation.test1(MemoryOfPermutation.java:161)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
-
-==> FAILED
+==> passed
 
 Test 2: check that the maximum size of any Deque or RandomizedQueue object
         created is between k and n
   * filename = distinct.txt, n = 9, k = 1
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:168)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = distinct.txt, n = 9, k = 2
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:169)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = distinct.txt, n = 9, k = 4
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:170)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = tinyTale.txt, n = 12, k = 10
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:171)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = tale.txt, n = 138653, k = 5
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:172)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = tale.txt, n = 138653, k = 50
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:173)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = tale.txt, n = 138653, k = 500
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:174)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = tale.txt, n = 138653, k = 5000
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:175)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
   * filename = tale.txt, n = 138653, k = 50000
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
-    MemoryOfPermutation.test2(MemoryOfPermutation.java:176)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
-
-==> FAILED
+==> passed
 
 Test 3 (bonus): check that maximum size of any or Deque or RandomizedQueue object
                 created is equal to k
   * filename = tale.txt, n = 138653, k = 5
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
-    MemoryOfPermutation.test3(MemoryOfPermutation.java:184)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
-
   * filename = tale.txt, n = 138653, k = 50
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
-    MemoryOfPermutation.test3(MemoryOfPermutation.java:185)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
-
   * filename = tale.txt, n = 138653, k = 500
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
-    MemoryOfPermutation.test3(MemoryOfPermutation.java:186)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
-
   * filename = tale.txt, n = 138653, k = 5000
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
-
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
-    MemoryOfPermutation.test3(MemoryOfPermutation.java:187)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
-
   * filename = tale.txt, n = 138653, k = 50000
-    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+==> passed
 
-    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
-    Permutation.main(Permutation.java:12)
-    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
-    MemoryOfPermutation.test3(MemoryOfPermutation.java:188)
-    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
-
-==> FAILED
-
-Total: 0/2 tests passed!
+Total: 3/2 tests passed!
 
 ================================================================
 
@@ -1113,6 +771,58 @@ Total: 0/2 tests passed!
 
 Analyzing memory of Deque
 *-----------------------------------------------------------
+For tests 1-4, the maximum amount of memory allowed for a Deque
+containing n items is 48n + 192.
+
+Running 28 total tests.
+
+Test 1a-1e: Total memory usage after inserting n items,
+            where n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8          424
+=> passed       64         3112
+=> passed      256        12328
+=> passed     1024        49192
+=> passed     4096       196648
+==> 5/5 tests passed
+
+Memory: 48.00 n + 40.00   (R^2 = 1.000)
+
+
+
+Test 2a-2e: Total memory usage after inserting n+1 items,
+            where n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8          472
+=> passed       64         3160
+=> passed      256        12376
+=> passed     1024        49240
+=> passed     4096       196696
+==> 5/5 tests passed
+
+Memory after adding n = 2^i + 1 items: 48.00 n + 40.00   (R^2 = 1.000)
+
+
+
+Test 3a-3e: Total memory usage after inserting 2n+1 items
+            and deleting n items, where n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8          472
+=> passed       64         3160
+=> passed      256        12376
+=> passed     1024        49240
+=> passed     4096       196696
+==> 5/5 tests passed
+
+Memory: 48.00 n + 40.00   (R^2 = 1.000)
+
+
 
 Test 4a-4e: Total memory usage after inserting n items and then
             deleting all but one item, where n is a power of 2.
@@ -1120,14 +830,579 @@ Test 4a-4e: Total memory usage after inserting n items and then
 
                  n        bytes
 ----------------------------------------------------------
-=> passed        8           88         
-=> passed       64           88         
-=> passed      256           88         
-=> passed 
+=> passed        8           88
+=> passed       64           88
+=> passed      256           88
+=> passed     1024           88
+=> passed     4096           88
+==> 5/5 tests passed
 
-...
+Memory after adding n = 2^i items: 88.00   (R^2 = 1.000)
 
-WARNING: the grading output was truncated due to excessive length.
-Typically, this is because you have a method that has an unanticipated side effect
-(such as printing to standard output or throwing an exception). A large amount of output
-can also arise from failing many tests.
+
+
+Test 5a-5e: Total memory usage of iterator after inserting n items.
+            (should not grow with n or be too large of a constant)
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8           32
+=> passed       64           32
+=> passed      256           32
+=> passed     1024           32
+=> passed     4096           32
+==> 5/5 tests passed
+
+Memory of iterator after adding n = 2^i items: 32.00   (R^2 = 1.000)
+
+
+
+Test 6a: Insert n strings; delete them one at a time, checking for
+         loitering after each deletion. The probabilities of addFirst()
+         and addLast() are (p1, p2), respectively. The probabilities of
+         removeFirst() and removeLast() are (q1, q2), respectively
+  * 100 random insertions (1.0, 0.0) and 100 random deletions (1.0, 0.0)
+  * 100 random insertions (1.0, 0.0) and 100 random deletions (0.0, 1.0)
+  * 100 random insertions (0.0, 1.0) and 100 random deletions (1.0, 0.0)
+  * 100 random insertions (0.0, 1.0) and 100 random deletions (0.0, 1.0)
+  * 100 random insertions (0.5, 0.5) and 100 random deletions (0.5, 0.5)
+==> passed
+
+Test 6b: Perform random operations, checking for loitering after
+         each operation. The probabilities of addFirst(), addLast(),
+         removeFirst(), and removeLast() are (p1, p2, p3, p4),
+         respectively.
+  * 100 random operations (0.8, 0.0, 0.2, 0.0)
+  * 100 random operations (0.8, 0.0, 0.0, 0.2)
+  * 100 random operations (0.0, 0.8, 0.2, 0.0)
+  * 100 random operations (0.0, 0.8, 0.0, 0.2)
+  * 100 random operations (0.4, 0.4, 0.1, 0.1)
+  * 100 random operations (0.2, 0.2, 0.3, 0.3)
+==> passed
+
+Test 7: Worst-case constant memory allocated or deallocated
+        per deque operation?
+  * 128 random operations
+  * 256 random operations
+  * 512 random operations
+==> passed
+
+Total: 28/28 tests passed!
+
+================================================================
+
+
+
+Analyzing memory of RandomizedQueue
+*-----------------------------------------------------------
+For tests 1-5, the maximum amount of memory allowed for
+a RandomizedQueue containing n items is 48n + 192.
+
+Test 1a-1i: Total memory usage after inserting n items
+            when n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       32          312
+=> passed       64          568
+=> passed      128         1080
+=> passed      256         2104
+=> passed      512         4152
+=> passed     1024         8248
+=> passed     2048        16440
+=> passed     4096        32824
+=> passed     8192        65592
+==> 9/9 tests passed
+
+Memory: 8.00 n + 56.00   (R^2 = 1.000)
+
+
+Test 2a-2i: Total memory usage after inserting n items,
+            when n is one more than a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       33          568
+=> passed       65         1080
+=> passed      129         2104
+=> passed      257         4152
+=> passed      513         8248
+=> passed     1025        16440
+=> passed     2049        32824
+=> passed     4097        65592
+=> passed     8193       131128
+==> 9/9 tests passed
+
+Memory: 16.00 n + 40.00   (R^2 = 1.000)
+
+
+Test 3a-3i: Total memory usage after inserting 2n-1 items, and then
+            deleting n-1 items, when n is one more than a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       33         1080
+=> passed       65         2104
+=> passed      129         4152
+=> passed      257         8248
+=> passed      513        16440
+=> passed     1025        32824
+=> passed     2049        65592
+=> passed     4097       131128
+=> passed     8193       262200
+==> 9/9 tests passed
+
+Memory: 32.00 n + 24.00   (R^2 = 1.000)
+
+
+Test 4a-4i: Total memory usage after inserting n items, deleting n items,
+            then inserting n times, when n is a power of 2.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       32          312
+=> passed       64          568
+=> passed      128         1080
+=> passed      256         2104
+=> passed      512         4152
+=> passed     1024         8248
+=> passed     2048        16440
+=> passed     4096        32824
+=> passed     8192        65592
+==> 9/9 tests passed
+
+Memory: 8.00 n + 56.00   (R^2 = 1.000)
+
+
+Test 5a-5i: Total memory usage after inserting n items,
+            and then deleting all but one item.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       32           88
+=> passed       64           88
+=> passed      128           88
+=> passed      256           88
+=> passed      512           88
+=> passed     1024           88
+=> passed     2048           88
+=> passed     4096           88
+=> passed     8192           88
+==> 9/9 tests passed
+
+Memory: 88.00   (R^2 = 1.000)
+
+
+Test 6a-6d: Total memory usage of iterator after inserting n items.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed       32          320
+=> passed       64          576
+=> passed      128         1088
+=> passed      256         2112
+=> passed      512         4160
+=> passed     1024         8256
+=> passed     2048        16448
+=> passed     4096        32832
+=> passed     8192        65600
+==> 9/9 tests passed
+
+Memory: 8.00 n + 64.00   (R^2 = 1.000)
+
+
+Test 7a: Insert 100 strings; delete them one at a time, checking
+         for loitering after each deletion.
+==> passed
+
+Test 7b: Perform random operations, checking for loitering after
+         each operation. The probabilities of enqueue(), dequeue(),
+         and sample() are (p1, p2, p3), respectively.
+  * 200 random operations (0.8, 0.2, 0.0)
+  * 200 random operations (0.2, 0.8, 0.0)
+  * 200 random operations (0.6, 0.2, 0.2)
+  * 200 random operations (0.2, 0.4, 0.4)
+==> passed
+
+Test 8: Insert T items into queue; then iterate over queue and check
+        that worst-case constant memory is allocated or deallocated
+        per iterator operation.
+  * T = 64
+  * T = 128
+  * T = 256
+==> passed
+
+Test 9: Total memory usage after inserting n items, seeking to identify
+        values of n where memory usage is minimized as a function of n.
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8          120
+=> passed       16          184
+=> passed       32          312
+=> passed       64          568
+=> passed      128         1080
+=> passed      256         2104
+=> passed      512         4152
+=> passed     1024         8248
+=> passed     2048        16440
+==> 9/9 tests passed
+
+Memory: 8.00 n + 56.00   (R^2 = 1.000)
+
+
+Test 10: Total memory usage after inserting 4096 items, then successively
+         deleting items, seeking values of n where memory usage is maximized
+         as a function of n
+
+                 n        bytes
+----------------------------------------------------------
+=> passed     2048        65592
+=> passed     1024        32824
+=> passed      512        16440
+=> passed      256         8248
+=> passed      128         4152
+=> passed       64         2104
+=> passed       32         1080
+=> passed       16          568
+=> passed        8          312
+==> 9/9 tests passed
+
+Memory: 32.00 n + 56.00   (R^2 = 1.000)
+
+
+Min observed memory for RandomizedQueue: 8.00 n + 56.00   (R^2 = 1.000)
+Max observed memory for RandomizedQueue: 32.00 n + 24.00   (R^2 = 1.000)
+
+Running 75 total tests.
+
+Total: 75/75 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  TIMING
+********************************************************************************
+
+Timing Deque
+*-----------------------------------------------------------
+Running 103 total tests.
+
+Test 1a-1k: make n calls to addFirst() followed by n calls to removeFirst()
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.02
+=> passed      512000     0.05
+=> passed     1024000     0.11
+==> 11/11 tests passed
+
+
+Test 2a-2k: make n calls to addLast() followed by n calls to removeLast()
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.01
+=> passed     1024000     0.02
+==> 11/11 tests passed
+
+
+Test 3a-3k: make n calls to addFirst() followed by n calls to removeLast()
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.00
+=> passed      256000     0.00
+=> passed      512000     0.01
+=> passed     1024000     0.02
+==> 11/11 tests passed
+
+
+Test 4a-4k: make n calls to addLast() followed by n calls to removeFirst()
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.00
+=> passed      256000     0.00
+=> passed      512000     0.01
+=> passed     1024000     0.09
+==> 11/11 tests passed
+
+
+Test 5a-5g: make n random calls to addFirst(), removeFirst(), isEmpty(), and size()
+            with probabilities (0.7, 0.1, 0.1, 0.1)
+
+                    n  seconds
+------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.02
+=> passed      512000     0.04
+=> passed     1024000     0.08
+=> passed     2048000     0.07
+==> 12/12 tests passed
+
+
+Test 6a-6g: make n random calls to addLast(), removeLast(), isEmpty(), and size(),
+            with probabilities (0.7, 0.1, 0.1, 0.1)
+
+                    n  seconds
+------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.02
+=> passed     1024000     0.04
+=> passed     2048000     0.08
+==> 12/12 tests passed
+
+
+Test 7a-7g: make n random calls to addFirst(), addLast(), removeFirst(), removeLast(),
+            isEmpty(), and size() with probabilities (0.3, 0.3, 0.1, 0.1, 0.1, 0.1)
+
+                    n  seconds
+------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.00
+=> passed      256000     0.01
+=> passed      512000     0.02
+=> passed     1024000     0.04
+=> passed     2048000     0.08
+==> 12/12 tests passed
+
+
+Test 8a-8g: make n calls to addFirst(); iterate over the n items by calling
+            next() and hasNext()
+
+                    n  seconds
+------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.00
+=> passed      256000     0.00
+=> passed      512000     0.01
+=> passed     1024000     0.02
+=> passed     2048000     0.07
+==> 12/12 tests passed
+
+
+Test 9a-9k: make n calls to addFirst()/addLast(); interleave n calls each to
+            removeFirst(), removeLast(), addFirst(), and addLast()
+
+                    n  seconds
+----------------------------------
+=> passed        1025     0.00
+=> passed        2049     0.00
+=> passed        4097     0.00
+=> passed        8193     0.00
+=> passed       16385     0.00
+=> passed       32769     0.00
+=> passed       65537     0.01
+=> passed      128001     0.01
+=> passed      256001     0.01
+=> passed      512001     0.03
+=> passed     1024001     0.07
+==> 11/11 tests passed
+
+Total: 103/103 tests passed!
+
+
+================================================================
+
+
+
+Timing RandomizedQueue
+*-----------------------------------------------------------
+Running 67 total tests.
+
+Test 1: make n calls to enqueue() followed by n calls to dequeue();
+        count calls to StdRandom
+  * n = 10
+  * n = 100
+  * n = 1000
+==> passed
+
+Test 2: make n calls to enqueue() follwed by n calls to sample();
+        count calls to StdRandom
+  * n = 10
+  * n = 100
+  * n = 1000
+==> passed
+
+Test 3: make n calls to enqueue() and iterate over the n items;
+        count calls to StdRandom
+  * n = 10
+  * n = 100
+  * n = 1000
+==> passed
+
+Test 4a-k: make n calls to enqueue() followed by n calls to dequeue()
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.02
+=> passed      512000     0.03
+=> passed     1024000     0.07
+==> 11/11 tests passed
+
+
+Test 5a-k: make n calls to enqueue() followed by n random calls to
+           enqueue(), sample(), dequeue(), isEmpty(), and size()
+           with probabilities (0.2, 0.2, 0.2, 0.2, 0.2)
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.01
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.03
+=> passed      512000     0.06
+=> passed     1024000     0.12
+==> 11/11 tests passed
+
+
+Test 6a-k: make n calls to enqueue() followed by n random calls to
+           enqueue(), sample(), dequeue(), isEmpty(), and size()
+           with probabilities (0.6, 0.1, 0.1, 0.1, 0.1)
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.03
+=> passed     1024000     0.07
+==> 11/11 tests passed
+
+
+Test 7a-k: make n calls to enqueue() followed by n random calls to
+           enqueue(), sample(), dequeue(), isEmpty(), and size()
+           with probabilities (0.1, 0.1, 0.6, 0.1, 0.1)
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.00
+=> passed      128000     0.01
+=> passed      256000     0.02
+=> passed      512000     0.04
+=> passed     1024000     0.11
+==> 11/11 tests passed
+
+
+Test 8a-k: make n calls to enqueue() followed by n calls each to
+           next() and hasNext().
+
+                    n  seconds
+----------------------------------
+=> passed        1024     0.00
+=> passed        2048     0.00
+=> passed        4096     0.00
+=> passed        8192     0.00
+=> passed       16384     0.00
+=> passed       32768     0.00
+=> passed       65536     0.01
+=> passed      128000     0.01
+=> passed      256000     0.01
+=> passed      512000     0.02
+=> passed     1024000     0.05
+==> 11/11 tests passed
+
+
+Test 9a-i: make n calls to enqueue(); then call dequeue() twice,
+           followed by enqueue() twice and repeat n times.
+
+                    n  seconds
+----------------------------------
+=> passed        1025     0.00
+=> passed        2049     0.00
+=> passed        4097     0.00
+=> passed        8193     0.00
+=> passed       16385     0.00
+=> passed       32769     0.01
+=> passed       65537     0.02
+=> passed      128001     0.02
+=> passed      256001     0.04
+==> 9/9 tests passed
+
+
+Total: 67/67 tests passed!
+
+
+================================================================
