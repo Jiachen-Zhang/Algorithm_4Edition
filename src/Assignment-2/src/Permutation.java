@@ -9,7 +9,7 @@ public class Permutation {
    */
   public static void main(String[] args) {
     RandomizedQueue<String> randomizedQueue = new RandomizedQueue<>();
-    int k =Integer.parseInt(args[0]);
+    int k = Integer.parseInt(args[0]);
 
     int maxSize = k;
     while (!StdIn.isEmpty()) {
@@ -20,7 +20,7 @@ public class Permutation {
       randomizedQueue.enqueue(str);
     }
     while (k > 0) {
-      StdOut.print(randomizedQueue.dequeue());
+      StdOut.println(randomizedQueue.dequeue());
       k--;
     }
 
