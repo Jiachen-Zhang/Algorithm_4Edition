@@ -1,0 +1,1133 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  PASSED (0 errors, 1 warning)
+API:          PASSED
+
+Spotbugs:     FAILED (1 warning)
+PMD:          FAILED (5 warnings)
+Checkstyle:   FAILED (0 errors, 6 warnings)
+
+Correctness:  32/43 tests passed
+Memory:       103/105 tests passed
+Timing:       170/193 tests passed
+
+Aggregate score: 82.08%
+[Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+3.9K Jan 15 08:39 Deque.java
+ 635 Jan 15 08:39 Permutation.java
+3.4K Jan 15 08:39 RandomizedQueue.java
+
+
+********************************************************************************
+*  COMPILING                                                                    
+********************************************************************************
+
+
+% javac Deque.java
+*-----------------------------------------------------------
+
+% javac RandomizedQueue.java
+*-----------------------------------------------------------
+RandomizedQueue.java:18: warning: [unchecked] unchecked cast
+    queue = (Item[]) new Object[1];
+                     ^
+  required: Item[]
+  found:    Object[]
+  where Item is a type-variable:
+    Item extends Object declared in class RandomizedQueue
+1 warning
+
+% javac Permutation.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Deque:
+
+RandomizedQueue:
+
+Permutation:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+********************************************************************************
+
+
+% spotbugs *.class
+*-----------------------------------------------------------
+M P UUF_UNUSED_FIELD UuF: The instance (or static) variable 'randomIndex' is never used. Consider removing it from the class.  In RandomizedQueue.java
+Warnings generated: 1
+
+
+================================================================
+
+
+% pmd .
+*-----------------------------------------------------------
+Deque.java:12: Instance (and static) variables should be declared at the top of the class, before any method declarations, constructors, or nested classes. [FieldDeclarationsShouldBeAtStartOfClass]
+Deque.java:13: Instance (and static) variables should be declared at the top of the class, before any method declarations, constructors, or nested classes. [FieldDeclarationsShouldBeAtStartOfClass]
+Deque.java:14: Instance (and static) variables should be declared at the top of the class, before any method declarations, constructors, or nested classes. [FieldDeclarationsShouldBeAtStartOfClass]
+RandomizedQueue.java:10: Avoid unused private instance (or static) variables, such as 'randomIndex'. [UnusedPrivateField]
+RandomizedQueue.java:102: The private instance (or static) variable 'queueIterator' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+PMD ends with 5 warnings.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Deque.java:181:10: The modifier 'private' is out of order. The preferred order is ['public', 'protected', 'private', 'abstract', 'static', 'final', 'transient', 'volatile', 'synchronized', 'native', and 'strictfp']. [ModifierOrder]
+[WARN] Deque.java:182:8: 'for' is not followed by whitespace. [WhitespaceAfter]
+[WARN] RandomizedQueue.java:73:9: The local (or parameter) variable 'randomIndex' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] RandomizedQueue.java:88:9: The local (or parameter) variable 'randomIndex' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] RandomizedQueue.java:114:13: The local (or parameter) variable 'randomIndex' has the same name as an instance variable. Use a different name. [HiddenField]
+Checkstyle ends with 0 errors and 5 warnings.
+
+% custom checkstyle checks for Deque.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for RandomizedQueue.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for Permutation.java
+*-----------------------------------------------------------
+[WARN] Permutation.java:1: The number (0) of calls to 'Integer.parseInt()' must equal the number (1) of integer command-line arguments. [CommandLineArgument]
+Checkstyle ends with 0 errors and 1 warning.
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+
+
+================================================================
+Testing correctness of RandomizedQueue
+*-----------------------------------------------------------
+Running 18 total tests.
+
+Tests 1-4 make random calls to enqueue(), dequeue(), sample(),
+isEmpty(), and size(). The probabilities of each operation are
+(p1, p2, p3, p4, p5), respectively.
+
+
+
+Test 15: check randomness of iterator() by enqueueing n items, iterating over those
+         n items, and seeing whether each of the n! permutations is equally likely
+  * n = 2, trials = 12000
+  * n = 3, trials = 12000
+
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+              ABC      1762    2000.0       -446.48
+              ACB      2214    2000.0        450.12
+              BAC      2223    2000.0        469.99
+              BCA      2238    2000.0        503.26
+              CAB      1824    2000.0       -336.04
+              CBA      1739    2000.0       -486.35
+        -------------------------------------------
+                      12000   12000.0        154.50
+    
+    G-statistic = 154.50 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
+
+  * n = 4, trials = 12000
+
+            value  observed  expected   2*O*ln(O/E)
+        -------------------------------------------
+             ABCD       488     500.0        -23.71
+             ABDC       443     500.0       -107.24
+             ACBD       468     500.0        -61.91
+             ACDB       639     500.0        313.49
+             ADBC       487     500.0        -25.66
+             ADCB       396     500.0       -184.69
+             BACD       455     500.0        -85.82
+             BADC       706     500.0        487.15
+             BCAD       670     500.0        392.18
+             BCDA       662     500.0        371.59
+             BDAC       491     500.0        -17.84
+             BDCA       543     500.0         89.60
+             CABD       547     500.0         98.29
+             CADB       487     500.0        -25.66
+             CBAD       457     500.0        -82.19
+             CBDA       494     500.0        -11.93
+             CDAB       518     500.0         36.64
+             CDBA       476     500.0        -46.83
+             DABC       403     500.0       -173.83
+             DACB       420     500.0       -146.46
+             DBAC       434     500.0       -122.88
+             DBCA       403     500.0       -173.83
+             DCAB       466     500.0        -65.63
+             DCBA       447     500.0       -100.17
+        -------------------------------------------
+                      12000   12000.0        332.65
+    
+    G-statistic = 332.65 (p-value = 0.000000, reject if p-value <= 0.0001)
+    Note: a correct solution will fail this test by bad luck 1 time in 10,000.
+
+  * n = 5, trials = 12000
+
+==> FAILED
+
+
+
+Test 17: check that remove() and next() throw the specified exceptions in iterator()
+    - throws wrong exception when calling next() when iterator is exhausted
+    - throws a java.lang.ArrayIndexOutOfBoundsException
+    - should throw a java.util.NoSuchElementException
+
+==> FAILED
+
+
+
+
+Total: 16/18 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference RandomizedQueue and Deque)
+********************************************************************************
+
+Testing correctness of Permutation
+*-----------------------------------------------------------
+Tests 1-5 call the main() function directly, resetting standard input
+before each call.
+
+Running 9 total tests.
+
+Test 1a: check formatting for sample inputs from assignment specification
+  % java Permutation 3 < distinct.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    TestPermutation.checkFormatting(TestPermutation.java:40)
+    TestPermutation.test1a(TestPermutation.java:206)
+    TestPermutation.main(TestPermutation.java:316)
+
+    - student solution threw an exception
+    - reference solution did not throw an exception
+
+  % java Permutation 3 < distinct.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    TestPermutation.checkFormatting(TestPermutation.java:40)
+    TestPermutation.test1a(TestPermutation.java:207)
+    TestPermutation.main(TestPermutation.java:316)
+
+    - student solution threw an exception
+    - reference solution did not throw an exception
+
+  % java Permutation 8 < duplicates.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    TestPermutation.checkFormatting(TestPermutation.java:40)
+    TestPermutation.test1a(TestPermutation.java:208)
+    TestPermutation.main(TestPermutation.java:316)
+
+    - student solution threw an exception
+    - reference solution did not throw an exception
+
+==> FAILED
+
+Test 1b: check formatting for other inputs
+  % java Permutation 8 < mediumTale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    TestPermutation.checkFormatting(TestPermutation.java:40)
+    TestPermutation.test1b(TestPermutation.java:214)
+    TestPermutation.main(TestPermutation.java:319)
+
+    - student solution threw an exception
+    - reference solution did not throw an exception
+
+  % java Permutation 0 < distinct.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    TestPermutation.checkFormatting(TestPermutation.java:40)
+    TestPermutation.test1b(TestPermutation.java:215)
+    TestPermutation.main(TestPermutation.java:319)
+
+    - student solution threw an exception
+    - reference solution did not throw an exception
+
+==> FAILED
+
+Test 2: check that main() reads all data from standard input
+  * filename = distinct.txt, k = 3
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    UtilCOS.consumesStdIn(UtilCOS.java:184)
+    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
+    TestPermutation.test2(TestPermutation.java:221)
+    TestPermutation.main(TestPermutation.java:322)
+
+  * filename = distinct.txt, k = 3
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    UtilCOS.consumesStdIn(UtilCOS.java:184)
+    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
+    TestPermutation.test2(TestPermutation.java:222)
+    TestPermutation.main(TestPermutation.java:322)
+
+  * filename = duplicates.txt, k = 8
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    UtilCOS.consumesStdIn(UtilCOS.java:184)
+    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
+    TestPermutation.test2(TestPermutation.java:223)
+    TestPermutation.main(TestPermutation.java:322)
+
+  * filename = mediumTale.txt, k = 8
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    UtilCOS.consumesStdIn(UtilCOS.java:184)
+    TestPermutation.checkConsumesStdIn(TestPermutation.java:52)
+    TestPermutation.test2(TestPermutation.java:224)
+    TestPermutation.main(TestPermutation.java:322)
+
+==> FAILED
+
+Test 3a: check that main() prints each item from the sequence at most once
+         (for inputs with no duplicate strings)
+  * filename = distinct.txt, k = 3
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3a(TestPermutation.java:232)
+    TestPermutation.main(TestPermutation.java:325)
+
+  * filename = distinct.txt, k = 1
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3a(TestPermutation.java:233)
+    TestPermutation.main(TestPermutation.java:325)
+
+  * filename = distinct.txt, k = 9
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3a(TestPermutation.java:234)
+    TestPermutation.main(TestPermutation.java:325)
+
+  * filename = permutation6.txt, k = 6
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3a(TestPermutation.java:235)
+    TestPermutation.main(TestPermutation.java:325)
+
+  * filename = permutation10.txt, k = 10
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3a(TestPermutation.java:236)
+    TestPermutation.main(TestPermutation.java:325)
+
+==> FAILED
+
+Test 3b: check that main() prints each item from the sequence at most once
+         (for inputs with duplicate strings)
+  * filename = duplicates.txt, k = 8
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3b(TestPermutation.java:244)
+    TestPermutation.main(TestPermutation.java:328)
+
+  * filename = duplicates.txt, k = 3
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3b(TestPermutation.java:245)
+    TestPermutation.main(TestPermutation.java:328)
+
+  * filename = permutation8.txt, k = 6
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "D"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3b(TestPermutation.java:246)
+    TestPermutation.main(TestPermutation.java:328)
+
+  * filename = permutation8.txt, k = 2
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "D"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3b(TestPermutation.java:247)
+    TestPermutation.main(TestPermutation.java:328)
+
+  * filename = tinyTale.txt, k = 10
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3b(TestPermutation.java:248)
+    TestPermutation.main(TestPermutation.java:328)
+
+==> FAILED
+
+Test 3c: check that main() prints each item from the sequence at most once
+         (for inputs with newlines)
+  * filename = mediumTale.txt, k = 10
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3c(TestPermutation.java:256)
+    TestPermutation.main(TestPermutation.java:331)
+
+  * filename = mediumTale.txt, k = 20
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3c(TestPermutation.java:257)
+    TestPermutation.main(TestPermutation.java:331)
+
+  * filename = tale.txt, k = 10
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3c(TestPermutation.java:259)
+    TestPermutation.main(TestPermutation.java:331)
+
+  * filename = tale.txt, k = 50
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test3c(TestPermutation.java:260)
+    TestPermutation.main(TestPermutation.java:331)
+
+==> FAILED
+
+Test 4: check main() when k = 0
+  * filename = distinct.txt, k = 0
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test4(TestPermutation.java:267)
+    TestPermutation.main(TestPermutation.java:334)
+
+  * filename = distinct.txt, k = 0
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkStringFrequencies(TestPermutation.java:74)
+    TestPermutation.test4(TestPermutation.java:268)
+    TestPermutation.main(TestPermutation.java:334)
+
+==> FAILED
+
+Test 5a: check that permutations are uniformly random
+         (for inputs with no duplicate strings)
+  * filename = permutation4.txt, k = 1
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5a(TestPermutation.java:278)
+    TestPermutation.main(TestPermutation.java:337)
+
+  * filename = permutation4.txt, k = 2
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5a(TestPermutation.java:279)
+    TestPermutation.main(TestPermutation.java:337)
+
+  * filename = permutation4.txt, k = 3
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5a(TestPermutation.java:280)
+    TestPermutation.main(TestPermutation.java:337)
+
+  * filename = permutation4.txt, k = 4
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5a(TestPermutation.java:281)
+    TestPermutation.main(TestPermutation.java:337)
+
+  * filename = permutation6.txt, k = 2
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5a(TestPermutation.java:282)
+    TestPermutation.main(TestPermutation.java:337)
+
+==> FAILED
+
+Test 5b: check that permutations are uniformly random
+         (for inputs with duplicate strings)
+  * filename = permutation5.txt, k = 1
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5b(TestPermutation.java:290)
+    TestPermutation.main(TestPermutation.java:340)
+
+  * filename = permutation5.txt, k = 2
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5b(TestPermutation.java:291)
+    TestPermutation.main(TestPermutation.java:340)
+
+  * filename = permutation5.txt, k = 3
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5b(TestPermutation.java:292)
+    TestPermutation.main(TestPermutation.java:340)
+
+  * filename = duplicates.txt, k = 3
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "AA"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5b(TestPermutation.java:293)
+    TestPermutation.main(TestPermutation.java:340)
+
+  * filename = permutation8.txt, k = 2
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "D"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TestPermutation.checkRandomnessOfPermutation(TestPermutation.java:161)
+    TestPermutation.test5b(TestPermutation.java:294)
+    TestPermutation.main(TestPermutation.java:340)
+
+==> FAILED
+
+Total: 0/9 tests passed!
+
+
+================================================================
+********************************************************************************
+*  TIMING (substituting reference RandomizedQueue and Deque)
+********************************************************************************
+
+Timing Permutation
+*-----------------------------------------------------------
+Running 23 total tests.
+
+Test 1: count calls to methods in StdIn
+  * java Permutation 5 < distinct.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
+    TimePermutation.test1(TimePermutation.java:303)
+    TimePermutation.main(TimePermutation.java:358)
+
+  * java Permutation 10 < permutation10.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
+    TimePermutation.test1(TimePermutation.java:304)
+    TimePermutation.main(TimePermutation.java:358)
+
+  * java Permutation 1 < mediumTale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
+    TimePermutation.test1(TimePermutation.java:305)
+    TimePermutation.main(TimePermutation.java:358)
+
+  * java Permutation 20 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
+    TimePermutation.test1(TimePermutation.java:306)
+    TimePermutation.main(TimePermutation.java:358)
+
+  * java Permutation 100 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
+    TimePermutation.test1(TimePermutation.java:307)
+    TimePermutation.main(TimePermutation.java:358)
+
+  * java Permutation 16412 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdIn(TimePermutation.java:61)
+    TimePermutation.test1(TimePermutation.java:308)
+    TimePermutation.main(TimePermutation.java:358)
+
+==> FAILED
+
+Test 2: count calls to methods in Deque and RandomizedQueue
+  * java Permutation 5 < distinct.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
+    TimePermutation.test2(TimePermutation.java:314)
+    TimePermutation.main(TimePermutation.java:361)
+
+  * java Permutation 10 < permutation10.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
+    TimePermutation.test2(TimePermutation.java:315)
+    TimePermutation.main(TimePermutation.java:361)
+
+  * java Permutation 1 < mediumTale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
+    TimePermutation.test2(TimePermutation.java:316)
+    TimePermutation.main(TimePermutation.java:361)
+
+  * java Permutation 20 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
+    TimePermutation.test2(TimePermutation.java:317)
+    TimePermutation.main(TimePermutation.java:361)
+
+  * java Permutation 100 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
+    TimePermutation.test2(TimePermutation.java:318)
+    TimePermutation.main(TimePermutation.java:361)
+
+  * java Permutation 16412 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToDequeAndRandomizedQueue(TimePermutation.java:140)
+    TimePermutation.test2(TimePermutation.java:319)
+    TimePermutation.main(TimePermutation.java:361)
+
+==> FAILED
+
+Test 3: count calls to methods in StdRandom
+  * java Permutation 5 < distinct.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
+    TimePermutation.test3(TimePermutation.java:325)
+    TimePermutation.main(TimePermutation.java:364)
+
+  * java Permutation 10 < permutation10.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
+    TimePermutation.test3(TimePermutation.java:326)
+    TimePermutation.main(TimePermutation.java:364)
+
+  * java Permutation 1 < mediumTale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
+    TimePermutation.test3(TimePermutation.java:327)
+    TimePermutation.main(TimePermutation.java:364)
+
+  * java Permutation 20 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
+    TimePermutation.test3(TimePermutation.java:328)
+    TimePermutation.main(TimePermutation.java:364)
+
+  * java Permutation 100 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
+    TimePermutation.test3(TimePermutation.java:329)
+    TimePermutation.main(TimePermutation.java:364)
+
+  * java Permutation 16412 < tale.txt
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.countCallsToStdRandom(TimePermutation.java:225)
+    TimePermutation.test3(TimePermutation.java:330)
+    TimePermutation.main(TimePermutation.java:364)
+
+==> FAILED
+
+Test 4: Time main() with k = 5, for inputs containing n random strings
+
+                    n  seconds
+------------------------------
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "EZ"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.timeMain(TimePermutation.java:265)
+    TimePermutation.checkRunningTimeOfMain(TimePermutation.java:284)
+    TimePermutation.test4(TimePermutation.java:336)
+    TimePermutation.main(TimePermutation.java:367)
+
+=> FAILED        1000 Infinity
+   [ Most likely main() takes more than linear time. ]
+==> 0/10 tests passed
+
+
+Test 5: Time main() with k = 1000, for inputs containing n random strings
+
+                    n  seconds
+------------------------------
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "OW"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    UtilCOS.execute(UtilCOS.java:159)
+    UtilCOS.execute(UtilCOS.java:146)
+    TimePermutation.timeMain(TimePermutation.java:265)
+    TimePermutation.checkRunningTimeOfMain(TimePermutation.java:284)
+    TimePermutation.test5(TimePermutation.java:341)
+    TimePermutation.main(TimePermutation.java:370)
+
+=> FAILED        1000 Infinity
+   [ Most likely main() takes more than linear time. ]
+==> 0/10 tests passed
+
+
+Total: 0/23 tests passed!
+
+
+================================================================
+
+
+
+********************************************************************************
+*  MEMORY
+********************************************************************************
+
+Analyzing memory of Permutation
+*-----------------------------------------------------------
+Running 2 total tests.
+
+Test 1: check that only one Deque or RandomizedQueue object is created
+  * filename = distinct.txt, n = 9, k = 1
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
+    MemoryOfPermutation.test1(MemoryOfPermutation.java:157)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
+
+  * filename = distinct.txt, n = 9, k = 2
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
+    MemoryOfPermutation.test1(MemoryOfPermutation.java:158)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
+
+  * filename = distinct.txt, n = 9, k = 4
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
+    MemoryOfPermutation.test1(MemoryOfPermutation.java:159)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
+
+  * filename = tinyTale.txt, n = 12, k = 10
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
+    MemoryOfPermutation.test1(MemoryOfPermutation.java:160)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
+
+  * filename = tale.txt, n = 138653, k = 50
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkNumberOfObjects(MemoryOfPermutation.java:27)
+    MemoryOfPermutation.test1(MemoryOfPermutation.java:161)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:198)
+
+==> FAILED
+
+Test 2: check that the maximum size of any Deque or RandomizedQueue object
+        created is between k and n
+  * filename = distinct.txt, n = 9, k = 1
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:168)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = distinct.txt, n = 9, k = 2
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:169)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = distinct.txt, n = 9, k = 4
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "A"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:170)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = tinyTale.txt, n = 12, k = 10
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "it"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:171)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = tale.txt, n = 138653, k = 5
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:172)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = tale.txt, n = 138653, k = 50
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:173)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = tale.txt, n = 138653, k = 500
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:174)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = tale.txt, n = 138653, k = 5000
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:175)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+  * filename = tale.txt, n = 138653, k = 50000
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSize(MemoryOfPermutation.java:63)
+    MemoryOfPermutation.test2(MemoryOfPermutation.java:176)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:199)
+
+==> FAILED
+
+Test 3 (bonus): check that maximum size of any or Deque or RandomizedQueue object
+                created is equal to k
+  * filename = tale.txt, n = 138653, k = 5
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
+    MemoryOfPermutation.test3(MemoryOfPermutation.java:184)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
+
+  * filename = tale.txt, n = 138653, k = 50
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
+    MemoryOfPermutation.test3(MemoryOfPermutation.java:185)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
+
+  * filename = tale.txt, n = 138653, k = 500
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
+    MemoryOfPermutation.test3(MemoryOfPermutation.java:186)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
+
+  * filename = tale.txt, n = 138653, k = 5000
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
+    MemoryOfPermutation.test3(MemoryOfPermutation.java:187)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
+
+  * filename = tale.txt, n = 138653, k = 50000
+    java.util.InputMismatchException: attempts to read an 'int' value from standard input, but the next token is "It"
+
+    edu.princeton.cs.algs4.StdIn.readInt(StdIn.java:286)
+    Permutation.main(Permutation.java:12)
+    MemoryOfPermutation.checkMaxSizeBonus(MemoryOfPermutation.java:116)
+    MemoryOfPermutation.test3(MemoryOfPermutation.java:188)
+    MemoryOfPermutation.main(MemoryOfPermutation.java:200)
+
+==> FAILED
+
+Total: 0/2 tests passed!
+
+================================================================
+
+
+
+********************************************************************************
+*  MEMORY
+********************************************************************************
+
+Analyzing memory of Deque
+*-----------------------------------------------------------
+
+Test 4a-4e: Total memory usage after inserting n items and then
+            deleting all but one item, where n is a power of 2.
+            (should not grow with n or be too large of a constant)
+
+                 n        bytes
+----------------------------------------------------------
+=> passed        8           88         
+=> passed       64           88         
+=> passed      256           88         
+=> passed 
+
+...
+
+WARNING: the grading output was truncated due to excessive length.
+Typically, this is because you have a method that has an unanticipated side effect
+(such as printing to standard output or throwing an exception). A large amount of output
+can also arise from failing many tests.

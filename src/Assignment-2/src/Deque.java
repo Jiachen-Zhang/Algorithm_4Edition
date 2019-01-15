@@ -2,16 +2,15 @@ import java.util.Iterator;
 
 public class Deque<Item> implements Iterable<Item> {
 
+  private Node first;
+  private Node last;
+  private int size;
 
   private class Node {
     Item item;
     Node pre;
     Node next;
   }
-
-  private Node first;
-  private Node last;
-  private int size;
 
   /** construct an empty deque.
    *
@@ -178,7 +177,7 @@ public class Deque<Item> implements Iterable<Item> {
     System.out.println(deque.removeFirst());
   }
 
-  static private void print(Deque<Integer> deque) {
+  private static void print(Deque<Integer> deque) {
     for(int i : deque) {
       System.out.print(i + ", ");
     }

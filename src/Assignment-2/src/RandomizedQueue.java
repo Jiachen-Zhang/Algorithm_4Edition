@@ -7,7 +7,6 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
   private int size;
   private int length;
   private Item[] queue;
-  private int randomIndex;
 
   /** construct an empty randomized queue.
    *
@@ -15,6 +14,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
   public RandomizedQueue() {
     size = 0;
     length = 1;
+
     queue = (Item[]) new Object[1];
   }
 
@@ -38,7 +38,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    * @param newSize the new queue size.
    */
   private void resize(int newSize) {
-    System.out.println("Resizing from " + length + " to " + newSize);
+//    System.out.println("Resizing from " + length + " to " + newSize);
     queue = Arrays.copyOfRange(queue, 0, newSize);
     length = newSize;
   }
@@ -111,7 +111,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private void shuffle(Item[] shuffle) {
       Item tmp;
       for (int i = 0; i < size; i++) {
-        int randomIndex = StdRandom.uniform(size);
+        int randomIndex = StdRandom.uniform(i, size);
         tmp = shuffle[randomIndex];
         shuffle[randomIndex] = shuffle[i];
         shuffle[i] = tmp;
@@ -128,7 +128,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public Item next() {
-      if (size == 0) {
+
+      if (current > size - 1) {
         throw new java.util.NoSuchElementException();
       }
       return queueIterator[current++];
@@ -141,7 +142,15 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
    */
   public static void main(String[] args) {
     // unit testing (optional)
-
+    RandomizedQueue<Integer> randomizedQueue = new RandomizedQueue<>();
+    randomizedQueue.enqueue(1);
+    randomizedQueue.enqueue(2);
+    randomizedQueue.enqueue(3);
+    Iterator<Integer> iterator = randomizedQueue.iterator();
+    System.out.println(iterator.next());
+    System.out.println(iterator.next());
+    System.out.println(iterator.next());
+    System.out.println(iterator.next());
   }
 }
 
