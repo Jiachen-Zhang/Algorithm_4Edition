@@ -1,5 +1,7 @@
 
+import edu.princeton.cs.algs4.Insertion;
 import edu.princeton.cs.algs4.StdDraw;
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
@@ -123,5 +125,19 @@ public class Point implements Comparable<Point> {
    */
   public static void main(String[] args) {
     /* YOUR CODE HERE */
+
+//    StdDraw.enableDoubleBuffering();
+//    StdDraw.setXscale(0, 32768);
+//    StdDraw.setYscale(0, 32768);
+    Point[] points = new Point[3];
+    points[0] = new Point(10000, 100);
+    points[1] = new Point(1000, 100);
+
+    System.out.println(Arrays.toString(points));
+//    BruteCollinearPoints bruteCollinearPoints = new BruteCollinearPoints(points);
+//    StdDraw.show();
+
+    System.out.println(Arrays.toString(points));
+
   }
 }
