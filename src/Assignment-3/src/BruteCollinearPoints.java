@@ -3,9 +3,6 @@ import java.util.Arrays;
 
 public class BruteCollinearPoints {
 
-  private Point[] points;
-  private double[][] pointSlope;
-  private int size;
   private Stack<LineSegment> stack;
 
   /**
@@ -17,33 +14,33 @@ public class BruteCollinearPoints {
     if (points == null) {
       throw new java.lang.IllegalArgumentException("There is no point.");
     }
-    this.stack = new Stack<>();
-    this.points = points;
+    int size = points.length;
     for (int i = 0; i < size; i++) {
       if (points[i] == null) {
         throw new java.lang.IllegalArgumentException("There exits a null point.");
       }
     }
+    this.stack = new Stack<>();
     Arrays.sort(points);
     for (int i = 1; i < size; i++) {
       if (points[i - 1].compareTo(points[i]) == 0) {
         throw new java.lang.IllegalArgumentException("There exits a repeated point.");
       }
     }
-
     for (int i = 0; i < size; i++) {
       for (int j = i + 1; j < size; j++) {
         double slopeIandJ = points[i].slopeTo(points[j]);
         for (int k = j + 1; k < size; k++) {
           double slopeJandK = points[j].slopeTo(points[k]);
-          if (slopeIandJ - slopeJandK > 1e-6) {
+          if (Math.abs(slopeIandJ - slopeJandK) > 1e-6) {
             continue;
           }
           for (int l = k + 1; l < size; l++) {
             double slopeKandL = points[k].slopeTo(points[l]);
-            if (slopeJandK - slopeKandL < 1e-6) {
-              stack.push(new LineSegment(points[i], points[l]));
+            if (Math.abs(slopeJandK - slopeKandL) > 1e-6) {
+              continue;
             }
+            stack.push(new LineSegment(points[i], points[l]));
           }
         }
       }

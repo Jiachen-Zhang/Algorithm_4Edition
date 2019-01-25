@@ -1,6 +1,9 @@
 
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Insertion;
+import edu.princeton.cs.algs4.Out;
 import edu.princeton.cs.algs4.StdDraw;
+import edu.princeton.cs.algs4.StdOut;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -12,8 +15,8 @@ public class Point implements Comparable<Point> {
   /**
    * Initializes a new point.
    *
-   * @param  x the <em>x</em>-coordinate of the point
-   * @param  y the <em>y</em>-coordinate of the point
+   * @param x the <em>x</em>-coordinate of the point
+   * @param y the <em>y</em>-coordinate of the point
    */
   public Point(int x, int y) {
     /* DO NOT MODIFY */
@@ -30,8 +33,7 @@ public class Point implements Comparable<Point> {
   }
 
   /**
-   * Draws the line segment between this point and the specified point
-   * to standard draw.
+   * Draws the line segment between this point and the specified point to standard draw.
    *
    * @param that the other point
    */
@@ -41,14 +43,13 @@ public class Point implements Comparable<Point> {
   }
 
   /**
-   * Returns the slope between this point and the specified point.
-   * Formally, if the two points are (x0, y0) and (x1, y1), then the slope
-   * is (y1 - y0) / (x1 - x0). For completeness, the slope is defined to be
-   * +0.0 if the line segment connecting the two points is horizontal;
-   * Double.POSITIVE_INFINITY if the line segment is vertical;
-   * and Double.NEGATIVE_INFINITY if (x0, y0) and (x1, y1) are equal.
+   * Returns the slope between this point and the specified point. Formally, if the two points are
+   * (x0, y0) and (x1, y1), then the slope is (y1 - y0) / (x1 - x0). For completeness, the slope is
+   * defined to be +0.0 if the line segment connecting the two points is horizontal;
+   * Double.POSITIVE_INFINITY if the line segment is vertical; and Double.NEGATIVE_INFINITY if (x0,
+   * y0) and (x1, y1) are equal.
    *
-   * @param  that the other point
+   * @param that the other point
    * @return the slope between this point and the specified point
    */
   public double slopeTo(Point that) {
@@ -64,20 +65,18 @@ public class Point implements Comparable<Point> {
     } else if (deltaX == 0) {
       return Double.POSITIVE_INFINITY;
     }
-    return (double)deltaY / deltaX;
+    return (double) deltaY / deltaX;
   }
 
   /**
-   * Compares two points by y-coordinate, breaking ties by x-coordinate.
-   * Formally, the invoking point (x0, y0) is less than the argument point
-   * (x1, y1) if and only if either y0 < y1 or if y0 = y1 and x0 < x1.
+   * Compares two points by y-coordinate, breaking ties by x-coordinate. Formally, the invoking
+   * point (x0, y0) is less than the argument point (x1, y1) if and only if either y0 < y1 or if y0
+   * = y1 and x0 < x1.
    *
-   * @param  that the other point
-   * @return the value <tt>0</tt> if this point is equal to the argument
-   *         point (x0 = x1 and y0 = y1);
-   *         a negative integer if this point is less than the argument
-   *         point; and a positive integer if this point is greater than the
-   *         argument point
+   * @param that the other point
+   * @return the value <tt>0</tt> if this point is equal to the argument point (x0 = x1 and y0 =
+   * y1); a negative integer if this point is less than the argument point; and a positive integer
+   * if this point is greater than the argument point
    */
   public int compareTo(Point that) {
     /* YOUR CODE HERE */
@@ -96,8 +95,8 @@ public class Point implements Comparable<Point> {
   }
 
   /**
-   * Compares two points by the slope they make with this point.
-   * The slope is defined as in the slopeTo() method.
+   * Compares two points by the slope they make with this point. The slope is defined as in the
+   * slopeTo() method.
    *
    * @return the Comparator that defines this ordering on points
    */
@@ -109,9 +108,8 @@ public class Point implements Comparable<Point> {
 
 
   /**
-   * Returns a string representation of this point.
-   * This method is provide for debugging;
-   * your program should not rely on the format of the string representation.
+   * Returns a string representation of this point. This method is provide for debugging; your
+   * program should not rely on the format of the string representation.
    *
    * @return a string representation of this point
    */
@@ -125,19 +123,34 @@ public class Point implements Comparable<Point> {
    */
   public static void main(String[] args) {
     /* YOUR CODE HERE */
+    /*
+    // read the n points from a file
+    In in = new In(args[0]);
+    int n = in.readInt();
+    Point[] points = new Point[n];
+    for (int i = 0; i < n; i++) {
+      int x = in.readInt();
+      int y = in.readInt();
+      points[i] = new Point(x, y);
+    }
 
-//    StdDraw.enableDoubleBuffering();
-//    StdDraw.setXscale(0, 32768);
-//    StdDraw.setYscale(0, 32768);
-    Point[] points = new Point[3];
-    points[0] = new Point(10000, 100);
-    points[1] = new Point(1000, 100);
+    // draw the points
+    StdDraw.enableDoubleBuffering();
+    StdDraw.setXscale(0, 32768);
+    StdDraw.setYscale(0, 32768);
+    for (Point p : points) {
+      p.draw();
+    }
+    StdDraw.show();
 
-    System.out.println(Arrays.toString(points));
-//    BruteCollinearPoints bruteCollinearPoints = new BruteCollinearPoints(points);
-//    StdDraw.show();
-
-    System.out.println(Arrays.toString(points));
+    // print and draw the line segments
+    BruteCollinearPoints collinear = new BruteCollinearPoints(points);
+    for (LineSegment segment : collinear.segments()) {
+      StdOut.println(segment);
+      segment.draw();
+    }
+    StdDraw.show();
+    */
 
   }
 }

@@ -3,9 +3,6 @@ import java.util.Arrays;
 
 public class FastCollinearPoints {
 
-  private Point[] points;
-  private double[][] pointSlope;
-  private int size;
   private Stack<LineSegment> stack;
 
   /**
@@ -17,14 +14,14 @@ public class FastCollinearPoints {
     if (points == null) {
       throw new java.lang.IllegalArgumentException("There is no point.");
     }
-    this.points = points;
-    this.stack = new Stack<>();
-    this.size = points.length;
+
+    int size = points.length;
     for (int i = 0; i < size; i++) {
       if (points[i] == null) {
         throw new java.lang.IllegalArgumentException("There exits a null point.");
       }
     }
+    this.stack = new Stack<>();
     Arrays.sort(points);
     for (int i = 1; i < size; i++) {
       if (points[i - 1].compareTo(points[i]) == 0) {
@@ -41,7 +38,7 @@ public class FastCollinearPoints {
       int count = 2;
       for (int j = 0, length = tmpPoints.length; j < length; j++) {
         double curSlope = points[i].slopeTo(tmpPoints[j]);
-        if (tmpSlope - curSlope < 1e-6) {
+        if (Math.abs(tmpSlope - curSlope) < 1e-6) {
           count++;
           if (count == 4) {
             stack.push(new LineSegment(points[i], tmpPoints[j]));
