@@ -7,22 +7,22 @@ API:          PASSED
 
 Spotbugs:     PASSED
 PMD:          FAILED (2 warnings)
-Checkstyle:   FAILED (0 errors, 9 warnings)
+Checkstyle:   FAILED (0 errors, 4 warnings)
 
-Correctness:  26/41 tests passed
+Correctness:  28/41 tests passed
 Memory:       1/1 tests passed
 Timing:       41/41 tests passed
 
-Aggregate score: 78.05%
+Aggregate score: 80.98%
 [Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
 
 ASSESSMENT DETAILS
 
 The following files were submitted:
 ----------------------------------
-2.1K Jan 25 09:05 BruteCollinearPoints.java
-2.1K Jan 25 09:05 FastCollinearPoints.java
-4.5K Jan 25 09:05 Point.java
+2.2K Jan 25 09:38 BruteCollinearPoints.java
+2.2K Jan 25 09:38 FastCollinearPoints.java
+4.3K Jan 25 09:38 Point.java
 
 
 ********************************************************************************
@@ -78,21 +78,16 @@ PMD ends with 2 warnings.
 
 % checkstyle *.java
 *-----------------------------------------------------------
-[WARN] BruteCollinearPoints.java:38:20: Do not use the letter 'l' as a local variable name. It is hard to distinguish from the number '1'. [LocalVariableName]
-[WARN] Point.java:2:8: Unused import statement for 'edu.princeton.cs.algs4.In'. [UnusedImports]
-[WARN] Point.java:3:8: Unused import statement for 'edu.princeton.cs.algs4.Insertion'. [UnusedImports]
-[WARN] Point.java:4:8: Unused import statement for 'edu.princeton.cs.algs4.Out'. [UnusedImports]
-[WARN] Point.java:6:8: Unused import statement for 'edu.princeton.cs.algs4.StdOut'. [UnusedImports]
-[WARN] Point.java:7:8: Unused import statement for 'java.util.Arrays'. [UnusedImports]
-Checkstyle ends with 0 errors and 6 warnings.
+[WARN] BruteCollinearPoints.java:39:20: Do not use the letter 'l' as a local variable name. It is hard to distinguish from the number '1'. [LocalVariableName]
+Checkstyle ends with 0 errors and 1 warning.
 
 % custom checkstyle checks for Point.java
 *-----------------------------------------------------------
 
 % custom checkstyle checks for BruteCollinearPoints.java
 *-----------------------------------------------------------
-[WARN] BruteCollinearPoints.java:35:51: The numeric literal '1e-6' appears to be unnecessary. [NumericLiteral]
-[WARN] BruteCollinearPoints.java:40:53: The numeric literal '1e-6' appears to be unnecessary. [NumericLiteral]
+[WARN] BruteCollinearPoints.java:36:51: The numeric literal '1e-6' appears to be unnecessary. [NumericLiteral]
+[WARN] BruteCollinearPoints.java:41:53: The numeric literal '1e-6' appears to be unnecessary. [NumericLiteral]
 Checkstyle ends with 0 errors and 2 warnings.
 
 % custom checkstyle checks for FastCollinearPoints.java
@@ -258,14 +253,8 @@ Test 10: check that data type is immutable by testing whether each method
 
 Test 11: check that data type does not mutate the constructor argument
   * input8.txt
-    - data type mutated the points[] array
-    - data type should have no side effects unless documented in API
-
   * equidistant.txt
-    - data type mutated the points[] array
-    - data type should have no side effects unless documented in API
-
-==> FAILED
+==> passed
 
 Test 12: numberOfSegments() is consistent with segments()
   * filename = input8.txt
@@ -298,7 +287,7 @@ Test 14: check that the constructor throws an exception if duplicate points
 ==> passed
 
 
-Total: 16/17 tests passed!
+Total: 17/17 tests passed!
 
 
 ================================================================
@@ -439,90 +428,90 @@ Test 2a: points from a file with horizontal line segments
 Test 2b: random horizontal line segments
   *  1 random horizontal line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (3163, 5585) -> (10399, 5585)
-    - reference segment 0: (3163, 5585) -> (9922, 5585) -> (10399, 5585) -> (14556, 5585)
+    - student   segment 0: (2912, 16874) -> (4768, 16874)
+    - reference segment 0: (2912, 16874) -> (3548, 16874) -> (4768, 16874) -> (12481, 16874)
 
     - number of entries in student   solution: 1
     - number of entries in reference solution: 1
     - 1 extra entry in student solution:
-      '(3163, 5585) -> (10399, 5585)'
+      '(2912, 16874) -> (4768, 16874)'
 
     - 1 missing entry in student solution:
-      '(3163, 5585) -> (9922, 5585) -> (10399, 5585) -> (14556, 5585)'
+      '(2912, 16874) -> (3548, 16874) -> (4768, 16874) -> (12481, 16874)'
 
 
     - failed on trial 1 of 500
      4
-      3163  5585
-     14556  5585
-     10399  5585
-      9922  5585
+     12481 16874
+      2912 16874
+      3548 16874
+      4768 16874
 
   *  5 random horizontal line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (3818, 16451) -> (15041, 16451)
-    - reference segment 4: (3818, 16451) -> (7271, 16451) -> (15041, 16451) -> (15162, 16451)
+    - student   segment 0: (2254, 11904) -> (6099, 11904)
+    - reference segment 4: (2254, 11904) -> (4068, 11904) -> (6099, 11904) -> (11292, 11904)
 
     - number of entries in student   solution: 5
     - number of entries in reference solution: 5
     - 1 extra entry in student solution:
-      '(3818, 16451) -> (15041, 16451)'
+      '(2254, 11904) -> (6099, 11904)'
 
     - 1 missing entry in student solution:
-      '(3818, 16451) -> (7271, 16451) -> (15041, 16451) -> (15162, 16451)'
+      '(2254, 11904) -> (4068, 11904) -> (6099, 11904) -> (11292, 11904)'
 
 
     - failed on trial 1 of 250
      20
-      7783 10356
-      7271 16451
-      6806 10356
-     11756  6808
-      9032  9902
-      7120 13974
-     15162 16451
-      3818 16451
-      8964 10356
-     16318  9902
-      4748  9902
-     10518 13974
-     14927  6808
-      4990 13974
-     15041 16451
-     13787  6808
-     13657  9902
-      7644 10356
-     16902  6808
-     11985 13974
+     13269  4245
+      8420 10732
+      2254 11904
+      6055  4245
+      2861 10445
+     12972  7665
+     11384 10445
+     17311 10732
+     18565  7665
+      7344 10445
+      8130  4245
+     14452 10732
+     11292 11904
+      5013  7665
+      6099 11904
+      5534  4245
+      7884 10732
+     15432  7665
+      4068 11904
+     11105 10445
 
   * 10 random horizontal line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (4501, 20771) -> (14511, 20771)
-    - reference segment 9: (4501, 20771) -> (9243, 20771) -> (14511, 20771) -> (15368, 20771)
+    - student   segment 0: (4716, 19425) -> (11563, 19425)
+    - reference segment 9: (4716, 19425) -> (7362, 19425) -> (11563, 19425) -> (18891, 19425)
 
     - number of entries in student   solution: 10
     - number of entries in reference solution: 10
-    - 4 extra entries in student solution, including:
-      '(4501, 20771) -> (14511, 20771)'
+    - 2 extra entries in student solution, including:
+      '(4716, 19425) -> (11563, 19425)'
 
-    - 4 missing entries in student solution, including:
-      '(4501, 20771) -> (9243, 20771) -> (14511, 20771) -> (15368, 20771)'
+    - 2 missing entries in student solution, including:
+      '(4716, 19425) -> (7362, 19425) -> (11563, 19425) -> (18891, 19425)'
 
 
     - failed on trial 1 of 50
 
   * 15 random horizontal line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (5134, 20842) -> (7056, 20842)
-    - reference segment 14: (5134, 20842) -> (5737, 20842) -> (7056, 20842) -> (16228, 20842)
+    - student   segment 0: (5244, 20485) -> (15173, 20485)
+    - reference segment 14: (5244, 20485) -> (9224, 20485) -> (15173, 20485) -> (19985, 20485)
 
-    - number of entries in student   solution: 16
+    - number of entries in student   solution: 15
     - number of entries in reference solution: 15
-    - 5 extra entries in student solution, including:
-      '(5134, 20842) -> (7056, 20842)'
+    - 4 extra entries in student solution, including:
+      '(5244, 20485) -> (15173, 20485)'
 
     - 4 missing entries in student solution, including:
-      '(5134, 20842) -> (5737, 20842) -> (7056, 20842) -> (16228, 20842)'
+      '(5244, 20485) -> (9224, 20485) -> (15173, 20485) -> (19985, 20485)'
 
 
     - failed on trial 1 of 5
@@ -572,51 +561,51 @@ Test 3b: random vertical line segments
     - number of entries in student   solution: 0
     - number of entries in reference solution: 1
     - 1 missing entry in student solution:
-      '(20588, 5326) -> (20588, 8394) -> (20588, 13145) -> (20588, 13366)'
+      '(14843, 7595) -> (14843, 8660) -> (14843, 14947) -> (14843, 18528)'
 
 
     - failed on trial 1 of 500
      4
-     20588  5326
-     20588  8394
-     20588 13145
-     20588 13366
+     14843 18528
+     14843  8660
+     14843  7595
+     14843 14947
 
   *  5 random vertical line segments
     - number of entries in student   solution: 0
     - number of entries in reference solution: 5
     - 5 missing entries in student solution, including:
-      '(6342, 7540) -> (6342, 10617) -> (6342, 12131) -> (6342, 12729)'
+      '(17126, 14266) -> (17126, 17924) -> (17126, 20101) -> (17126, 20750)'
 
 
     - failed on trial 1 of 250
      20
-      6342 12729
-     10312 11847
-      4101  2606
-     10312  3718
-      8223  5988
-      8223 16379
-     10312  3121
-      8223  9772
-      4101 12307
-     19883  9139
-     19883  5861
-      6342 12131
-     19883  8978
-      4101  7422
-      4101 11165
-      6342  7540
-     10312  4353
-      6342 10617
-      8223  3379
-     19883 17043
+     17126 14266
+     18904 13479
+      5640 12301
+      5640  5423
+     18904  2043
+      5896 18367
+      1386 16082
+      5896 16874
+      5640 19304
+     17126 20101
+      1386 16117
+     18904  3267
+      5896  4491
+     17126 17924
+      1386 12935
+     17126 20750
+     18904  1977
+      1386  2532
+      5896  2807
+      5640 13269
 
   * 10 random vertical line segments
     - number of entries in student   solution: 0
     - number of entries in reference solution: 10
     - 10 missing entries in student solution, including:
-      '(5352, 10310) -> (5352, 12547) -> (5352, 14859) -> (5352, 20499)'
+      '(16475, 6770) -> (16475, 8055) -> (16475, 15356) -> (16475, 17106)'
 
 
     - failed on trial 1 of 50
@@ -625,7 +614,7 @@ Test 3b: random vertical line segments
     - number of entries in student   solution: 0
     - number of entries in reference solution: 15
     - 15 missing entries in student solution, including:
-      '(4381, 18186) -> (4381, 18578) -> (4381, 19101) -> (4381, 20358)'
+      '(5500, 15084) -> (5500, 15309) -> (5500, 15334) -> (5500, 20831)'
 
 
     - failed on trial 1 of 5
@@ -885,93 +874,93 @@ provide access to the x- and y-coordinates).
 Test 9: random line segments, none vertical or horizontal
   *  1 random line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (11936, 6459) -> (13466, 10379)
-    - reference segment 0: (11936, 6459) -> (12242, 7243) -> (13466, 10379) -> (15608, 15867)
+    - student   segment 0: (1843, 4704) -> (7266, 12580)
+    - reference segment 0: (1843, 4704) -> (3815, 7568) -> (7266, 12580) -> (8745, 14728)
 
     - number of entries in student   solution: 1
     - number of entries in reference solution: 1
     - 1 extra entry in student solution:
-      '(11936, 6459) -> (13466, 10379)'
+      '(1843, 4704) -> (7266, 12580)'
 
     - 1 missing entry in student solution:
-      '(11936, 6459) -> (12242, 7243) -> (13466, 10379) -> (15608, 15867)'
+      '(1843, 4704) -> (3815, 7568) -> (7266, 12580) -> (8745, 14728)'
 
 
     - failed on trial 1 of 500
      4
-     12242  7243
-     15608 15867
-     13466 10379
-     11936  6459
+      1843  4704
+      3815  7568
+      7266 12580
+      8745 14728
 
   *  5 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 2: (2070, 4080) -> (11880, 5754)
-    - reference segment 0: (2070, 4080) -> (5340, 4638) -> (11880, 5754) -> (13515, 6033)
+    - student   segment 0: (9289, 10724) -> (13227, 16312)
+    - reference segment 1: (8931, 10216) -> (9289, 10724) -> (12153, 14788) -> (13227, 16312)
 
-    - number of entries in student   solution: 5
+    - number of entries in student   solution: 6
     - number of entries in reference solution: 5
-    - 1 extra entry in student solution:
-      '(2070, 4080) -> (11880, 5754)'
+    - 2 extra entries in student solution, including:
+      '(9289, 10724) -> (13227, 16312)'
 
     - 1 missing entry in student solution:
-      '(2070, 4080) -> (5340, 4638) -> (11880, 5754) -> (13515, 6033)'
+      '(8931, 10216) -> (9289, 10724) -> (12153, 14788) -> (13227, 16312)'
 
 
-    - failed on trial 6 of 500
+    - failed on trial 1 of 500
      20
-      9999   411
-      5617  8880
-     10935  8511
-      8061  7101
-     11871 16611
-      5816 12971
-     11013  9186
-      2070  4080
-      2273  1052
-     13515  6033
-      4737  6820
-      8917  7739
-      6054 14165
-     15337 12524
-      4341  5893
-     11880  5754
-      5578 11777
-      5102  9389
-      5340  4638
-     10201  8696
+      3516  4137
+     15019  9225
+     12474  5579
+      7092  3327
+     10380 12964
+     12778  8995
+     13931  3305
+     12153 14788
+      8808  7747
+      7752  5027
+      9289 10724
+     13387   345
+      9072  8427
+      5100  6174
+      8931 10216
+     12322  3871
+     12626  7287
+      6156  7532
+     13591  1455
+     13227 16312
 
   * 25 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 1: (1778, 11543) -> (11930, 11555)
-    - reference segment 0: (932, 11542) -> (1778, 11543) -> (11084, 11554) -> (11930, 11555)
+    - student   segment 0: (6092, 13610) -> (8792, 13650)
+    - reference segment 0: (4337, 13584) -> (6092, 13610) -> (7982, 13638) -> (8792, 13650)
 
     - number of entries in student   solution: 26
     - number of entries in reference solution: 25
     - 2 extra entries in student solution, including:
-      '(1778, 11543) -> (11930, 11555)'
+      '(6092, 13610) -> (8792, 13650)'
 
     - 1 missing entry in student solution:
-      '(932, 11542) -> (1778, 11543) -> (11084, 11554) -> (11930, 11555)'
+      '(4337, 13584) -> (6092, 13610) -> (7982, 13638) -> (8792, 13650)'
 
 
-    - failed on trial 1 of 100
+    - failed on trial 19 of 100
 
   * 50 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 12: (77, 8204) -> (5509, 8276)
-    - reference segment 0: (77, 8204) -> (4830, 8267) -> (5509, 8276) -> (8225, 8312)
+    - student   segment 1: (5124, 13184) -> (13444, 13200)
+    - reference segment 0: (2524, 13179) -> (5124, 13184) -> (10844, 13195) -> (13444, 13200)
 
-    - number of entries in student   solution: 50
+    - number of entries in student   solution: 51
     - number of entries in reference solution: 50
-    - 1 extra entry in student solution:
-      '(77, 8204) -> (5509, 8276)'
+    - 2 extra entries in student solution, including:
+      '(5124, 13184) -> (13444, 13200)'
 
     - 1 missing entry in student solution:
-      '(77, 8204) -> (4830, 8267) -> (5509, 8276) -> (8225, 8312)'
+      '(2524, 13179) -> (5124, 13184) -> (10844, 13195) -> (13444, 13200)'
 
 
-    - failed on trial 13 of 15
+    - failed on trial 3 of 15
 
   * 100 random line segments
 ==> FAILED
@@ -979,99 +968,99 @@ Test 9: random line segments, none vertical or horizontal
 Test 10: random line segments
   *  1 random line segment
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (7706, 8922) -> (8525, 8922)
-    - reference segment 0: (7706, 8922) -> (7811, 8922) -> (8525, 8922) -> (9113, 8922)
+    - student   segment 0: (5015, 6959) -> (6296, 7190)
+    - reference segment 0: (5015, 6959) -> (5137, 6981) -> (6296, 7190) -> (8187, 7531)
 
     - number of entries in student   solution: 1
     - number of entries in reference solution: 1
     - 1 extra entry in student solution:
-      '(7706, 8922) -> (8525, 8922)'
+      '(5015, 6959) -> (6296, 7190)'
 
     - 1 missing entry in student solution:
-      '(7706, 8922) -> (7811, 8922) -> (8525, 8922) -> (9113, 8922)'
+      '(5015, 6959) -> (5137, 6981) -> (6296, 7190) -> (8187, 7531)'
 
 
     - failed on trial 1 of 500
      4
-      8525  8922
-      7706  8922
-      9113  8922
-      7811  8922
+      5015  6959
+      8187  7531
+      6296  7190
+      5137  6981
 
   *  5 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (8511, 10287) -> (11031, 10602)
-    - reference segment 1: (8511, 10287) -> (8751, 10317) -> (11031, 10602) -> (11711, 10687)
+    - student   segment 0: (3589, 11696) -> (6895, 12836)
+    - reference segment 0: (3589, 11696) -> (3937, 11816) -> (6895, 12836) -> (8693, 13456)
 
-    - number of entries in student   solution: 4
+    - number of entries in student   solution: 5
     - number of entries in reference solution: 5
     - 1 extra entry in student solution:
-      '(8511, 10287) -> (11031, 10602)'
+      '(3589, 11696) -> (6895, 12836)'
 
-    - 2 missing entries in student solution, including:
-      '(8511, 10287) -> (8751, 10317) -> (11031, 10602) -> (11711, 10687)'
+    - 1 missing entry in student solution:
+      '(3589, 11696) -> (3937, 11816) -> (6895, 12836) -> (8693, 13456)'
 
 
-    - failed on trial 2 of 500
+    - failed on trial 1 of 500
      20
-     11031 10602
-     10332  9916
-      8667  7621
-     11854  8377
-      5327  6326
-      8751 10317
-     14670  8735
-      7436  7769
-      9740  9100
-     14294  8377
-     11711 10687
-     12854  8377
-     14670  8723
-      3788  5273
-     14670  8879
-      8511 10287
-     12334  8377
-      8593  7519
-      2591  4454
-     14670  8627
+     12406  5286
+      3589 11696
+     11791  5793
+     12591  7553
+      3937 11816
+      8335  9488
+     11200  3990
+     12551  7465
+      8803  9929
+     14719  6013
+     10155 11203
+     10259 11301
+     13031  8521
+     14159  5446
+      9860  2550
+     10195  2910
+     11359  2611
+     14639  5932
+      8693 13456
+      6895 12836
 
   * 25 random line segments
-    - segments() contains a subsegment of a segment in reference solution
-    - student   segment 11: (2770, 5687) -> (8566, 5687)
-    - reference segment 0: (2034, 5687) -> (2770, 5687) -> (4886, 5687) -> (8566, 5687)
-
-    - number of entries in student   solution: 22
+    - number of entries in student   solution: 19
     - number of entries in reference solution: 25
-    - 2 extra entries in student solution, including:
-      '(2770, 5687) -> (8566, 5687)'
-
-    - 5 missing entries in student solution, including:
-      '(11122, 7414) -> (11122, 7606) -> (11122, 7654) -> (11122, 8026)'
+    - 6 missing entries in student solution, including:
+      '(9260, 10270) -> (9260, 10608) -> (9260, 10842) -> (9260, 12558)'
 
 
     - failed on trial 1 of 100
 
   * 50 random line segments
-    - number of entries in student   solution: 40
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 0: (6750, 14966) -> (8814, 14966)
+    - reference segment 2: (6750, 14966) -> (7782, 14966) -> (8814, 14966) -> (11652, 14966)
+
+    - number of entries in student   solution: 44
     - number of entries in reference solution: 50
-    - 10 missing entries in student solution, including:
-      '(8570, 12715) -> (8570, 12880) -> (8570, 13420) -> (8570, 13750)'
+    - 1 extra entry in student solution:
+      '(6750, 14966) -> (8814, 14966)'
+
+    - 7 missing entries in student solution, including:
+      '(6750, 14966) -> (7782, 14966) -> (8814, 14966) -> (11652, 14966)'
 
 
     - failed on trial 1 of 15
 
   * 100 random line segments
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 4: (4774, 12924) -> (7294, 12924)
-    - reference segment 6: (2110, 12924) -> (4774, 12924) -> (5782, 12924) -> (7294, 12924)
+    - student   segment 0: (4053, 14892) -> (7581, 14892)
+    - reference segment 7: (4053, 14892) -> (6861, 14892) -> (7581, 14892) -> (7797, 14892)
 
-    - number of entries in student   solution: 94
+    - number of entries in student   solution: 93
     - number of entries in reference solution: 100
     - 3 extra entries in student solution, including:
-      '(4774, 12924) -> (7294, 12924)'
+      '(4053, 14892) -> (7581, 14892)'
 
-    - 9 missing entries in student solution, including:
-      '(2110, 12924) -> (4774, 12924) -> (5782, 12924) -> (7294, 12924)'
+    - 10 missing entries in student solution, including:
+      '(4053, 14892) -> (6861, 14892) -> (7581, 14892) -> (7797, 14892)'
 
 
     - failed on trial 1 of 2
@@ -1083,81 +1072,88 @@ Test 11: random distinct points in a given range
     - number of entries in student   solution: 1
     - number of entries in reference solution: 0
     - 1 extra entry in student solution:
-      '(5, 5) -> (8, 5)'
+      '(3, 3) -> (0, 9)'
 
 
-    - failed on trial 11 of 500
+    - failed on trial 3 of 500
      5
-         8     8
-         8     5
-         7     5
-         5     5
-         6     2
+         0     9
+         1     7
+         6     6
+         8     2
+         3     3
 
   * 10 random points in a 10-by-10 grid
-    - number of entries in student   solution: 0
+    - segments() contains a subsegment of a segment in reference solution
+    - student   segment 0: (5, 3) -> (0, 8)
+    - reference segment 0: (6, 2) -> (5, 3) -> (2, 6) -> (0, 8)
+
+    - number of entries in student   solution: 3
     - number of entries in reference solution: 1
+    - 3 extra entries in student solution, including:
+      '(5, 3) -> (0, 8)'
+
     - 1 missing entry in student solution:
-      '(0, 0) -> (0, 4) -> (0, 8) -> (0, 9)'
+      '(6, 2) -> (5, 3) -> (2, 6) -> (0, 8)'
 
 
-    - failed on trial 4 of 500
+    - failed on trial 3 of 500
      10
-         3     0
-         0     9
-         2     8
-         8     9
+         8     5
+         9     2
+         6     2
+         7     3
          0     8
-         3     6
-         4     9
-         0     4
-         5     7
-         0     0
+         2     6
+         0     3
+         5     3
+         6     9
+         3     2
 
   * 50 random points in a 10-by-10 grid
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (4, 7) -> (9, 7)
-    - reference segment 20: (1, 7) -> (2, 7) -> (4, 7) -> (5, 7) -> (7, 7) -> (9, 7)
+    - student   segment 0: (6, 9) -> (8, 9)
+    - reference segment 24: (0, 9) -> (1, 9) -> (2, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)
 
-    - number of entries in student   solution: 70
-    - number of entries in reference solution: 49
-    - 45 extra entries in student solution, including:
-      '(4, 7) -> (0, 9)'
+    - number of entries in student   solution: 58
+    - number of entries in reference solution: 40
+    - 43 extra entries in student solution, including:
+      '(6, 9) -> (8, 9)'
 
-    - 24 missing entries in student solution, including:
-      '(1, 7) -> (2, 7) -> (4, 7) -> (5, 7) -> (7, 7) -> (9, 7)'
+    - 25 missing entries in student solution, including:
+      '(0, 9) -> (1, 9) -> (2, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)'
 
 
     - failed on trial 1 of 100
 
   * 90 random points in a 10-by-10 grid
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (5, 9) -> (7, 9)
-    - reference segment 65: (0, 9) -> (1, 9) -> (2, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (9, 9)
+    - student   segment 0: (6, 9) -> (8, 9)
+    - reference segment 59: (0, 9) -> (1, 9) -> (2, 9) -> (3, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)
 
-    - number of entries in student   solution: 253
-    - number of entries in reference solution: 132
-    - 185 extra entries in student solution, including:
-      '(5, 9) -> (7, 9)'
+    - number of entries in student   solution: 241
+    - number of entries in reference solution: 123
+    - 182 extra entries in student solution, including:
+      '(6, 9) -> (8, 9)'
 
     - 64 missing entries in student solution, including:
-      '(0, 9) -> (1, 9) -> (2, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (9, 9)'
+      '(0, 9) -> (1, 9) -> (2, 9) -> (3, 9) -> (4, 9) -> (5, 9) -> (6, 9) -> (7, 9) -> (8, 9) -> (9, 9)'
 
 
     - failed on trial 1 of 50
 
   * 200 random points in a 50-by-50 grid
     - segments() contains a subsegment of a segment in reference solution
-    - student   segment 0: (12, 48) -> (49, 48)
-    - reference segment 111: (3, 48) -> (6, 48) -> (12, 48) -> (14, 48) -> (35, 48) -> (49, 48)
+    - student   segment 0: (42, 47) -> (49, 47)
+    - reference segment 106: (12, 47) -> (14, 47) -> (42, 47) -> (43, 47) -> (46, 47) -> (49, 47)
 
-    - number of entries in student   solution: 320
-    - number of entries in reference solution: 221
-    - 194 extra entries in student solution, including:
-      '(12, 48) -> (49, 48)'
+    - number of entries in student   solution: 338
+    - number of entries in reference solution: 248
+    - 186 extra entries in student solution, including:
+      '(42, 47) -> (49, 47)'
 
-    - 95 missing entries in student solution, including:
-      '(3, 48) -> (6, 48) -> (12, 48) -> (14, 48) -> (35, 48) -> (49, 48)'
+    - 96 missing entries in student solution, including:
+      '(12, 47) -> (14, 47) -> (42, 47) -> (43, 47) -> (46, 47) -> (49, 47)'
 
 
     - failed on trial 1 of 10
@@ -1308,14 +1304,8 @@ Test 13: check that data type is immutable by testing whether each method
 
 Test 14: check that data type does not mutate the constructor argument
   * input8.txt
-    - data type mutated the points[] array
-    - data type should have no side effects unless documented in API
-
   * equidistant.txt
-    - data type mutated the points[] array
-    - data type should have no side effects unless documented in API
-
-==> FAILED
+==> passed
 
 Test 15: numberOfSegments() is consistent with segments()
   * filename = input8.txt
@@ -1348,7 +1338,7 @@ Test 17: check that the constructor throws an exception if duplicate points
 ==> passed
 
 
-Total: 7/21 tests passed!
+Total: 8/21 tests passed!
 
 
 ================================================================
@@ -1384,11 +1374,11 @@ Test 1a-1e: Find collinear points among n random distinct points
                                                       slopeTo()
              n    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    16   0.01         680           0            680                   61
-=> passed    32   0.00        5456           0           5456                  149
-=> passed    64   0.00       43680           0          43680                  368
-=> passed   128   0.01      349504           0         349504                  858
-=> passed   256   0.05     2796160           0        2796160                 1992
+=> passed    16   0.01         680           0            680                   63
+=> passed    32   0.00        5456           0           5456                  154
+=> passed    64   0.00       43680           0          43680                  369
+=> passed   128   0.01      349504           0         349504                  871
+=> passed   256   0.05     2796337           0        2796337                 1994
 ==> 5/5 tests passed
 
 Test 2a-2e: Find collinear points among n/4 arbitrary line segments
@@ -1397,11 +1387,11 @@ Test 2a-2e: Find collinear points among n/4 arbitrary line segments
                                                       slopeTo()
              n    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    16   0.00         772           0            772                   58
-=> passed    32   0.00        5749           0           5749                  153
-=> passed    64   0.00       45137           0          45137                  364
-=> passed   128   0.00      356212           0         356212                  865
-=> passed   256   0.03     2823217           0        2823217                 1978
+=> passed    16   0.00         780           0            780                   59
+=> passed    32   0.00        5858           0           5858                  155
+=> passed    64   0.00       45122           0          45122                  372
+=> passed   128   0.00      355914           0         355914                  864
+=> passed   256   0.04     2822808           0        2822808                 1999
 ==> 5/5 tests passed
 
 Total: 10/10 tests passed!
@@ -1421,15 +1411,15 @@ Test 1a-1g: Find collinear points among n random distinct points
                                                       slopeTo()
              n    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    64   0.01        2074        8042          18158                  373
-=> passed   128   0.01        8250       39473          87196                  863
-=> passed   256   0.02       32890      187547         407984                 1987
-=> passed   512   0.09      131322      868407        1868136                 4495
-=> passed  1024   0.26      524794     3961365        8447524                 9994
-=> passed  2048   0.47     2098170    17817669       37733508                22053
+=> passed    64   0.01        2074        7889          17852                  367
+=> passed   128   0.01        8250       39052          86354                  864
+=> passed   256   0.02       32890      187003         406896                 1999
+=> passed   512   0.10      131322      869075        1869472                 4478
+=> passed  1024   0.27      524794     3959412        8443618                 9975
+=> passed  2048   0.45     2098170    17830889       37759948                22027
 ==> 6/6 tests passed
 
-lg ratio(slopeTo() + 2*compare()) = lg (37733508 / 8447524) = 2.16
+lg ratio(slopeTo() + 2*compare()) = lg (37759948 / 8443618) = 2.16
 => passed
 
 ==> 7/7 tests passed
@@ -1439,13 +1429,13 @@ Test 2a-2g: Find collinear points among the n points on an n-by-1 grid
                                                       slopeTo()
              n    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    64   0.00        2074        1952           5978                  368
-=> passed   128   0.00        8250        8000          24250                  872
-=> passed   256   0.00       32890       32384          97658                 1971
-=> passed   512   0.00      131322      130304         391930                 4474
-=> passed  1024   0.02      524794      522752        1570298                 9983
-=> passed  2048   0.09     2098170     2094080        6286330                22021
-=> passed  4096   0.13     8390650     8382464       25155578                48126
+=> passed    64   0.00        2074        1952           5978                  371
+=> passed   128   0.00        8250        8000          24250                  862
+=> passed   256   0.00       32890       32384          97658                 1987
+=> passed   512   0.01      131322      130304         391930                 4479
+=> passed  1024   0.02      524794      522752        1570298                 9996
+=> passed  2048   0.04     2098170     2094080        6286330                22014
+=> passed  4096   0.16     8390650     8382464       25155578                48133
 ==> 7/7 tests passed
 
 lg ratio(slopeTo() + 2*compare()) = lg (25155578 / 6286330) = 2.00
@@ -1458,13 +1448,13 @@ Test 3a-3g: Find collinear points among the n points on an n/4-by-4 grid
                                                       slopeTo()
              n    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    64   0.00        2074        6975          16024                  372
+=> passed    64   0.00        2074        6975          16024                  368
 => passed   128   0.00        8250       26476          61202                  870
-=> passed   256   0.01       32890       69827         172544                 1997
-=> passed   512   0.01      131322      245903         623128                 4490
-=> passed  1024   0.04      524794      927949        2380692                 9985
-=> passed  2048   0.11     2098170     3607526        9313222                22034
-=> passed  4096   0.37     8390650    14220881       36832412                48159
+=> passed   256   0.00       32890       69827         172544                 1962
+=> passed   512   0.01      131322      245903         623128                 4491
+=> passed  1024   0.03      524794      927949        2380692                 9989
+=> passed  2048   0.11     2098170     3607526        9313222                22010
+=> passed  4096   0.38     8390650    14220881       36832412                48155
 ==> 7/7 tests passed
 
 lg ratio(slopeTo() + 2*compare()) = lg (36832412 / 9313222) = 1.98
@@ -1477,13 +1467,13 @@ Test 4a-4g: Find collinear points among the n points on an n/8-by-8 grid
                                                       slopeTo()
              n    time     slopeTo()   compare()  + 2*compare()        compareTo()
 -----------------------------------------------------------------------------------------------
-=> passed    64   0.00        2074        7700          17474                  375
-=> passed   128   0.00        8250       35865          79980                  863
-=> passed   256   0.00       32890      127119         287128                 1984
-=> passed   512   0.01      131322      385257         901836                 4474
-=> passed  1024   0.03      524794     1438625        3402044                 9974
-=> passed  2048   0.13     2098170     5568216       13234602                22047
-=> passed  4096   0.42     8390650    21899885       52190420                48084
+=> passed    64   0.00        2074        7700          17474                  365
+=> passed   128   0.00        8250       35865          79980                  868
+=> passed   256   0.00       32890      127119         287128                 1992
+=> passed   512   0.01      131322      385257         901836                 4503
+=> passed  1024   0.03      524794     1438625        3402044                 9986
+=> passed  2048   0.15     2098170     5568216       13234602                22036
+=> passed  4096   0.42     8390650    21899885       52190420                48116
 ==> 7/7 tests passed
 
 lg ratio(slopeTo() + 2*compare()) = lg (52190420 / 13234602) = 1.98

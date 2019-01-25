@@ -4,10 +4,9 @@ import java.util.Arrays;
 public class BruteCollinearPoints {
 
   private Stack<LineSegment> stack;
-  private Point[] points;
 
   /**
-   * finds all line segments containing 4 points.
+   * finds all line segments containing 4 tmpPoints.
    *
    * @param points array which element is Point type
    */
@@ -15,34 +14,34 @@ public class BruteCollinearPoints {
     if (points == null) {
       throw new java.lang.IllegalArgumentException("There is no point.");
     }
-    this.points = points;
-    int size = this.points.length;
+    Point[] tmpPoints = points.clone();
+    int size = tmpPoints.length;
     for (int i = 0; i < size; i++) {
-      if (this.points[i] == null) {
+      if (tmpPoints[i] == null) {
         throw new java.lang.IllegalArgumentException("There exits a null point.");
       }
     }
     this.stack = new Stack<>();
-    Arrays.sort(this.points);
+    Arrays.sort(tmpPoints);
     for (int i = 1; i < size; i++) {
-      if (this.points[i - 1].compareTo(this.points[i]) == 0) {
+      if (tmpPoints[i - 1].compareTo(tmpPoints[i]) == 0) {
         throw new java.lang.IllegalArgumentException("There exits a repeated point.");
       }
     }
     for (int i = 0; i < size; i++) {
       for (int j = i + 1; j < size; j++) {
-        double slopeIandJ = this.points[i].slopeTo(this.points[j]);
+        double slopeIandJ = tmpPoints[i].slopeTo(tmpPoints[j]);
         for (int k = j + 1; k < size; k++) {
-          double slopeJandK = this.points[j].slopeTo(this.points[k]);
+          double slopeJandK = tmpPoints[j].slopeTo(tmpPoints[k]);
           if (Math.abs(slopeIandJ - slopeJandK) > 1e-6) {
             continue;
           }
           for (int l = k + 1; l < size; l++) {
-            double slopeKandL = this.points[k].slopeTo(this.points[l]);
+            double slopeKandL = tmpPoints[k].slopeTo(tmpPoints[l]);
             if (Math.abs(slopeJandK - slopeKandL) > 1e-6) {
               continue;
             }
-            stack.push(new LineSegment(this.points[i], this.points[l]));
+            stack.push(new LineSegment(tmpPoints[i], tmpPoints[l]));
           }
         }
       }
@@ -59,7 +58,7 @@ public class BruteCollinearPoints {
   }
 
   /**
-   * the line segments containing 4 points exactly once
+   * the line segments containing 4 tmpPoints exactly once
    * @return a array which element is LineSegment type
    */
   public LineSegment[] segments() {

@@ -4,10 +4,9 @@ import java.util.Arrays;
 public class FastCollinearPoints {
 
   private Stack<LineSegment> stack;
-  private Point[] points;
 
   /**
-   * finds all line segments containing 4 or more points.
+   * finds all line segments containing 4 or more tmpPoints.
    * @param points array which element is Point type
    */
   public FastCollinearPoints(Point[] points) {
@@ -15,34 +14,34 @@ public class FastCollinearPoints {
     if (points == null) {
       throw new java.lang.IllegalArgumentException("There is no point.");
     }
-    this.points = points;
-    int size = this.points.length;
+    Point[] tmpPoints = points.clone();
+    int size = tmpPoints.length;
     for (int i = 0; i < size; i++) {
-      if (this.points[i] == null) {
+      if (tmpPoints[i] == null) {
         throw new java.lang.IllegalArgumentException("There exits a null point.");
       }
     }
     this.stack = new Stack<>();
-    Arrays.sort(this.points);
+    Arrays.sort(tmpPoints);
     for (int i = 1; i < size; i++) {
-      if (this.points[i - 1].compareTo(this.points[i]) == 0) {
+      if (tmpPoints[i - 1].compareTo(tmpPoints[i]) == 0) {
         throw new java.lang.IllegalArgumentException("There exits a repeated point.");
       }
     }
 
     /* Not handling the 5-or-more case */
     for (int i = 0; i < size - 3; i++) {
-      /* only compare the points which is on the right or top of it */
-      Point[] tmpPoints = Arrays.copyOfRange(this.points, i + 1, size);
-      Arrays.sort(tmpPoints, this.points[i].slopeOrder());
-      double tmpSlope = this.points[i].slopeTo(tmpPoints[0]);
+      /* only compare the nextPoints which is on the right or top of it */
+      Point[] nextPoints = Arrays.copyOfRange(tmpPoints, i + 1, size);
+      Arrays.sort(nextPoints, tmpPoints[i].slopeOrder());
+      double tmpSlope = tmpPoints[i].slopeTo(nextPoints[0]);
       int count = 2;
-      for (int j = 0, length = tmpPoints.length; j < length; j++) {
-        double curSlope = this.points[i].slopeTo(tmpPoints[j]);
+      for (Point tmp : nextPoints) {
+        double curSlope = tmpPoints[i].slopeTo(tmp);
         if (Math.abs(tmpSlope - curSlope) < 1e-6) {
           count++;
           if (count == 4) {
-            stack.push(new LineSegment(this.points[i], tmpPoints[j]));
+            stack.push(new LineSegment(tmpPoints[i], tmp));
           }
         } else {
           tmpSlope = curSlope;
@@ -55,7 +54,7 @@ public class FastCollinearPoints {
 
   /**
    * the number of line segments
-   * @return
+   * @return the number of line segments
    */
   public int numberOfSegments() {
     return stack.size();
@@ -63,7 +62,7 @@ public class FastCollinearPoints {
 
   /**
    * the line segments.
-   * @return
+   * @return the line segments.
    */
   public LineSegment[] segments() {
     LineSegment[] result = new LineSegment[stack.size()];
