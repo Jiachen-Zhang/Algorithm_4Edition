@@ -1,5 +1,7 @@
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdDraw;
 
+import edu.princeton.cs.algs4.StdOut;
 import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
@@ -118,9 +120,9 @@ public class Point implements Comparable<Point> {
    */
   public static void main(String[] args) {
     /* YOUR CODE HERE */
-    /*
+//    /*
     // read the n points from a file
-    In in = new In(args[0]);
+    In in = new In("input9.txt");
     int n = in.readInt();
     Point[] points = new Point[n];
     for (int i = 0; i < n; i++) {
@@ -139,13 +141,15 @@ public class Point implements Comparable<Point> {
     StdDraw.show();
 
     // print and draw the line segments
-    BruteCollinearPoints collinear = new BruteCollinearPoints(points);
+    FastCollinearPoints collinear = new FastCollinearPoints(points);
     for (LineSegment segment : collinear.segments()) {
       StdOut.println(segment);
       segment.draw();
     }
     StdDraw.show();
-    */
+
+    System.out.println(collinear.numberOfSegments());
+    //    */
 
   }
 }
