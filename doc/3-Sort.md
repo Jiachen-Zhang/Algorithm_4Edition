@@ -251,6 +251,109 @@ public class MergeBU{
 }
 ```
 
+# Quicksort
+
+> Caveat emptor: Many textbook implementations go **quadratic** if array
+>
+> - is sorted or reverse sorted
+> - Has many duplicates (even if randomized!)
+
+
+
+Basic plan:
+
+- **shuffle** the array
+- **Partition** so that, for some j
+  - entry of `a[j]` is in place
+  - no larger entry to the left of `j`
+  - no smaller entry to the right of `j`
+- **Sort** each piece recursively
+
+Quick Partition:
+
+Phase I. Repeat until `i` and `j` pointers cross
+
+- Scan `i` from left to right so long as (`a[i]` < `a[lo]`)
+- Scan `j` from left to right so long as (`a[j]` > `a[lo]`)
+- Exchange `a[i]` with `a[j]`
+
+Phase II. When pointers cross
+
+- Exchange `a[lo]` with `a[j]`
+
+```java
+class Quicksort{
+    private int partition(Comparable[] a, int lo, int hi){
+        int i = lo, j = hi+1;
+        while (true) {
+            while (less(a[++i], a[lo]))
+                if (i = hi) break;
+            while (less(a[lo], a[--j]))
+                if (j == lo) break;
+            if (i >= j) break;
+            exch(a, i, j);
+        }
+        exch(a, lo, j);
+        return j;	// return index of item now known to be in place
+    }
+    
+    public void sort(Comparable[] a) {
+        StdRandom.shuffle(a);
+        sort(a, 0, a.length-1);
+    }
+    
+    private void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) return;
+        int j = paration(a, lo, hi);
+        sort(a, lo, j-1);
+        sort(a, j+1, hi);
+    }
+}
+```
+
+## Practical improvements
+
+Insertion sort small subarrays
+
+- Even quicksort has too many overhead for tiny subarrays
+- Cutoff to insertion sort for ≈ 10 items
+- Note: could delay insertion sort until one pass at end
+
+```java
+private void sort(Comparable[] a, int lo, int hi) {
+    if (hi <= lo + CUTOFF - 1) {
+    	Insertion.sort(a, lo, hi);
+       	return;
+    }
+    int j = paration(a, lo, hi);
+    sort(a, lo, j-1);
+    sort(a, j+1, hi);
+}
+```
+
+Median of sample
+
+- Best choice of pivot item = median
+- Estimate true median by taking median of sample
+- Median-of-3 (random) item
+  - ≈ $\frac{12}{7}NlnN$ compares (slightly fewer)
+  -  ≈ $\frac{12}{35}NlnN$ exchanges (slightly more)
+
+```java
+private void sort(Comparable[] a, int lo, int hi) {
+    if (hi <= lo) return;
+    
+    int m = medianOf3(a, lo, lo+(hi-lo)/2, hi); // improve about 10%
+    swap(a, lo, m);
+    
+    int j = paration(a, lo, hi);
+    sort(a, lo, j-1);
+    sort(a, j+1, hi);
+}
+```
+
+
+
 # Complexity of sorting
 
 - **Computational complexity**: Framework to study efficiency of algorithms for solving a particular problem X.
