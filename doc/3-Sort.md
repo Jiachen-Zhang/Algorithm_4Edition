@@ -352,7 +352,150 @@ private void sort(Comparable[] a, int lo, int hi) {
 }
 ```
 
+## Selection
 
+> Goal: Given an array of N items, find a $k^{th}$ smallest item.
+>
+> Ex. Min (k = 0), max (k = N - 1), median (k = N/2).
+
+Applications:
+
+- Order statistics
+- Find the "top k"
+
+Use theory as a guide:
+
+- Easy $NlogN$ upper bound. How?
+- Easy N upper bound for k = 1, 2, 3. How?
+- Easy N lower bound. Why?
+
+### Quick-select
+
+Partition array so that:
+
+- Entry `a[j]` is in place
+- No larger entry to the left of `j`
+- No smaller entry to the right of `j`
+
+Repeat in **one** subarray, depending on `j`; finished when `j` equals `k`
+
+```java
+public Comparable select(Comparable[] a, int k){
+    StdRandom.shuffle(a);
+    int lo = 0, hi = a.length-1;
+    while (hi > lo) {
+        int j = partition(a, lo, hi);
+        if (j < k) lo = j+1;
+        else if (j > k) hi = j-1;
+        else return a[k];
+    }
+    return a[k];
+}
+```
+
+## Duplicate keys
+
+> Quadratic when all keys are equal
+
+3-way partitioning:
+
+- Entries between `lt` and `gt` equal to partition item `v`
+- No larger entries to left of `lt`
+- No smaller entries to right of `gt`
+
+
+
+pseudocode:
+
+- let `v` be partitioning item a[lo]
+
+- Scan `i` from left to right
+
+  - (`a[i]` < `v`): exchange `a[lt]` with `a[i]`; increment both `lt` and `i`
+
+  - (`a[i]` > `v`): exchange `a[gt]` with `a[i]`; decrement `gt`
+
+  - (`a[i]` = `v`): increment `i`
+
+### 3-way quicksort
+
+```java
+private void sort(Comparable[] a, int lo, int hi){
+    if (hi <= lo) return;
+    int lt = lo, gt = hi;
+    Comparable v = a[lo];
+    int i = lo;
+    while (i < gt){
+        int cmp = a[i].compareTo(v);
+        if (cmp < 0) exch(a, lt++, i++);
+        else if (cmp > 0) exch(a, i, gt--);
+        else i++;
+    }
+    sort(a, lo, lt-1);
+    sort(a, gt+1, hi);
+}
+```
+
+## Java system sorts
+
+`Arrays.sort()`:
+
+- Has different method for each primitive type
+- Has a method for data types that implement Comparable
+- Has a method that uses a Comparator
+- Uses tuned quicksort for primitive types; tuned mergesort for objects.
+
+>Why use different algorithms for primitive and reference types?
+>
+>- If a programmer use Objects, maybe **spaces** not a critically important consideration, so the extra space used by **mergesort** maybe is not a problem.
+>- If the program is using primitive types, maybe performance is the important thing, so we'll use the **quicksort**.
+>
+>Why does `Arrays.sort()` in Java use mergesort instead of quicksort when sorting reference types?
+>
+>- stability
+>- $nlogn$ guaranteed performance
+
+### Engineering a system sort
+
+Basic algorithm = quicksort
+
+- Cutoff to insertion sort for small subarrays
+- Partitioning scheme: 3-way partitioning. [like Dijkstra]
+- Partitioning item:
+  - small arrays: middle entry
+  - medium arrays: median of 3
+  - large arrays: Tukey's ninther
+
+>Tukey's ninther: Median of the median of 3 samples, each of 3 entries.
+>
+>- Approximates the median of 9
+>- Uses at most 12 compares
+>
+>Q. Why use Tukey's ninther?
+>
+>A. Better partitioning than random shuffle and less costly.
+
+## System sorts
+
+Internal sorts:
+
+- Insertion sort, selection sort, bubblesort, shaker sort
+- Quicksort, mergesort, heapsort, samplesort, shellsort
+- Solitaire sort, red-black sort, splaysort, Yaroslavskiy sort, psort, ...
+
+External sorts:
+
+- Poly-phase mergesort, cascade-merge, oscillation sort.
+
+String/radix sorts:
+
+- Distribution, MSD, LSD, 3-way string quicksort
+
+Parallel sorts:
+
+- Bitonic sort, Batcher even-odd sort
+- Smooth sort, cube sort, column sort
+- GPUsort
 
 # Complexity of sorting
 
@@ -413,4 +556,8 @@ Stable sort:
 - Mergesort
 
 (Not selection sort or shellsort)
+
+# Sorting summary
+
+![img](../pic/3-4.jpg)
 
