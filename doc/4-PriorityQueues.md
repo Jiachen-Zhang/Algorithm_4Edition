@@ -202,3 +202,90 @@ public final class Vector{
   - Safe to use as key in priority queue or symbol table
 - Disadvantages
   - Must create ew object for each data type value.
+
+***
+
+## Heapsort
+
+**Basic plan for in-place sort**:
+
+- Create max-heap with all $N$ keys
+- Repeatedly remove the maximum key
+
+
+
+**Heap construction**:
+
+- Build max heap using bottom-up method
+
+  ```java
+  for (int k = N/2; k >= 1; k--) 
+    sink(a, k, N);
+  ```
+
+**Sort down**:
+
+- Repeatedly delete the largest remaining item
+
+  - remove the maximum, one at a time
+  - Leave in array, instead of nulling out
+
+  ```java
+  while (N > 1) {
+    exch(a, 1, N--);
+    sink(a, 1, N);
+  }
+  ```
+
+### Java implementation
+
+```java
+public class Heap{
+  public static void sort(Comparable[] pq){
+    int N = pq.length;
+    for(int k = N/2; k >= 1; k--){
+      sink(pq, k, N);
+    }
+    while (N > 1){
+      exch(pq, 1, N);
+      sink(pq, 1, --N);
+    }
+  }
+  
+  private void sink(Comparable[] pq, int k, int N){
+    /* as before */
+  }
+  
+  private boolean less(Comparable[] pq, int i, int j){
+    /* as before */
+  }
+  
+  private void exch(Comparable[] pq, int i, int j){
+    /* as before */
+  }
+}
+```
+
+> Proposition:
+>
+> - Heap construction uses $≤ 2N​$ compares and exchanges
+> - Heapsort uses $≤ 2NlgN$ compares and exchanges
+
+**Significance**: In-place sorting algorithm with $NlogN$ worst-case
+
+- Mergesort: No, linear extra space. (in-place merge possible, not pratical)
+- Quicksort: No, quadratic time in worst-case. ($NlogN$ possible, not pratical)
+- Heapsort: Yes.
+
+**Bottom line**:
+
+- Inner loop longer than quicksort's.
+- Makes poor use of cache memory
+- Not stable.
+
+***
+
+## Event-Dirven Simulation
+
+
+
