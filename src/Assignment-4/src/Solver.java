@@ -7,7 +7,6 @@ public class Solver {
 
   private final Board initial;
   private SearchNode minNode;
-  private SearchNode minNodeTwin;
 
   /**
    * find a solution to the initial board (using the A* algorithm).
@@ -20,30 +19,18 @@ public class Solver {
     }
     this.initial = initial;
     MinPQ<SearchNode> pq = new MinPQ<>();
-    MinPQ<SearchNode> pqTwin = new MinPQ<>();
-    pq.insert(new SearchNode(initial, 0, null));
-    pqTwin.insert(new SearchNode(initial.twin(), 0, null));
+    pq.insert(new SearchNode(initial, 0, null, false));
+    pq.insert(new SearchNode(initial.twin(), 0, null, true));
     minNode = pq.min();
-    minNodeTwin = pqTwin.min();
-    while (!minNode.board.isGoal() && !minNodeTwin.board.isGoal()) {
+    while (!minNode.board.isGoal()) {
       minNode = pq.delMin();
-      minNodeTwin = pqTwin.delMin();
       for (Board neighbor : minNode.board.neighbors()) {
         if (minNode.moves == 0) {
-          pq.insert(new SearchNode(neighbor, minNode.moves + 1, minNode));
+          pq.insert(new SearchNode(neighbor, minNode.moves + 1, minNode, minNode.isTwin));
         } else if (!neighbor.equals(minNode.previousNode.board)) {
           /* A critical optimization:
             don't enqueue a neighbor if its board is the same as the board of the predecessor search node */
-          pq.insert(new SearchNode(neighbor, minNode.moves + 1, minNode));
-        }
-      }
-      for (Board neighbor : minNodeTwin.board.neighbors()) {
-        if (minNodeTwin.moves == 0) {
-          pqTwin.insert(new SearchNode(neighbor, minNodeTwin.moves + 1, minNodeTwin));
-        } else if (!neighbor.equals(minNodeTwin.previousNode.board)) {
-          /* A critical optimization:
-            don't enqueue a neighbor if its board is the same as the board of the predecessor search node */
-          pqTwin.insert(new SearchNode(neighbor, minNodeTwin.moves + 1, minNodeTwin));
+          pq.insert(new SearchNode(neighbor, minNode.moves + 1, minNode, minNode.isTwin));
         }
       }
     }
@@ -54,16 +41,18 @@ public class Solver {
     private SearchNode previousNode;
     private Board board;
     private int priority;
+    private boolean isTwin;
     private int moves;
     /* A second optimization. To avoid recomputing the Manhattan priority of a search node from scratch each
      time during various priority queue operations, pre-compute its value when you construct the search node;
      save it in an instance variable; and return the saved value as needed.*/
 
-    public SearchNode(Board board, int moves, SearchNode previousNode) {
+    public SearchNode(Board board, int moves, SearchNode previousNode, boolean isTwin) {
       this.board = board;
       this.moves = moves;
       this.priority = moves + board.manhattan();
       this.previousNode = previousNode;
+      this.isTwin = isTwin;
     }
 
     public int compareTo(SearchNode that) {
@@ -77,7 +66,7 @@ public class Solver {
    * @return true if solvable
    */
   public boolean isSolvable() {
-    if (minNodeTwin.board.isGoal()) {
+    if (minNode.isTwin) {
       return false;
     }
     return minNode.board.isGoal();
