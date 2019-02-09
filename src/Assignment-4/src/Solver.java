@@ -3,14 +3,13 @@ import edu.princeton.cs.algs4.Stack;
 
 public class Solver {
 
-  private Board initial;
-  private Board goalBoard;
-  private int N;
-  private MinPQ<SearchNode> pq;
-  private MinPQ<SearchNode> pqTwin;
+  private final Board initial;
+  private SearchNode minNode;
+  private SearchNode minNodeTwin;
 
   /**
    * find a solution to the initial board (using the A* algorithm).
+   *
    * @param initial the original board
    */
   public Solver(Board initial) {
@@ -18,53 +17,43 @@ public class Solver {
       throw new IllegalArgumentException("null pointer of Board in the constructor");
     }
     this.initial = initial;
-    this.N = initial.dimension();
-    this.goalBoard = getGoalBoard(N);
-    this.pq = new MinPQ<SearchNode>();
-    this.pqTwin = new MinPQ<SearchNode>();
-
-    SearchNode minNode;
-    SearchNode minNodeTwin;
+    MinPQ<SearchNode> pq = new MinPQ<SearchNode>();
+    MinPQ<SearchNode> pqTwin = new MinPQ<SearchNode>();
     pq.insert(new SearchNode(initial, 0, null));
     pqTwin.insert(new SearchNode(initial.twin(), 0, null));
-    while(!pq.min().board.equals(goalBoard) && !pqTwin.min().board.equals(goalBoard)) {
+    while (!pq.min().board.isGoal() && !pqTwin.min().board.isGoal()) {
       minNode = pq.delMin();
       minNodeTwin = pqTwin.delMin();
-      for (Board neighbor: minNode.board.neighbors()) {
+      for (Board neighbor : minNode.board.neighbors()) {
         if (minNode.moves == 0) {
-          pq.insert(new SearchNode(neighbor, minNode.moves+1, minNode));
+          pq.insert(new SearchNode(neighbor, minNode.moves + 1, minNode));
         } else if (!neighbor.equals(minNode.previousNode.board)) {
-          pq.insert(new SearchNode(neighbor, minNode.moves+1, minNode));
+          /* A critical optimization:
+            don't enqueue a neighbor if its board is the same as the board of the predecessor search node */
+          pq.insert(new SearchNode(neighbor, minNode.moves + 1, minNode));
         }
       }
-      for (Board neighbor: minNodeTwin.board.neighbors()) {
+      for (Board neighbor : minNodeTwin.board.neighbors()) {
         if (minNodeTwin.moves == 0) {
-          pqTwin.insert(new SearchNode(neighbor, minNodeTwin.moves+1, minNodeTwin));
-        }
-        else if (!neighbor.equals(minNodeTwin.previousNode.board)) {
-          pqTwin.insert(new SearchNode(neighbor, minNodeTwin.moves+1, minNodeTwin));
+          pqTwin.insert(new SearchNode(neighbor, minNodeTwin.moves + 1, minNodeTwin));
+        } else if (!neighbor.equals(minNodeTwin.previousNode.board)) {
+          /* A critical optimization:
+            don't enqueue a neighbor if its board is the same as the board of the predecessor search node */
+          pqTwin.insert(new SearchNode(neighbor, minNodeTwin.moves + 1, minNodeTwin));
         }
       }
     }
-  }
-
-  private Board getGoalBoard(int dimension) {
-    int[][] blocks = new int[dimension][dimension];
-    int num = 1;
-    for (int i = 0; i < dimension; i++) {
-      for (int j = 0; j < dimension; j++) {
-        blocks[i][j] = num++;
-      }
-    }
-    blocks[dimension-1][dimension-1] = 0;
-    return new Board(blocks);
   }
 
   private class SearchNode implements Comparable<SearchNode> {
-    private Board board;
-    private int moves;
-    private int priority;
+
     private SearchNode previousNode;
+    private Board board;
+    private int priority;
+    private int moves;
+    /* A second optimization. To avoid recomputing the Manhattan priority of a search node from scratch each
+     time during various priority queue operations, pre-compute its value when you construct the search node;
+     save it in an instance variable; and return the saved value as needed.*/
 
     public SearchNode(Board board, int moves, SearchNode previousNode) {
       this.board = board;
@@ -80,13 +69,14 @@ public class Solver {
 
   /**
    * is the initial board solvable?
+   *
    * @return true if solvable
    */
   public boolean isSolvable() {
-    if (pq.min().board.equals(goalBoard)) {
+    if (minNode.board.isGoal()) {
       return true;
     }
-    if (pqTwin.min().board.equals(goalBoard)) {
+    if (minNodeTwin.board.isGoal()) {
       return false;
     }
     return false;
@@ -94,24 +84,28 @@ public class Solver {
 
   /**
    * min number of moves to solve initial board; -1 if unsolvable.
+   *
    * @return min number of moves to solve initial board; -1 if unsolvable
    */
   public int moves() {
-    if(!isSolvable()) {
+    if (!isSolvable()) {
       return -1;
     }
-    return pq.min().moves;
+    return minNode.moves;
   }
 
   /**
    * sequence of boards in a shortest solution; null if unsolvable.
+   *
    * @return sequence of boards in a shortest solution; null if unsolvable
    */
   public Iterable<Board> solution() {
-    if(!isSolvable()) return null;
+    if ( !isSolvable() ) {
+      return null;
+    }
     Stack<Board> stackSolution = new Stack<Board>();
-    SearchNode current = pq.min();
-    while (current.previousNode!=null) {
+    SearchNode current = minNode;
+    while (current.previousNode != null) {
       stackSolution.push(current.board);
       current = current.previousNode;
     }
@@ -121,10 +115,11 @@ public class Solver {
 
   /**
    * solve a slider puzzle (given below).
+   *
    * @param args default
    */
   public static void main(String[] args) {
-
+    /* */
   }
 
 }

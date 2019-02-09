@@ -1,0 +1,2265 @@
+See the Assessment Guide for information on how to interpret this report.
+
+ASSESSMENT SUMMARY
+
+Compilation:  FAILED (0 errors, 1 warning)
+API:          PASSED
+
+Spotbugs:     FAILED (1 warning)
+PMD:          FAILED (9 warnings)
+Checkstyle:   FAILED (0 errors, 25 warnings)
+
+Correctness:  20/51 tests passed
+Memory:       20/22 tests passed
+Timing:       100/125 tests passed
+
+Aggregate score: 53.62%
+[Compilation: 5%, API: 5%, Spotbugs: 0%, PMD: 0%, Checkstyle: 0%, Correctness: 60%, Memory: 10%, Timing: 20%]
+
+ASSESSMENT DETAILS
+
+The following files were submitted:
+----------------------------------
+7.3K Feb  9 03:23 Board.java
+4.0K Feb  9 03:23 Solver.java
+
+
+********************************************************************************
+*  COMPILING
+********************************************************************************
+
+
+% javac Board.java
+*-----------------------------------------------------------
+Board.java:193: warning: [cast] redundant cast to int
+        s.append(String.format("%2d ", (int)blocks[k]));
+                                       ^
+1 warning
+
+% javac Solver.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+Board:
+
+Solver:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS
+********************************************************************************
+
+
+% spotbugs *.class
+*-----------------------------------------------------------
+L P URF_UNREAD_FIELD UrF: The instance (or static) variable 'N' is never read. Consider removing it from the class.  At Solver.java:[line 21]
+Warnings generated: 1
+
+
+================================================================
+
+
+% pmd .
+*-----------------------------------------------------------
+Board.java:10: The private instance (or static) variable 'manhattan' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:6: The private instance (or static) variable 'initial' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:7: Avoid unused private instance (or static) variables, such as 'N'. [UnusedPrivateField]
+Solver.java:7: Can you replace the instance (or static) variable 'N' with a local variable? [SingularField]
+Solver.java:52: The private instance (or static) variable 'previousNode' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:53: The private instance (or static) variable 'board' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:54: The private instance (or static) variable 'priority' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:55: The private instance (or static) variable 'moves' can be made 'final'; it is initialized only in the declaration or constructor. [ImmutableField]
+Solver.java:123: The method body is empty. If this is your intent, document it with a comment. [UncommentedEmptyMethodBody]
+PMD ends with 9 warnings.
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+[WARN] Board.java:8:9: The modifier 'private' is out of order. The preferred order is ['public', 'protected', 'private', 'abstract', 'static', 'final', 'transient', 'volatile', 'synchronized', 'native', and 'strictfp']. [ModifierOrder]
+[WARN] Board.java:9:9: The modifier 'private' is out of order. The preferred order is ['public', 'protected', 'private', 'abstract', 'static', 'final', 'transient', 'volatile', 'synchronized', 'native', and 'strictfp']. [ModifierOrder]
+[WARN] Board.java:9:21: The instance variable 'N' must start with a lowercase letter and use camelCase. [MemberName]
+[WARN] Board.java:147:42: Typecast is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:158:7: 'if' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:160:23: ',' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:163:7: 'if' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:165:25: ',' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:168:7: 'if' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:170:25: ',' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:173:7: 'if' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:175:26: ',' is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:193:45: Typecast is not followed by whitespace. [WhitespaceAfter]
+[WARN] Board.java:208:29: The local (or parameter) variable 'blocks' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] Board.java:213:31: The local (or parameter) variable 'blocks' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] Board.java:218:31: The local (or parameter) variable 'blocks' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] Board.java:223:32: The local (or parameter) variable 'blocks' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] Board.java:228:36: The local (or parameter) variable 'blocks' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] Board.java:230:13: The local variable 'blocks_2D' must start with a lowercase letter and use camelCase. [LocalVariableName]
+[WARN] Board.java:240:11: The local (or parameter) variable 'blocks' has the same name as an instance variable. Use a different name. [HiddenField]
+[WARN] Board.java:260:9: The local variable 'N' must start with a lowercase letter and use camelCase. [LocalVariableName]
+[WARN] Solver.java:7:9: The modifier 'private' is out of order. The preferred order is ['public', 'protected', 'private', 'abstract', 'static', 'final', 'transient', 'volatile', 'synchronized', 'native', and 'strictfp']. [ModifierOrder]
+[WARN] Solver.java:7:21: The instance variable 'N' must start with a lowercase letter and use camelCase. [MemberName]
+[WARN] Solver.java:105:9: '(' is followed by whitespace. [ParenPad]
+[WARN] Solver.java:105:23: ')' is preceded with whitespace. [ParenPad]
+Checkstyle ends with 0 errors and 25 warnings.
+
+% custom checkstyle checks for Board.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for Solver.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+Testing correctness of Board
+*-----------------------------------------------------------
+Running 26 total tests.
+
+Tests 4-7 and 14-17 rely upon toString() returning results in prescribed format.
+
+Test 1a: check hamming() with file inputs
+  * puzzle04.txt
+    - student   hamming() = 5
+    - reference hamming() = 4
+        3
+         0  1  3
+         4  2  5
+         7  8  6
+
+
+  * puzzle00.txt
+    - student   hamming() = 1
+    - reference hamming() = 0
+        10
+         1  2  3  4  5  6  7  8  9 10
+        11 12 13 14 15 16 17 18 19 20
+        21 22 23 24 25 26 27 28 29 30
+        31 32 33 34 35 36 37 38 39 40
+        41 42 43 44 45 46 47 48 49 50
+        51 52 53 54 55 56 57 58 59 60
+        61 62 63 64 65 66 67 68 69 70
+        71 72 73 74 75 76 77 78 79 80
+        81 82 83 84 85 86 87 88 89 90
+        91 92 93 94 95 96 97 98 99  0
+
+
+  * puzzle07.txt
+    - student   hamming() = 5
+    - reference hamming() = 4
+        3
+         1  2  3
+         0  7  6
+         5  4  8
+
+
+  * puzzle17.txt
+    - student   hamming() = 9
+    - reference hamming() = 8
+        3
+         5  1  8
+         2  7  3
+         4  0  6
+
+
+  * puzzle27.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * puzzle2x2-unsolvable1.txt
+    - student   hamming() = 3
+    - reference hamming() = 2
+        2
+         1  0
+         2  3
+
+
+==> FAILED
+
+Test 1b: check hamming() with random n-by-n boards
+  * 2-by-2
+    - student   hamming() = 3
+    - reference hamming() = 2
+        2
+         0  2
+         1  3
+
+
+    - failed on trial 1 of 1000
+
+  * 3-by-3
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  2  1
+         7  0  3
+         4  6  8
+
+
+    - failed on trial 1 of 1000
+
+  * 4-by-4
+    - student   hamming() = 16
+    - reference hamming() = 15
+        4
+        12  1  4 11
+        15  5  9  3
+         6  8  2 14
+        10  7 13  0
+
+
+    - failed on trial 1 of 1000
+
+  * 5-by-5
+    - student   hamming() = 21
+    - reference hamming() = 20
+        5
+        14  3 11 17  5
+         8 23 24  7 10
+        19 22 20 18  9
+        16 15  0 12  4
+        21  2  6 13  1
+
+
+    - failed on trial 1 of 1000
+
+  * 9-by-9
+    - student   hamming() = 80
+    - reference hamming() = 79
+        9
+        74 75 62 47 10 57 26 40 65
+        39 41 63 27 46 24 76 42 34
+        48  2  8 66 17  1 18 61 11
+         6 72 77 64 68 37 25 78 54
+        71 36 19 35  5 53  0 20 59
+        49 55 79 50 12 51 15  9 32
+        13 80 58 73 16 30  7 56 70
+        60 52 67 21 33  4 69 28 29
+        44 38 45 23 43  3 31 14 22
+
+
+    - failed on trial 1 of 1000
+
+  * 10-by-10
+    - student   hamming() = 98
+    - reference hamming() = 97
+        10
+        19 37  8 67 33 94 79 83 73 29
+        68 24 11 77 85  6 13 40 75 81
+        90 98 17 54  3 18 91 46 53 92
+        44 70 48 26 31 12 82 71 89  0
+        47 42 21 78 95 63 16 15 30 65
+        59 96 32 99 27 87 60 43 23  1
+        20 38 76 57 84 41 35 97 62 10
+        88 86 51 34 80 45 66 58  9  2
+         4 14 36 74 69 50  5 61 28 64
+        22 52 93 25  7 39 49 55 72 56
+
+
+    - failed on trial 1 of 1000
+
+  * 127-by-127
+    - student   hamming() = 16127
+    - reference hamming() = 16126
+
+    - failed on trial 1 of 10
+
+==> FAILED
+
+Test 2a: check manhattan() with file inputs
+  * puzzle04.txt
+    - student   manhattan() = 6
+    - reference manhattan() = 4
+        3
+         0  1  3
+         4  2  5
+         7  8  6
+
+
+  * puzzle00.txt
+  * puzzle07.txt
+    - student   manhattan() = 9
+    - reference manhattan() = 7
+        3
+         1  2  3
+         0  7  6
+         5  4  8
+
+
+  * puzzle17.txt
+  * puzzle27.txt
+    - student   manhattan() = 15
+    - reference manhattan() = 17
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * puzzle2x2-unsolvable1.txt
+==> FAILED
+
+Test 2b: check manhattan() with random n-by-n boards
+  * 2-by-2
+    - student   manhattan() = 5
+    - reference manhattan() = 3
+        2
+         2  0
+         3  1
+
+
+    - failed on trial 2 of 1000
+
+  * 3-by-3
+    - student   manhattan() = 14
+    - reference manhattan() = 12
+        3
+         2  6  8
+         4  0  1
+         7  5  3
+
+
+    - failed on trial 2 of 1000
+
+  * 4-by-4
+    - student   manhattan() = 39
+    - reference manhattan() = 36
+        4
+         6 12  5  7
+         3 13  1 15
+        11 10  2  8
+        14  0  9  4
+
+
+    - failed on trial 1 of 1000
+
+  * 5-by-5
+    - student   manhattan() = 72
+    - reference manhattan() = 76
+        5
+         5  6 21 14  0
+         3  1  9 19 16
+        11 24 22 15  7
+        13  8  2 23 17
+        20 18  4 10 12
+
+
+    - failed on trial 1 of 1000
+
+  * 9-by-9
+    - student   manhattan() = 466
+    - reference manhattan() = 490
+        9
+        33 24 69 55 42 47 61  5 76
+        11 63 20 58 21 19  2 52 34
+        16 50 57 68 23 64 15 39 65
+        31 41 17 77 56 38 30  7 70
+        74 22 46 25 78  8  3 67 53
+        32  0 62 54 49 13 35  4  6
+        27 26 40 36 72 75 18 79 73
+        66 10 71 14 51 59 43 80 48
+         9 45  1 37 44 60 29 28 12
+
+
+    - failed on trial 1 of 1000
+
+  * 10-by-10
+    - student   manhattan() = 671
+    - reference manhattan() = 646
+        10
+        70 71 79  9 39 48 67 82 90 81
+        22 11 95  0 61 55 93 72 98  4
+        76  7 37 17 12 59 33 53 64 19
+        74 78 34 26 65 27 56 29 96  5
+        51 54 38 86 10 88 44 49 91 57
+        87 46 40 23 58 41  6 52 30 43
+        62 94 16 47 42 92 28 20 80 15
+         1 83 68 24  3 60 32 75 63 25
+        18 31 85  2 35 50 77 36 97  8
+        73 69 84 99 14 21 89 45 66 13
+
+
+    - failed on trial 1 of 1000
+
+  * 127-by-127
+    - student   manhattan() = 1368542
+    - reference manhattan() = 1366842
+
+    - failed on trial 1 of 10
+
+==> FAILED
+
+Test 3: check dimension() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 6-by-6
+==> passed
+
+Test 4a: check toString() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 4b: check toString() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+  * 127-by-127
+==> passed
+
+Test 5a: check neighbors() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 5b: check neighbors() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+  * 127-by-127
+==> passed
+
+Test 6a: check neighbors() of neighbors() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 6b: check neighbors() of neighbors() with random n-by-n boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 9-by-9
+  * 10-by-10
+==> passed
+
+Test 7a: check twin() with file inputs
+  * puzzle04.txt
+  * puzzle00.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 7b: check twin() with random n-by-n boards
+  * 2-by-2
+    java.lang.ArrayIndexOutOfBoundsException: -1
+
+    Board.twin(Board.java:114)
+    TestBoard.checkTwin(TestBoard.java:663)
+    TestBoard.checkTwin(TestBoard.java:699)
+    TestBoard.test7b(TestBoard.java:1473)
+    TestBoard.main(TestBoard.java:1686)
+
+    - failed on trial 3 of 1000
+
+  * 3-by-3
+    java.lang.ArrayIndexOutOfBoundsException: 9
+
+    Board.twin(Board.java:120)
+    TestBoard.checkTwin(TestBoard.java:663)
+    TestBoard.checkTwin(TestBoard.java:699)
+    TestBoard.test7b(TestBoard.java:1474)
+    TestBoard.main(TestBoard.java:1686)
+
+    - failed on trial 3 of 1000
+
+  * 4-by-4
+    java.lang.ArrayIndexOutOfBoundsException: 16
+
+    Board.twin(Board.java:120)
+    TestBoard.checkTwin(TestBoard.java:663)
+    TestBoard.checkTwin(TestBoard.java:699)
+    TestBoard.test7b(TestBoard.java:1475)
+    TestBoard.main(TestBoard.java:1686)
+
+    - failed on trial 1 of 1000
+
+  * 5-by-5
+    java.lang.ArrayIndexOutOfBoundsException: 25
+
+    Board.twin(Board.java:120)
+    TestBoard.checkTwin(TestBoard.java:663)
+    TestBoard.checkTwin(TestBoard.java:699)
+    TestBoard.test7b(TestBoard.java:1476)
+    TestBoard.main(TestBoard.java:1686)
+
+    - failed on trial 10 of 1000
+
+  * 9-by-9
+    java.lang.ArrayIndexOutOfBoundsException: -1
+
+    Board.twin(Board.java:114)
+    TestBoard.checkTwin(TestBoard.java:663)
+    TestBoard.checkTwin(TestBoard.java:699)
+    TestBoard.test7b(TestBoard.java:1477)
+    TestBoard.main(TestBoard.java:1686)
+
+    - failed on trial 14 of 100
+
+  * 10-by-10
+==> FAILED
+
+Test 8a: check isGoal() with file inputs
+  * puzzle00.txt
+  * puzzle04.txt
+  * puzzle16.txt
+  * puzzle06.txt
+  * puzzle09.txt
+  * puzzle23.txt
+  * puzzle2x2-unsolvable1.txt
+  * puzzle3x3-unsolvable1.txt
+  * puzzle3x3-00.txt
+  * puzzle4x4-00.txt
+==> passed
+
+Test 8b: check isGoal() on n-by-n goal boards
+  * 2-by-2
+  * 3-by-3
+  * 4-by-4
+  * 5-by-5
+  * 6-by-6
+  * 100-by-100
+==> passed
+
+Test 9: check that two Board objects can be created at the same time
+  * random 3-by-3 and 3-by-3 boards
+  * random 4-by-4 and 4-by-4 boards
+  * random 2-by-2 and 2-by-2 boards
+  * random 3-by-3 and 4-by-4 boards
+  * random 4-by-4 and 3-by-3 boards
+==> passed
+
+Test 10a: check equals()
+  * reflexive
+  * symmetric
+  * transitive
+  * argument is null
+  * argument is of type String
+  * argument is of type UncastableString
+  * Board object stored in a variable of type Object
+==> passed
+
+Test 10b: check correctness of equals() on random n-by-n boards
+  * n = 2
+  * n = 3
+  * n = 4
+  * 5 <= n < 10
+==> passed
+
+Test 10c: check equals() when board sizes m and n are different
+  * m = 4, n = 5
+  * m = 2, n = 5
+  * m = 5, n = 3
+  * m = 2, n = 3
+  * m = 3, n = 2
+==> passed
+
+Test 11: check that Board is immutable by changing argument array after
+         construction and making sure Board does not mutate
+==> passed
+
+Test 12: check that Board is immutable by testing whether methods
+         return the same value, regardless of order in which called
+  * puzzle10.txt
+    - failed after 13 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 26 25 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 16 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 59 58 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 22 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 57 49 50 51 52 53 54
+        55 56 48 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 23 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 62 61 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 25 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  8  7  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 51 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 39 31 32 33 34 35 36
+        37 38 30 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 72 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 56 48 49 50 51 52 53 54
+        55 47 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 74 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 67 65 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 78 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 26 18
+        19 20 21 22 23 24 25 17 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 81 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 67 65 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 92 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+        10  2  3  4  5  6  7  8  9
+         1 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 96 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 70 63
+        64  0 65 67 68 78 69 62 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 97 calls to random methods in Board
+    - first call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 71 72
+        73 74 66 75 76 77 79 70 80
+
+    - last  call to twin() =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 32 24 25 26 27
+        28 29 30 31 23 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+  * puzzle20.txt
+    - failed after 5 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         1  6  7
+         4  0  8
+         2  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+    - sequence of Board operations was:
+         Board board = new Board(tiles)
+         board.equals(other) ==> false
+         board.equals(other) ==> true
+         board.hamming()     ==> 8
+         board.twin()
+         board.twin()
+
+    - failed after 12 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         1  6  7
+         4  0  8
+         2  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 50 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         1  6  4
+         2  0  8
+         7  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 56 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         6  1  4
+         7  0  8
+         2  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 65 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         1  6  4
+         7  0  8
+         3  2  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 68 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         7  6  4
+         1  0  8
+         2  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 81 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         1  6  8
+         7  0  4
+         2  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 92 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         1  6  7
+         4  0  8
+         2  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 94 calls to random methods in Board
+    - first call to twin() =
+        3
+         1  6  4
+         7  0  5
+         2  3  8
+
+    - last  call to twin() =
+        3
+         1  6  7
+         4  0  8
+         2  3  5
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+  * puzzle30.txt
+    - failed after 7 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  7
+         3  5  6
+         1  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+    - sequence of Board operations was:
+         Board board = new Board(tiles)
+         board.manhattan()   ==> 12
+         board.manhattan()   ==> 12
+         board.twin()
+         board.isGoal()      ==> false
+         board.manhattan()   ==> 12
+         board.neighbors()
+         board.twin()
+
+    - failed after 26 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  7
+         1  5  6
+         2  3  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 28 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  1
+         7  5  6
+         3  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 33 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  7
+         1  2  6
+         3  5  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 40 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         4  8  7
+         1  5  6
+         3  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 46 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  7
+         1  5  3
+         6  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 55 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  7
+         1  2  6
+         3  5  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 71 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  7
+         1  5  3
+         6  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 79 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  6
+         1  5  7
+         3  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 91 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         8  4  6
+         1  5  7
+         3  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 95 calls to random methods in Board
+    - first call to twin() =
+        3
+         8  4  7
+         5  1  6
+         3  2  0
+
+    - last  call to twin() =
+        3
+         1  4  7
+         8  5  6
+         3  2  0
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+  * 2-by-2
+    java.lang.ArrayIndexOutOfBoundsException: 4
+
+    Board.twin(Board.java:120)
+    TestBoard.checkImmutableBoard(TestBoard.java:1227)
+    TestBoard.checkImmutableBoard(TestBoard.java:1299)
+    TestBoard.test12(TestBoard.java:1598)
+    TestBoard.main(TestBoard.java:1694)
+
+    - sequence of Board operations was:
+         Board board = new Board(tiles)
+         board.neighbors()
+         board.twin()
+
+    - failed on trial 1 of 100
+
+  * 3-by-3
+    - failed after 14 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  3  7
+         5  2  6
+         8  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 30 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         3  4  7
+         5  2  8
+         6  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 40 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  2  7
+         5  3  8
+         6  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 43 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  2  7
+         5  3  8
+         6  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 49 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  3  7
+         2  5  8
+         6  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 56 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  3  7
+         5  2  6
+         8  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 82 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  2  7
+         5  3  8
+         6  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 83 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  2  7
+         5  3  8
+         6  0  1
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 85 calls to random methods in Board
+    - first call to twin() =
+        3
+         4  3  8
+         5  2  7
+         6  0  1
+
+    - last  call to twin() =
+        3
+         4  3  7
+         5  2  1
+         6  0  8
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    java.lang.ArrayIndexOutOfBoundsException: -1
+
+    Board.twin(Board.java:114)
+    TestBoard.checkImmutableBoard(TestBoard.java:1227)
+    TestBoard.checkImmutableBoard(TestBoard.java:1299)
+    TestBoard.test12(TestBoard.java:1599)
+    TestBoard.main(TestBoard.java:1694)
+
+
+    - failed on trial 1 of 100
+
+  * 4-by-4
+    - failed after 25 calls to random methods in Board
+    - first call to twin() =
+        4
+         1  3 11 14
+        15  2  7  6
+         9  5 10  4
+         0  8 13 12
+
+    - last  call to twin() =
+        4
+         1  3  7 14
+        15  2 11  4
+         9  5 10  6
+         0  8 13 12
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    - failed after 37 calls to random methods in Board
+    - first call to twin() =
+        4
+         1  3 11 14
+        15  2  7  6
+         9  5 10  4
+         0  8 13 12
+
+    - last  call to twin() =
+        4
+         1  7  3 14
+        15  2 11  6
+         9  5 10  4
+         0  8 13 12
+
+    - twin1.equals(twin2) = false
+    - twin2.equals(twin1) = false
+
+    java.lang.ArrayIndexOutOfBoundsException: -1
+
+    Board.twin(Board.java:114)
+    TestBoard.checkImmutableBoard(TestBoard.java:1227)
+    TestBoard.checkImmutableBoard(TestBoard.java:1299)
+    TestBoard.test12(TestBoard.java:1600)
+    TestBoard.main(TestBoard.java:1694)
+
+
+    - failed on trial 1 of 100
+
+==> FAILED
+
+Test 13: check dimension() on a board that is kth neighbor of a board
+  * 0th neighbor of puzzle27.txt
+  * 1st neighbor of puzzle27.txt
+  * 2nd neighbor of puzzle27.txt
+  * 13th neighbor of puzzle27.txt
+  * 13th neighbor of puzzle00.txt
+  * 13th neighbor of puzzle2x2-unsolvable1.txt
+==> passed
+
+Test 14: check hamming() on a board that is kth neighbor of a board
+  * 0th neighbor of puzzle27.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * 1st neighbor of puzzle27.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  8  7
+         1  0  6
+         3  4  2
+
+
+  * 2nd neighbor of puzzle27.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * 13th neighbor of puzzle27.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  8  7
+         1  4  6
+         0  3  2
+
+
+  * 13th neighbor of puzzle00.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        10
+         1  2  3  4  5  6  7  8  9 10
+        11 12 13 14 15 16 17 18 19 20
+        21 22 23 24 25 26 27 28 29 30
+        31 32 33 34 35 36 37 38 39 40
+        41 42 43 44 45 46 47 48 49 50
+        51 52 53 54 55 56 57 58 59 60
+        61 62 63 64 65 66 67 68 69 70
+        71 72 73 74 75 76 77 78 79 80
+        81 82 83 84 85 86 87 88 89 90
+        91 92  0 93 94 95 96 97 98 99
+
+
+  * 13th neighbor of puzzle2x2-unsolvable1.txt
+    - student   hamming() = 3
+    - reference hamming() = 2
+        2
+         2  1
+         3  0
+
+
+==> FAILED
+
+Test 15: check manhattan() on a board that is a kth neighbor of a board
+  * 0th neighbor of puzzle27.txt
+    - student   manhattan() = 15
+    - reference manhattan() = 17
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * 1st neighbor of puzzle27.txt
+    - student   manhattan() = 12
+    - reference manhattan() = 16
+        3
+         5  8  7
+         1  4  6
+         3  2  0
+
+
+  * 2nd neighbor of puzzle27.txt
+    - student   manhattan() = 15
+    - reference manhattan() = 17
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * 13th neighbor of puzzle27.txt
+    - student   manhattan() = 18
+    - reference manhattan() = 16
+        3
+         8  7  0
+         5  4  6
+         1  3  2
+
+
+  * 13th neighbor of puzzle00.txt
+    - student   manhattan() = 30
+    - reference manhattan() = 5
+        10
+         1  2  3  4  5  6  7  8  9 10
+        11 12 13 14 15 16 17 18 19 20
+        21 22 23 24 25 26 27 28 29 30
+        31 32 33 34 35 36 37 38 39 40
+        41 42 43 44 45 46 47 48 49 50
+        51 52 53 54 55 56 57 58 59 60
+        61 62 63 64 65 66 67 68 69 70
+        71 72 73 74 75 76 77 78 79 80
+        81 82 83 84 85 86 87 88 90 99
+        91 92 93 94 95 96 97 98  0 89
+
+
+  * 13th neighbor of puzzle2x2-unsolvable1.txt
+    - student   manhattan() = 3
+    - reference manhattan() = 4
+        2
+         0  3
+         1  2
+
+
+==> FAILED
+
+Test 16: check hamming() on a board that is a kth twin of a board
+  * 0th twin of puzzle27.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * 1st twin of puzzle27.txt
+    - student   hamming() = 9
+    - reference hamming() = 8
+        3
+         5  8  7
+         1  4  3
+         6  0  2
+
+
+  * 2nd twin of puzzle27.txt
+    - student   hamming() = 8
+    - reference hamming() = 7
+        3
+         5  4  1
+         7  8  6
+         3  0  2
+
+
+  * 13th twin of puzzle27.txt
+    - student   hamming() = 7
+    - reference hamming() = 6
+        3
+         8  4  1
+         3  5  2
+         7  0  6
+
+
+  * 13th twin of puzzle00.txt
+    - student   hamming() = 22
+    - reference hamming() = 21
+        10
+         1  2  3  4  5  6  7  8  9 10
+        11 22 13 14 15 16 17 18 19 20
+        21 12 23 24 25 26 27 28 29 30
+        31 32 43 34 35 36 38 37 39 40
+        41 42 33 45 44 46 47 48 49 50
+        52 53 51 54 55 56 57 58 59 60
+        61 62 63 64 65 66 67 69 68 70
+        71 72 73 74 75 76 77 78 79 81
+        80 92 83 84 85 96 87 88 89 91
+        90 82 93 94 95 86 97 98 99  0
+
+
+  * 13th twin of puzzle2x2-unsolvable1.txt
+    java.lang.ArrayIndexOutOfBoundsException: 4
+
+    Board.twin(Board.java:120)
+    TestBoard.checkHammingOfTwin(TestBoard.java:403)
+    TestBoard.checkHammingOfTwin(TestBoard.java:395)
+    TestBoard.test16(TestBoard.java:1648)
+    TestBoard.main(TestBoard.java:1698)
+
+==> FAILED
+
+Test 17: check manhattan() on a board that is a kth twin of a board
+  * 0th twin of puzzle27.txt
+    - student   manhattan() = 15
+    - reference manhattan() = 17
+        3
+         5  8  7
+         1  4  6
+         3  0  2
+
+
+  * 1st twin of puzzle27.txt
+  * 2nd twin of puzzle27.txt
+    - student   manhattan() = 15
+    - reference manhattan() = 17
+        3
+         4  8  7
+         5  1  6
+         3  0  2
+
+
+  * 13th twin of puzzle27.txt
+    - student   manhattan() = 9
+    - reference manhattan() = 7
+        3
+         1  4  2
+         8  5  6
+         7  0  3
+
+
+  * 13th twin of puzzle00.txt
+    - student   manhattan() = 26
+    - reference manhattan() = 44
+        10
+         1  2  3  4  5  6  7 18  9 10
+        11 12 13 14 15 16 17  8 19 21
+        20 22 23 24 25 26 27 28 29 30
+        41 32 33 34 35 36 47 38 39 40
+        31 42 43 54 45 56 37 48 49 80
+        51 52 53 44 55 46 57 58 59 50
+        61 62 63 64 65 66 67 68 69 60
+        71 72 73 74 75 76 77 78 79 70
+        81 84 82 83 95 86 87 88 89 90
+        91 92 93 94 85 96 97 99 98  0
+
+
+  * 13th twin of puzzle2x2-unsolvable1.txt
+    java.lang.ArrayIndexOutOfBoundsException: 4
+
+    Board.twin(Board.java:120)
+    TestBoard.checkManhattanOfTwin(TestBoard.java:438)
+    TestBoard.checkManhattanOfTwin(TestBoard.java:430)
+    TestBoard.test17(TestBoard.java:1660)
+    TestBoard.main(TestBoard.java:1699)
+
+==> FAILED
+
+
+Total: 16/26 tests passed!
+
+
+================================================================
+********************************************************************************
+*  MEMORY
+********************************************************************************
+
+Analyzing memory of Board
+*-----------------------------------------------------------
+Running 10 total tests.
+
+Memory usage of an n-by-n board
+[ must be at most 4n^2 + 32n + 64 bytes ]
+
+
+              n       student (bytes)    reference (bytes)
+----------------------------------------------------------
+=> passed     2            80                  128
+=> passed     3           104                  192
+=> passed     4           128                  240
+=> passed     8           320                  560
+=> passed    12           640                 1008
+=> passed    16          1088                 1584
+=> passed    20          1664                 2288
+=> passed    37          5544                 6856
+=> passed    72         20800                23088
+=> passed   120         57664                61488
+==> 10/10 tests passed
+
+Total: 10/10 tests passed!
+
+Student   memory = 4.00 n^2 + 0.00 n + 64.00   (R^2 = 1.000)
+Reference memory = 4.00 n^2 + 32.00 n + 48.00   (R^2 = 1.000)
+
+================================================================
+
+
+
+********************************************************************************
+*  TESTING CORRECTNESS (substituting reference Board)
+********************************************************************************
+
+Testing correctness of Solver
+*-----------------------------------------------------------
+Running 25 total tests.
+
+Test 1a: check moves() with file inputs
+  * puzzle00.txt
+    java.lang.NullPointerException
+
+    Solver$SearchNode.access$000(Solver.java:50)
+    Solver.isSolvable(Solver.java:78)
+    Solver.moves(Solver.java:93)
+    TestSolver.checkMoves(TestSolver.java:156)
+    TestSolver.checkMoves(TestSolver.java:112)
+    TestSolver.test1a(TestSolver.java:696)
+    TestSolver.main(TestSolver.java:998)
+
+  * puzzle01.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 1
+    - initial board =
+        2
+         1  0
+         3  2
+
+  * puzzle02.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 2
+    - initial board =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64 65 66 67 68 69 70  0 71
+        73 74 75 76 77 78 79 80 72
+
+  * puzzle03.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 3
+    - initial board =
+        2
+         2  0
+         1  3
+
+  * puzzle04.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 4
+    - initial board =
+        3
+         0  1  3
+         4  2  5
+         7  8  6
+
+  * puzzle05.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 5
+    - initial board =
+        3
+         4  1  3
+         0  2  6
+         7  5  8
+
+  * puzzle06.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 6
+    - initial board =
+        4
+         0  1  2  3
+         5  6  7  4
+         9 10 11  8
+        13 14 15 12
+
+  * puzzle07.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 7
+    - initial board =
+        3
+         1  2  3
+         0  7  6
+         5  4  8
+
+  * puzzle08.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 8
+    - initial board =
+        3
+         2  3  5
+         1  0  4
+         7  8  6
+
+  * puzzle09.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 9
+    - initial board =
+        4
+         2  0  3  4
+         1 10  6  8
+         5  9  7 12
+        13 14 11 15
+
+  * puzzle10.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 10
+    - initial board =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+  * puzzle11.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 11
+    - initial board =
+        3
+         1  0  2
+         7  5  4
+         8  6  3
+
+  * puzzle12.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 12
+    - initial board =
+        5
+         1  2  3  4  5
+        12  6  8  9 10
+         0  7 13 19 14
+        11 16 17 18 15
+        21 22 23 24 20
+
+  * puzzle13.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 13
+    - initial board =
+        4
+         2  3  4  8
+         1  6  0 12
+         5 10  7 11
+         9 13 14 15
+
+==> FAILED
+
+Test 1b: check solution() with file inputs
+  * puzzle00.txt
+    java.lang.NullPointerException
+
+    Solver$SearchNode.access$000(Solver.java:50)
+    Solver.isSolvable(Solver.java:78)
+    Solver.solution(Solver.java:105)
+    TestSolver.checkSolution(TestSolver.java:201)
+    TestSolver.checkSolution(TestSolver.java:190)
+    TestSolver.test1b(TestSolver.java:709)
+    TestSolver.main(TestSolver.java:1001)
+
+  * puzzle01.txt
+    - solution() incorrectly returns null
+    - initial board =
+        2
+         1  0
+         3  2
+
+  * puzzle02.txt
+    - solution() incorrectly returns null
+    - initial board =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64 65 66 67 68 69 70  0 71
+        73 74 75 76 77 78 79 80 72
+
+  * puzzle03.txt
+    - solution() incorrectly returns null
+    - initial board =
+        2
+         2  0
+         1  3
+
+  * puzzle04.txt
+    - solution() incorrectly returns null
+    - initial board =
+        3
+         0  1  3
+         4  2  5
+         7  8  6
+
+  * puzzle05.txt
+    - solution() incorrectly returns null
+    - initial board =
+        3
+         4  1  3
+         0  2  6
+         7  5  8
+
+  * puzzle06.txt
+    - solution() incorrectly returns null
+    - initial board =
+        4
+         0  1  2  3
+         5  6  7  4
+         9 10 11  8
+        13 14 15 12
+
+  * puzzle07.txt
+    - solution() incorrectly returns null
+    - initial board =
+        3
+         1  2  3
+         0  7  6
+         5  4  8
+
+  * puzzle08.txt
+    - solution() incorrectly returns null
+    - initial board =
+        3
+         2  3  5
+         1  0  4
+         7  8  6
+
+  * puzzle09.txt
+    - solution() incorrectly returns null
+    - initial board =
+        4
+         2  0  3  4
+         1 10  6  8
+         5  9  7 12
+        13 14 11 15
+
+  * puzzle10.txt
+    - solution() incorrectly returns null
+    - initial board =
+        9
+         1  2  3  4  5  6  7  8  9
+        10 11 12 13 14 15 16 17 18
+        19 20 21 22 23 24 25 26 27
+        28 29 30 31 32 33 34 35 36
+        37 38 39 40 41 42 43 44 45
+        46 47 48 49 50 51 52 53 54
+        55 56 57 58 59 60 61 62 63
+        64  0 65 67 68 78 69 70 72
+        73 74 66 75 76 77 79 71 80
+
+  * puzzle11.txt
+    - solution() incorrectly returns null
+    - initial board =
+        3
+         1  0  2
+         7  5  4
+         8  6  3
+
+  * puzzle12.txt
+    - solution() incorrectly returns null
+    - initial board =
+        5
+         1  2  3  4  5
+        12  6  8  9 10
+         0  7 13 19 14
+        11 16 17 18 15
+        21 22 23 24 20
+
+  * puzzle13.txt
+    - solution() incorrectly returns null
+    - initial board =
+        4
+         2  3  4  8
+         1  6  0 12
+         5 10  7 11
+         9 13 14 15
+
+==> FAILED
+
+Test 2a: check moves() with more file inputs
+  * puzzle14.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 14
+    - initial board =
+        7
+         1  2  3  4  5  7 14
+         8  9 10 11 12 13  6
+        15 16 17 18 19 20 21
+        22 23 24 25 26 27 28
+        29 30 31 32  0 33 34
+        36 37 38 39 40 41 35
+        43 44 45 46 47 48 42
+
+  * puzzle15.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 15
+    - initial board =
+        8
+         1  2  3  4  5  6  7  8
+         9 10 11 12 13 14 15 16
+        17 18 19 20 21 22 23 24
+         0 25 27 28 29 30 31 32
+        34 26 35 36 37 38 39 40
+        33 41 42 43 45 46 47 48
+        49 50 51 44 61 53 54 56
+        57 58 59 52 60 62 55 63
+
+  * puzzle16.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 16
+    - initial board =
+        10
+         1  2  3  4  5  6  7  8  9 10
+        11 12 13 14 15 16 17 18 19 20
+        21 22 23 24 25 26 27 28 29 30
+        31 32 33 34 35 36 47 37 39 40
+        41 42 43 44 45 46  0 38 49 50
+        51 52 53 54 55 56 57 48 59 60
+        61 62 63 64 65 66 67 58 69 80
+        71 72 73 74 75 76 77 68 70 78
+        81 82 83 84 85 86 87 88 79 89
+        91 92 93 94 95 96 97 98 99 90
+
+  * puzzle17.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 17
+    - initial board =
+        3
+         5  1  8
+         2  7  3
+         4  0  6
+
+  * puzzle18.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 18
+    - initial board =
+        3
+         5  6  2
+         1  8  4
+         7  3  0
+
+  * puzzle19.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 19
+    - initial board =
+        3
+         1  2  7
+         0  4  3
+         6  5  8
+
+  * puzzle20.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 20
+    - initial board =
+        3
+         1  6  4
+         7  0  8
+         2  3  5
+
+  * puzzle21.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 21
+    - initial board =
+        3
+         5  2  3
+         4  7  0
+         8  6  1
+
+  * puzzle22.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 22
+    - initial board =
+        3
+         4  8  2
+         3  6  5
+         1  7  0
+
+  * puzzle23.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 23
+    - initial board =
+        3
+         5  0  4
+         2  3  8
+         7  1  6
+
+  * puzzle24.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 24
+    - initial board =
+        3
+         5  7  4
+         3  0  8
+         1  6  2
+
+  * puzzle25.txt
+    - moves() returns wrong value
+    - student   moves() = -1
+    - reference moves() = 25
+    - initial board =
+        3
+         2  8  5
+         3  6
+
+...
+
+WARNING: the grading output was truncated due to excessive length.
+Typically, this is because you have a method that has an unanticipated side effect
+(such as printing to standard output or throwing an exception). A large amount of output
+can also arise from failing many tests.
