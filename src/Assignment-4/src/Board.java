@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class Board {
 
-  private final int[] blocks;
+  private final char[] blocks;
   private final int N;
   private int blankIdx;
   private Board twin;
@@ -101,9 +101,9 @@ public class Board {
   }
 
   private Board getTwin() {
-    int[] blocksClone = blocks.clone();
+    char[] blocksClone = blocks.clone();
     /* choose a block (which is not 0) */
-    int idx = 0;
+    int idx;
     do {
       idx = StdRandom.uniform(N * N);
     } while (blocks[idx] == 0);
@@ -169,7 +169,7 @@ public class Board {
    */
   public Iterable<Board> neighbors() {
     Queue<Board> bq = new Queue<>();
-    int[] neighbor;
+    char[] neighbor;
     if (getRow(blankIdx) != 0) {
       neighbor = blocks.clone();
       swapUp(neighbor, blankIdx);
@@ -201,7 +201,7 @@ public class Board {
    */
   public String toString() {
     StringBuilder s = new StringBuilder();
-    s.append(N + "\n");
+    s.append(String.format("%d\n", N));
     int k = 0;
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
@@ -221,31 +221,31 @@ public class Board {
     return idx / N;
   }
 
-  private void swapUp(int[] twinBlocks, int idx) {
-    int temp = twinBlocks[idx];
+  private void swapUp(char[] twinBlocks, int idx) {
+    char temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx - N];
     twinBlocks[idx - N] = temp;
   }
 
-  private void swapDown(int[] twinBlocks, int idx) {
-    int temp = twinBlocks[idx];
+  private void swapDown(char[] twinBlocks, int idx) {
+    char temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx + N];
     twinBlocks[idx + N] = temp;
   }
 
-  private void swapLeft(int[] twinBlocks, int idx) {
-    int temp = twinBlocks[idx];
+  private void swapLeft(char[] twinBlocks, int idx) {
+    char temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx - 1];
     twinBlocks[idx - 1] = temp;
   }
 
-  private void swapRight(int[] twinBlocks, int idx) {
-    int temp = twinBlocks[idx];
+  private void swapRight(char[] twinBlocks, int idx) {
+    char temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx + 1];
     twinBlocks[idx + 1] = temp;
   }
 
-  private int[][] get2DArray(int[] blocks1D) {
+  private int[][] get2DArray(char[] blocks1D) {
     int idx = 0;
     int[][] blocks2D = new int[N][N];
     for (int i = 0; i < N; i++) {
@@ -256,12 +256,12 @@ public class Board {
     return blocks2D;
   }
 
-  private int[] get1DArray(int[][] blocks2D) {
+  private char[] get1DArray(int[][] blocks2D) {
     int idx = 0;
-    int[] blocks1D = new int[N * N];
+    char[] blocks1D = new char[N * N];
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
-        blocks1D[idx] = blocks2D[i][j];
+        blocks1D[idx] = (char)blocks2D[i][j];
         if (blocks1D[idx] == 0) {
           blankIdx = idx;
         }
