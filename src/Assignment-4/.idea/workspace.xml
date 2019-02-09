@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d216844-bdf5-4e8e-bd28-97e0993f9e87" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Solver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Solver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/feedback" beforeDir="false" afterPath="$PROJECT_DIR$/src/feedback" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,17 +15,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;method#Board#0;class#Board#0" />
+                <element signature="docComment;method#dimension#0;class#Board#0" />
+                <element signature="docComment;method#hamming#0;class#Board#0" />
+                <element signature="docComment;method#manhattan#0;class#Board#0" />
+                <element signature="docComment;method#isGoal#0;class#Board#0" />
+                <element signature="method#isGoal#0;class#Board#0" />
+                <element signature="docComment;method#twin#0;class#Board#0" />
+                <element signature="docComment;method#equals#0;class#Board#0" />
+                <element signature="method#equals#0;class#Board#0" />
+                <element signature="docComment;method#neighbors#0;class#Board#0" />
+                <element signature="docComment;method#toString#0;class#Board#0" />
+                <element signature="method#swapUp#0;class#Board#0" />
+                <element signature="method#swapDown#0;class#Board#0" />
+                <element signature="method#swapLeft#0;class#Board#0" />
+                <element signature="method#swapRight#0;class#Board#0" />
+                <element signature="method#get2DArray#0;class#Board#0" />
+                <element signature="method#get1DArray#0;class#Board#0" />
+                <element signature="docComment;method#main#0;class#Board#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Solver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+            <state relative-caret-position="-1078">
+              <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#Solver#0;class#Solver#0" />
-                <element signature="class#SearchNode#0;class#Solver#0" />
                 <element signature="docComment;method#isSolvable#0;class#Solver#0" />
-                <element signature="method#isSolvable#0;class#Solver#0" />
                 <element signature="docComment;method#moves#0;class#Solver#0" />
                 <element signature="method#moves#0;class#Solver#0" />
                 <element signature="docComment;method#solution#0;class#Solver#0" />
@@ -37,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/feedback">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="533">
-              <caret line="573" column="19" lean-forward="true" selection-start-line="569" selection-start-column="8" selection-end-line="573" selection-end-column="19" />
+            <state relative-caret-position="7434">
+              <caret line="354" lean-forward="true" selection-start-line="354" selection-end-line="354" />
             </state>
           </provider>
         </entry>
@@ -67,6 +94,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>throw</find>
+      <find>memory</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -75,10 +103,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/feedback" />
-        <option value="$PROJECT_DIR$/src/Board.java" />
         <option value="$PROJECT_DIR$/src/test.txt" />
+        <option value="$PROJECT_DIR$/src/Board.java" />
         <option value="$PROJECT_DIR$/src/Solver.java" />
+        <option value="$PROJECT_DIR$/src/feedback" />
       </list>
     </option>
   </component>
@@ -119,7 +147,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549690277354" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549692261573" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../lib/algs4.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -173,18 +201,18 @@
       <updated>1549529321294</updated>
       <workItem from="1549529328188" duration="5874000" />
       <workItem from="1549635771193" duration="4611000" />
-      <workItem from="1549680119093" duration="8601000" />
+      <workItem from="1549680119093" duration="10680000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19086000" />
+    <option name="totallyTimeSpent" value="21165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49762282" visible="true" weight="0.2563966" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49762282" visible="true" weight="0.2563966" />
       <window_info id="Structure" order="1" sideWeight="0.50237715" side_tool="true" visible="true" weight="0.2563966" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -194,7 +222,7 @@
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32952183" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34407485" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.34407485" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -234,22 +262,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="285" column="7" lean-forward="true" selection-start-line="285" selection-start-column="7" selection-end-line="285" selection-end-column="7" />
+        <state relative-caret-position="88">
+          <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#Board#0;class#Board#0" />
             <element signature="docComment;method#dimension#0;class#Board#0" />
-            <element signature="e#1098#1099#0" expanded="true" />
-            <element signature="e#1116#1117#0" expanded="true" />
             <element signature="docComment;method#hamming#0;class#Board#0" />
             <element signature="docComment;method#manhattan#0;class#Board#0" />
             <element signature="docComment;method#isGoal#0;class#Board#0" />
             <element signature="method#isGoal#0;class#Board#0" />
             <element signature="docComment;method#twin#0;class#Board#0" />
-            <element signature="method#getTwin#0;class#Board#0" />
             <element signature="docComment;method#equals#0;class#Board#0" />
             <element signature="method#equals#0;class#Board#0" />
             <element signature="docComment;method#neighbors#0;class#Board#0" />
@@ -265,36 +297,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/feedback">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="533">
-          <caret line="573" column="19" lean-forward="true" selection-start-line="569" selection-start-column="8" selection-end-line="573" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Solver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="23" column="35" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        <state relative-caret-position="-1078">
+          <caret line="30" column="41" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#Solver#0;class#Solver#0" />
-            <element signature="class#SearchNode#0;class#Solver#0" />
             <element signature="docComment;method#isSolvable#0;class#Solver#0" />
-            <element signature="method#isSolvable#0;class#Solver#0" />
             <element signature="docComment;method#moves#0;class#Solver#0" />
             <element signature="method#moves#0;class#Solver#0" />
             <element signature="docComment;method#solution#0;class#Solver#0" />
             <element signature="method#solution#0;class#Solver#0" />
             <element signature="docComment;method#main#0;class#Solver#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/feedback">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7434">
+          <caret line="354" lean-forward="true" selection-start-line="354" selection-end-line="354" />
         </state>
       </provider>
     </entry>

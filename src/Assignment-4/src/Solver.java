@@ -19,8 +19,8 @@ public class Solver {
       throw new IllegalArgumentException("null pointer of Board in the constructor");
     }
     this.initial = initial;
-    MinPQ<SearchNode> pq = new MinPQ<SearchNode>();
-    MinPQ<SearchNode> pqTwin = new MinPQ<SearchNode>();
+    MinPQ<SearchNode> pq = new MinPQ<>();
+    MinPQ<SearchNode> pqTwin = new MinPQ<>();
     pq.insert(new SearchNode(initial, 0, null));
     pqTwin.insert(new SearchNode(initial.twin(), 0, null));
     minNode = pq.min();
@@ -77,13 +77,10 @@ public class Solver {
    * @return true if solvable
    */
   public boolean isSolvable() {
-    if (minNode.board.isGoal()) {
-      return true;
-    }
     if (minNodeTwin.board.isGoal()) {
       return false;
     }
-    return true;
+    return minNode.board.isGoal();
   }
 
   /**
@@ -107,7 +104,7 @@ public class Solver {
     if ( !isSolvable() ) {
       return null;
     }
-    Stack<Board> stackSolution = new Stack<Board>();
+    Stack<Board> stackSolution = new Stack<>();
     SearchNode current = minNode;
     while (current.previousNode != null) {
       stackSolution.push(current.board);
