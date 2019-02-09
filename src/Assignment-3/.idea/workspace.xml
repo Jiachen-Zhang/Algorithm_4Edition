@@ -18,59 +18,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BruteCollinearPoints.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
+            <state>
               <caret line="20" column="82" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;method#numberOfSegments#0;class#BruteCollinearPoints#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Point.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2457">
-              <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;method#Point#0;class#Point#0" />
-                <element signature="docComment;method#draw#0;class#Point#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FastCollinearPoints.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="651">
-              <caret line="37" column="83" selection-start-line="37" selection-start-column="83" selection-end-line="37" selection-end-column="83" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;field#lineSegments#0;class#FastCollinearPoints#0" />
-                <element signature="docComment;method#FastCollinearPoints#0;class#FastCollinearPoints#0" />
-                <element signature="docComment;method#addLineSegemnt#0;class#FastCollinearPoints#0" />
-                <element signature="method#addLineSegemnt#0;class#FastCollinearPoints#0" />
-                <element signature="method#isLegal#0;class#FastCollinearPoints#0" />
-                <element signature="docComment;method#numberOfSegments#0;class#FastCollinearPoints#0" />
-                <element signature="e#3921#3922#0" expanded="true" />
-                <element signature="e#3957#3958#0" expanded="true" />
-                <element signature="docComment;method#segments#0;class#FastCollinearPoints#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/feedback">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -120,20 +76,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
-            <path>
-              <item name="Assignment-3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment-3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Assignment-3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment-3" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
             <path>
               <item name="Assignment-3" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
@@ -142,6 +87,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -203,6 +150,7 @@
       <workItem from="1548404747234" duration="10719000" />
       <workItem from="1548423566588" duration="10476000" />
       <workItem from="1548904654458" duration="48000" />
+      <workItem from="1549529284666" duration="38000" />
     </task>
     <task id="LOCAL-00001" summary="60/100 with feedback">
       <created>1548345723917</created>
@@ -222,14 +170,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35540000" />
+    <option name="totallyTimeSpent" value="35578000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.493763" visible="true" weight="0.19349681" />
-      <window_info id="Structure" order="1" sideWeight="0.50623703" side_tool="true" visible="true" weight="0.19349681" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4927235" visible="true" weight="0.195629" />
+      <window_info id="Structure" order="1" sideWeight="0.50727654" side_tool="true" visible="true" weight="0.195629" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -347,26 +294,10 @@
     <entry file="file://$PROJECT_DIR$/src/input40.txt" />
     <entry file="file://$PROJECT_DIR$/src/input9.png" />
     <entry file="file://$PROJECT_DIR$/src/input9.txt" />
-    <entry file="file://$PROJECT_DIR$/src/BruteCollinearPoints.java">
+    <entry file="file://$PROJECT_DIR$/src/feedback">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="20" column="82" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#numberOfSegments#0;class#BruteCollinearPoints#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Point.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2457">
-          <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#Point#0;class#Point#0" />
-            <element signature="docComment;method#draw#0;class#Point#0" />
-          </folding>
+        <state relative-caret-position="315">
+          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -389,10 +320,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/feedback">
+    <entry file="file://$PROJECT_DIR$/src/Point.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="15" selection-start-line="15" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="870">
+          <caret line="124" column="26" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#Point#0;class#Point#0" />
+            <element signature="docComment;method#draw#0;class#Point#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BruteCollinearPoints.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="20" column="82" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;method#numberOfSegments#0;class#BruteCollinearPoints#0" />
+          </folding>
         </state>
       </provider>
     </entry>
