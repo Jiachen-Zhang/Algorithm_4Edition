@@ -5,10 +5,12 @@ import edu.princeton.cs.algs4.StdRandom;
 import java.util.Arrays;
 
 public class Board {
+
   private final int[] blocks;
   private final int N;
-  private int manhattan;
   private int blankIdx;
+  private Board twin;
+  private boolean hasTwin;
 
   /**
    * construct a board from an n-by-n array of blocks. (where blocks[i][j] = block in row i, column
@@ -22,14 +24,8 @@ public class Board {
     }
     this.N = iniBlocks.length;
     this.blocks = get1DArray(iniBlocks);
-
-    this.manhattan = 0;
-    for (int i = 0, length = blocks.length; i < length; i++) {
-      if (blocks[i] != 0 && blocks[i] != i + 1) {
-        this.manhattan += Math.abs((i + 1) % N - blocks[i] % N) +
-            Math.abs((i + 1) / N - blocks[i] / N);
-      }
-    }
+    this.twin = null;
+    this.hasTwin = false;
   }
 
   /**
@@ -63,6 +59,17 @@ public class Board {
    * @return Manhattan distance
    */
   public int manhattan() {
+    int manhattan = 0;
+    for (int i = 0, length = blocks.length; i < length; i++) {
+      if (blocks[i] != 0 && blocks[i] != i + 1) {
+        int col = Math.abs(i % N - (blocks[i] - 1) % N); // Math.abs(cur - goal)
+        int row = Math.abs(i / N - (blocks[i] - 1) / N);
+//        System.out.println("i = " + (i+1) + ", row = " + row + ", col = " + col);
+//        System.out.println("col = " + i % N + "-" + (blocks[i]-1) % N );
+//        System.out.println("row = " + i / N + "-" + (blocks[i]-1) / N );
+        manhattan += col + row;
+      }
+    }
     return manhattan;
   }
 
@@ -86,7 +93,15 @@ public class Board {
    * @return a board that is obtained by exchanging any pair of blocks.
    */
   public Board twin() {
-    int[] twin = blocks.clone();
+    if (!hasTwin) {
+      twin = getTwin();
+      hasTwin = true;
+    }
+    return twin;
+  }
+
+  private Board getTwin() {
+    int[] blocksClone = blocks.clone();
     /* choose a block (which is not 0) */
     int idx = 0;
     do {
@@ -99,33 +114,33 @@ public class Board {
       int choice = StdRandom.uniform(4);
       switch (choice) {
         case 0: // swapUp
-          if ( getRow(idx) != 0 && twin[idx - N] != 0 ) {
-            swapUp(twin, idx);
+          if (getRow(idx) != 0 && blocksClone[idx - N] != 0) {
+            swapUp(blocksClone, idx);
             swapSuccess = true;
           }
           break;
         case 1: // swapDown
-          if ( getRow(idx) != N - 1 && twin[idx + N] != 0 ) {
-            swapDown(twin, idx);
+          if (getRow(idx) != N - 1 && blocksClone[idx + N] != 0) {
+            swapDown(blocksClone, idx);
             swapSuccess = true;
           }
           break;
         case 2: // swapLeft
-          if ( getCol(idx) != 0 && twin[idx - 1] != 0 ) {
-            swapLeft(twin, idx);
+          if (getCol(idx) != 0 && blocksClone[idx - 1] != 0) {
+            swapLeft(blocksClone, idx);
             swapSuccess = true;
           }
           break;
         case 3: // swapRight
-          if ( getCol(idx) != N - 1 && twin[idx + 1] != 0 ) {
-            swapRight(twin, idx);
+          if (getCol(idx) != N - 1 && blocksClone[idx + 1] != 0) {
+            swapRight(blocksClone, idx);
             swapSuccess = true;
           }
           break;
       }
     } while (!swapSuccess);
 
-    return new Board(get2DArray(twin));
+    return new Board(get2DArray(blocksClone));
   }
 
   /**
@@ -144,7 +159,7 @@ public class Board {
     if (y.getClass() != this.getClass()) {
       return false;
     }
-    return Arrays.equals(blocks, ((Board)y).blocks);
+    return Arrays.equals(blocks, ((Board) y).blocks);
   }
 
   /**
@@ -155,22 +170,22 @@ public class Board {
   public Iterable<Board> neighbors() {
     Queue<Board> bq = new Queue<>();
     int[] neighbor;
-    if( getRow(blankIdx) != 0 ) {
+    if (getRow(blankIdx) != 0) {
       neighbor = blocks.clone();
       swapUp(neighbor, blankIdx);
       bq.enqueue(new Board(get2DArray(neighbor)));
     }
-    if( getRow(blankIdx) != N-1 ) {
+    if (getRow(blankIdx) != N - 1) {
       neighbor = blocks.clone();
       swapDown(neighbor, blankIdx);
       bq.enqueue(new Board(get2DArray(neighbor)));
     }
-    if( getCol(blankIdx) != 0 ) {
+    if (getCol(blankIdx) != 0) {
       neighbor = blocks.clone();
       swapLeft(neighbor, blankIdx);
       bq.enqueue(new Board(get2DArray(neighbor)));
     }
-    if( getCol(blankIdx) != N-1 ) {
+    if (getCol(blankIdx) != N - 1) {
       neighbor = blocks.clone();
       swapRight(neighbor, blankIdx);
       bq.enqueue(new Board(get2DArray(neighbor)));
@@ -190,8 +205,7 @@ public class Board {
     int k = 0;
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
-        s.append(String.format("%2d ", (int)blocks[k]));
-        k++;
+        s.append(String.format("%2d ", (int) blocks[k++]));
       }
       s.append("\n");
     }
@@ -202,52 +216,59 @@ public class Board {
   private int getCol(int idx) {
     return idx % N;
   }
+
   private int getRow(int idx) {
     return idx / N;
   }
+
   private void swapUp(int[] twinBlocks, int idx) {
     int temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx - N];
     twinBlocks[idx - N] = temp;
   }
+
   private void swapDown(int[] twinBlocks, int idx) {
     int temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx + N];
     twinBlocks[idx + N] = temp;
   }
+
   private void swapLeft(int[] twinBlocks, int idx) {
     int temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx - 1];
     twinBlocks[idx - 1] = temp;
   }
+
   private void swapRight(int[] twinBlocks, int idx) {
     int temp = twinBlocks[idx];
     twinBlocks[idx] = twinBlocks[idx + 1];
     twinBlocks[idx + 1] = temp;
   }
-  private int[][] get2DArray(int[] blocks_1D) {
+
+  private int[][] get2DArray(int[] blocks1D) {
     int idx = 0;
-    int[][] blocks_2D = new int[N][N];
+    int[][] blocks2D = new int[N][N];
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
-        blocks_2D[i][j] = blocks_1D[idx++];
+        blocks2D[i][j] = blocks1D[idx++];
       }
     }
-    return blocks_2D;
+    return blocks2D;
   }
-  private int[] get1DArray(int[][] blocks_2D) {
+
+  private int[] get1DArray(int[][] blocks2D) {
     int idx = 0;
-    int[] blocks = new int[N * N];
+    int[] blocks1D = new int[N * N];
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
-        blocks[idx] = blocks_2D[i][j];
-        if (blocks[idx] == 0) {
+        blocks1D[idx] = blocks2D[i][j];
+        if (blocks1D[idx] == 0) {
           blankIdx = idx;
         }
         idx++;
       }
     }
-    return blocks;
+    return blocks1D;
   }
 
   /**
@@ -266,10 +287,10 @@ public class Board {
     }
     Board initial = new Board(blocks);
 
-//    StdOut.print(initial.toString());
-    StdOut.print(initial.twin().toString());
-    StdOut.println(initial.hamming());
-//    StdOut.println(initial.manhattan());
+    StdOut.print(initial.toString());
+//    StdOut.print(initial.twin().toString());
+//    StdOut.println(initial.hamming());
+    StdOut.println(initial.manhattan());
 //    StdOut.println(initial.dimension());
 //    StdOut.println(initial.isGoal());
 //
