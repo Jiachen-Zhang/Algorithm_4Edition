@@ -288,19 +288,19 @@ public class Board {
     Board initial = new Board(blocks);
 
     StdOut.print(initial.toString());
-//    StdOut.print(initial.twin().toString());
-//    StdOut.println(initial.hamming());
+    StdOut.print(initial.twin().toString());
+    StdOut.println(initial.hamming());
     StdOut.println(initial.manhattan());
-//    StdOut.println(initial.dimension());
-//    StdOut.println(initial.isGoal());
-//
-//    for (Board b : initial.neighbors()) {
-//      StdOut.println(b.toString());
-//      for (Board d : b.neighbors()) {
-//        StdOut.println("===========");
-//        StdOut.println(d.toString());
-//        StdOut.println("===========");
-//      }
-//    }
+    StdOut.println(initial.dimension());
+    StdOut.println(initial.isGoal());
+
+    for (Board b : initial.neighbors()) {
+      StdOut.println(b.toString());
+      for (Board d : b.neighbors()) {
+        StdOut.println("===========");
+        StdOut.println(d.toString());
+        StdOut.println("===========");
+      }
+    }
   }
 }
