@@ -29,6 +29,7 @@ public class PointSET {
     return treeSet.size();
   }
 
+
   /**
    * add the point to the set (if it is not already in the set).
    * @param p the point which will be added
