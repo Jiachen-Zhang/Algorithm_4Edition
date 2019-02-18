@@ -2,11 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e93091-05f0-471d-beb9-09c0f58596a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/KdTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KdTreeGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KdTreeVisualizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NearestNeighborVisualizer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RangeSearchVisualizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../doc/5-Balanced Search Tree.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PointSET.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PointSET.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/KdTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KdTree.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +25,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/KdTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="14" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="14" />
+            <state relative-caret-position="526">
+              <caret line="286" selection-start-line="286" selection-end-line="286" selection-end-column="81" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#toString#0;class#Node#0;class#PointSET#0" />
@@ -34,14 +36,10 @@
                 <element signature="docComment;method#isEmpty#0;class#PointSET#0" />
                 <element signature="docComment;method#size#0;class#PointSET#0" />
                 <element signature="docComment;method#insert#0;class#PointSET#0" />
-                <element signature="method#insert#0;class#PointSET#0" />
-                <element signature="method#insert#1;class#PointSET#0" />
                 <element signature="e#1655#1743#1" />
                 <element signature="e#1768#1791#1" />
-                <element signature="e#1826#2138#1" />
-                <element signature="e#2144#2456#1" />
-                <element signature="e#2202#2323#1" />
                 <element signature="docComment;method#contains#0;class#PointSET#0" />
+                <element signature="e#3069#3070#0" expanded="true" />
                 <element signature="method#contains#1;class#PointSET#0" />
                 <element signature="e#3047#3074#1" />
                 <element signature="e#3099#3125#1" />
@@ -50,14 +48,12 @@
                 <element signature="e#3274#3327#1" />
                 <element signature="e#3333#3386#1" />
                 <element signature="docComment;method#draw#0;class#PointSET#0" />
-                <element signature="e#3461#3462#0" expanded="true" />
-                <element signature="e#3491#3492#0" expanded="true" />
+                <element signature="e#3606#3607#0" expanded="true" />
                 <element signature="docComment;method#range#0;class#PointSET#0" />
                 <element signature="e#4521#4530#0" expanded="true" />
                 <element signature="method#range#1;class#KdTree#0" />
                 <element signature="docComment;method#nearest#0;class#PointSET#0" />
-                <element signature="e#5089#5090#0" expanded="true" />
-                <element signature="e#5148#5149#0" expanded="true" />
+                <element signature="e#5227#5228#0" expanded="true" />
                 <element signature="docComment;method#main#0;class#PointSET#0" />
               </folding>
             </state>
@@ -73,6 +69,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>VERTICAL</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -81,11 +82,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/PointSET.java" />
+        <option value="$PROJECT_DIR$/src/RangeSearchVisualizer.java" />
+        <option value="$PROJECT_DIR$/src/KdTreeGenerator.java" />
         <option value="$PROJECT_DIR$/src/KdTree.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="98" />
     <option name="y" value="101" />
     <option name="width" value="1400" />
@@ -120,7 +123,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550480779365" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550483993080" />
     <property name="last_opened_file_path" value="D:/Program Files/Git/git-cmd.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -128,6 +131,11 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Github\Algorithm_4Edition\src\Assignment-5\src" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -141,7 +149,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.KdTreeVisualizer">
     <configuration name="KdTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="KdTree" />
       <module name="Assignment-5" />
@@ -149,8 +157,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="KdTreeGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="KdTreeGenerator" />
+      <module name="Assignment-5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KdTreeVisualizer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="KdTreeVisualizer" />
+      <module name="Assignment-5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RangeSearchVisualizer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RangeSearchVisualizer" />
+      <module name="Assignment-5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.KdTreeVisualizer" />
+        <item itemvalue="Application.KdTreeGenerator" />
+        <item itemvalue="Application.RangeSearchVisualizer" />
         <item itemvalue="Application.KdTree" />
       </list>
     </recent_temporary>
@@ -171,7 +203,7 @@
       <workItem from="1550418767905" duration="82000" />
       <workItem from="1550461363542" duration="2918000" />
       <workItem from="1550468945995" duration="376000" />
-      <workItem from="1550477234076" duration="3444000" />
+      <workItem from="1550477234076" duration="6574000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1550418683753</created>
@@ -187,17 +219,24 @@
       <option name="project" value="LOCAL" />
       <updated>1550418807447</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="drift">
+      <created>1550480865221</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1550480865221</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10146000" />
+    <option name="totallyTimeSpent" value="13276000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4899225" visible="true" weight="0.26599148" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4899225" visible="true" weight="0.26599148" />
       <window_info id="Structure" order="1" sideWeight="0.51007754" side_tool="true" visible="true" weight="0.26599148" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -217,7 +256,7 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32952183" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32952183" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -234,7 +273,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="drift" />
+    <option name="LAST_COMMIT_MESSAGE" value="drift" />
   </component>
   <component name="editorHistoryManager">
     <entry file="jar://$PROJECT_DIR$/../../lib/algs4.jar!/edu/princeton/cs/algs4/Point2D.java">
@@ -271,10 +311,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/KdTree.java">
+    <entry file="file://$PROJECT_DIR$/src/circle4.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RangeSearchVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KdTreeVisualizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="21" column="22" lean-forward="true" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KdTreeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
-          <caret line="12" column="14" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="14" />
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../lib/algs4.jar!/edu/princeton/cs/algs4/RectHV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2245">
+          <caret line="24" column="19" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KdTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="286" selection-start-line="286" selection-end-line="286" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#toString#0;class#Node#0;class#PointSET#0" />
@@ -284,14 +359,10 @@
             <element signature="docComment;method#isEmpty#0;class#PointSET#0" />
             <element signature="docComment;method#size#0;class#PointSET#0" />
             <element signature="docComment;method#insert#0;class#PointSET#0" />
-            <element signature="method#insert#0;class#PointSET#0" />
-            <element signature="method#insert#1;class#PointSET#0" />
             <element signature="e#1655#1743#1" />
             <element signature="e#1768#1791#1" />
-            <element signature="e#1826#2138#1" />
-            <element signature="e#2144#2456#1" />
-            <element signature="e#2202#2323#1" />
             <element signature="docComment;method#contains#0;class#PointSET#0" />
+            <element signature="e#3069#3070#0" expanded="true" />
             <element signature="method#contains#1;class#PointSET#0" />
             <element signature="e#3047#3074#1" />
             <element signature="e#3099#3125#1" />
@@ -300,14 +371,12 @@
             <element signature="e#3274#3327#1" />
             <element signature="e#3333#3386#1" />
             <element signature="docComment;method#draw#0;class#PointSET#0" />
-            <element signature="e#3461#3462#0" expanded="true" />
-            <element signature="e#3491#3492#0" expanded="true" />
+            <element signature="e#3606#3607#0" expanded="true" />
             <element signature="docComment;method#range#0;class#PointSET#0" />
             <element signature="e#4521#4530#0" expanded="true" />
             <element signature="method#range#1;class#KdTree#0" />
             <element signature="docComment;method#nearest#0;class#PointSET#0" />
-            <element signature="e#5089#5090#0" expanded="true" />
-            <element signature="e#5148#5149#0" expanded="true" />
+            <element signature="e#5227#5228#0" expanded="true" />
             <element signature="docComment;method#main#0;class#PointSET#0" />
           </folding>
         </state>
