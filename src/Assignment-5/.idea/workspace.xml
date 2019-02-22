@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0e93091-05f0-471d-beb9-09c0f58596a8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/KdTreeGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/KdTreeVisualizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NearestNeighborVisualizer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RangeSearchVisualizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../doc/5-Balanced Search Tree.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KdTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/KdTree.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,35 +20,10 @@
         <entry file="file://$PROJECT_DIR$/src/KdTree.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="526">
-              <caret line="286" selection-start-line="286" selection-end-line="286" selection-end-column="81" />
+              <caret line="284" selection-start-line="284" selection-end-line="284" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#toString#0;class#Node#0;class#PointSET#0" />
-                <element signature="docComment;method#PointSET#0;class#PointSET#0" />
-                <element signature="e#1004#1005#0" expanded="true" />
-                <element signature="e#1026#1027#0" expanded="true" />
-                <element signature="docComment;method#isEmpty#0;class#PointSET#0" />
-                <element signature="docComment;method#size#0;class#PointSET#0" />
-                <element signature="docComment;method#insert#0;class#PointSET#0" />
-                <element signature="e#1655#1743#1" />
-                <element signature="e#1768#1791#1" />
-                <element signature="docComment;method#contains#0;class#PointSET#0" />
-                <element signature="e#3069#3070#0" expanded="true" />
-                <element signature="method#contains#1;class#PointSET#0" />
-                <element signature="e#3047#3074#1" />
-                <element signature="e#3099#3125#1" />
-                <element signature="e#3176#3212#1" />
-                <element signature="e#3218#3254#1" />
-                <element signature="e#3274#3327#1" />
-                <element signature="e#3333#3386#1" />
-                <element signature="docComment;method#draw#0;class#PointSET#0" />
-                <element signature="e#3606#3607#0" expanded="true" />
-                <element signature="docComment;method#range#0;class#PointSET#0" />
-                <element signature="e#4521#4530#0" expanded="true" />
                 <element signature="method#range#1;class#KdTree#0" />
-                <element signature="docComment;method#nearest#0;class#PointSET#0" />
-                <element signature="e#5227#5228#0" expanded="true" />
-                <element signature="docComment;method#main#0;class#PointSET#0" />
               </folding>
             </state>
           </provider>
@@ -88,7 +57,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="98" />
     <option name="y" value="101" />
     <option name="width" value="1400" />
@@ -100,8 +69,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -118,6 +85,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -204,6 +173,7 @@
       <workItem from="1550461363542" duration="2918000" />
       <workItem from="1550468945995" duration="376000" />
       <workItem from="1550477234076" duration="6574000" />
+      <workItem from="1550714402290" duration="115000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <created>1550418683753</created>
@@ -230,20 +200,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13276000" />
+    <option name="totallyTimeSpent" value="13391000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4899225" visible="true" weight="0.26599148" />
-      <window_info id="Structure" order="1" sideWeight="0.51007754" side_tool="true" visible="true" weight="0.26599148" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4883721" visible="true" weight="0.26865673" />
+      <window_info id="Structure" order="1" sideWeight="0.5116279" side_tool="true" visible="true" weight="0.26865673" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Capture Tool" order="5" />
       <window_info id="Favorites" order="6" sideWeight="0.5010395" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32952183" />
@@ -257,6 +225,7 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.32952183" />
+      <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -311,9 +280,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/circle4.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/circle4.txt" />
     <entry file="file://$PROJECT_DIR$/src/RangeSearchVisualizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -349,35 +316,10 @@
     <entry file="file://$PROJECT_DIR$/src/KdTree.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
-          <caret line="286" selection-start-line="286" selection-end-line="286" selection-end-column="81" />
+          <caret line="284" selection-start-line="284" selection-end-line="284" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#toString#0;class#Node#0;class#PointSET#0" />
-            <element signature="docComment;method#PointSET#0;class#PointSET#0" />
-            <element signature="e#1004#1005#0" expanded="true" />
-            <element signature="e#1026#1027#0" expanded="true" />
-            <element signature="docComment;method#isEmpty#0;class#PointSET#0" />
-            <element signature="docComment;method#size#0;class#PointSET#0" />
-            <element signature="docComment;method#insert#0;class#PointSET#0" />
-            <element signature="e#1655#1743#1" />
-            <element signature="e#1768#1791#1" />
-            <element signature="docComment;method#contains#0;class#PointSET#0" />
-            <element signature="e#3069#3070#0" expanded="true" />
-            <element signature="method#contains#1;class#PointSET#0" />
-            <element signature="e#3047#3074#1" />
-            <element signature="e#3099#3125#1" />
-            <element signature="e#3176#3212#1" />
-            <element signature="e#3218#3254#1" />
-            <element signature="e#3274#3327#1" />
-            <element signature="e#3333#3386#1" />
-            <element signature="docComment;method#draw#0;class#PointSET#0" />
-            <element signature="e#3606#3607#0" expanded="true" />
-            <element signature="docComment;method#range#0;class#PointSET#0" />
-            <element signature="e#4521#4530#0" expanded="true" />
             <element signature="method#range#1;class#KdTree#0" />
-            <element signature="docComment;method#nearest#0;class#PointSET#0" />
-            <element signature="e#5227#5228#0" expanded="true" />
-            <element signature="docComment;method#main#0;class#PointSET#0" />
           </folding>
         </state>
       </provider>
